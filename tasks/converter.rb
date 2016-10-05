@@ -160,7 +160,7 @@ private
   
   # Remove LESS imports - we're going to let Asset Pipeline take care of that
   def remove_imports(less)
-    less.gsub(/^\s*\@import.*$/, '').gsub('.loadUIOverrides();', '')
+    less.gsub(/^\s*\@import.*$/, '').gsub(/.load(UIOverrides|Fonts)\(\);/, '')
   end
   
   # Replace LESS variables with Sass ones.
