@@ -246,7 +246,7 @@ $element : 'progress';
 
   animation: progress-active $active-pulse-duration $default-easing infinite;
 }
-$keyframes progress-active {
+#{$keyframes} progress-active {
   0% {
     opacity: $active-pulse-max-opacity;
     width: 0;

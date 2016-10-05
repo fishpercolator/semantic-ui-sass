@@ -67,7 +67,7 @@ $element : 'loader';
 }
 
 /* Active Animation */
-$keyframes loader {
+#{$keyframes} loader {
   from {
     transform: rotate(0deg);
   }

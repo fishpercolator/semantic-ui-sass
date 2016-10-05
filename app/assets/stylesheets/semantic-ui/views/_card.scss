@@ -494,7 +494,7 @@ a.ui.card:hover,
   box-shadow:
     $border-shadow,
     0px $colored-shadow-distance 0px 0px $red,
-    $shadow-box-shadow
+#{$shadow-box-shadow}
   ;
 }
 .ui.red.cards > .card:hover,
@@ -503,7 +503,7 @@ a.ui.card:hover,
   box-shadow:
     $border-shadow,
     0px $colored-shadow-distance 0px 0px $red-hover,
-    $shadow-hover-box-shadow
+#{$shadow-hover-box-shadow}
   ;
 }
 
@@ -514,7 +514,7 @@ a.ui.card:hover,
   box-shadow:
     $border-shadow,
     0px $colored-shadow-distance 0px 0px $orange,
-    $shadow-box-shadow
+#{$shadow-box-shadow}
   ;
 }
 .ui.orange.cards > .card:hover,
@@ -523,7 +523,7 @@ a.ui.card:hover,
   box-shadow:
     $border-shadow,
     0px $colored-shadow-distance 0px 0px $orange-hover,
-    $shadow-hover-box-shadow
+#{$shadow-hover-box-shadow}
   ;
 }
 
@@ -534,7 +534,7 @@ a.ui.card:hover,
   box-shadow:
     $border-shadow,
     0px $colored-shadow-distance 0px 0px $yellow,
-    $shadow-box-shadow
+#{$shadow-box-shadow}
   ;
 }
 .ui.yellow.cards > .card:hover,
@@ -543,7 +543,7 @@ a.ui.card:hover,
   box-shadow:
     $border-shadow,
     0px $colored-shadow-distance 0px 0px $yellow-hover,
-    $shadow-hover-box-shadow
+#{$shadow-hover-box-shadow}
   ;
 }
 
@@ -554,7 +554,7 @@ a.ui.card:hover,
   box-shadow:
     $border-shadow,
     0px $colored-shadow-distance 0px 0px $olive,
-    $shadow-box-shadow
+#{$shadow-box-shadow}
   ;
 }
 .ui.olive.cards > .card:hover,
@@ -563,7 +563,7 @@ a.ui.card:hover,
   box-shadow:
     $border-shadow,
     0px $colored-shadow-distance 0px 0px $olive-hover,
-    $shadow-hover-box-shadow
+#{$shadow-hover-box-shadow}
   ;
 }
 
@@ -574,7 +574,7 @@ a.ui.card:hover,
   box-shadow:
     $border-shadow,
     0px $colored-shadow-distance 0px 0px $green,
-    $shadow-box-shadow
+#{$shadow-box-shadow}
   ;
 }
 .ui.green.cards > .card:hover,
@@ -583,7 +583,7 @@ a.ui.card:hover,
   box-shadow:
     $border-shadow,
     0px $colored-shadow-distance 0px 0px $green-hover,
-    $shadow-hover-box-shadow
+#{$shadow-hover-box-shadow}
   ;
 }
 
@@ -594,7 +594,7 @@ a.ui.card:hover,
   box-shadow:
     $border-shadow,
     0px $colored-shadow-distance 0px 0px $teal,
-    $shadow-box-shadow
+#{$shadow-box-shadow}
   ;
 }
 .ui.teal.cards > .card:hover,
@@ -603,7 +603,7 @@ a.ui.card:hover,
   box-shadow:
     $border-shadow,
     0px $colored-shadow-distance 0px 0px $teal-hover,
-    $shadow-hover-box-shadow
+#{$shadow-hover-box-shadow}
   ;
 }
 
@@ -614,7 +614,7 @@ a.ui.card:hover,
   box-shadow:
     $border-shadow,
     0px $colored-shadow-distance 0px 0px $blue,
-    $shadow-box-shadow
+#{$shadow-box-shadow}
   ;
 }
 .ui.blue.cards > .card:hover,
@@ -623,7 +623,7 @@ a.ui.card:hover,
   box-shadow:
     $border-shadow,
     0px $colored-shadow-distance 0px 0px $blue-hover,
-    $shadow-hover-box-shadow
+#{$shadow-hover-box-shadow}
   ;
 }
 
@@ -634,7 +634,7 @@ a.ui.card:hover,
   box-shadow:
     $border-shadow,
     0px $colored-shadow-distance 0px 0px $violet,
-    $shadow-box-shadow
+#{$shadow-box-shadow}
   ;
 }
 .ui.violet.cards > .card:hover,
@@ -643,7 +643,7 @@ a.ui.card:hover,
   box-shadow:
     $border-shadow,
     0px $colored-shadow-distance 0px 0px $violet-hover,
-    $shadow-hover-box-shadow
+#{$shadow-hover-box-shadow}
   ;
 }
 
@@ -654,7 +654,7 @@ a.ui.card:hover,
   box-shadow:
     $border-shadow,
     0px $colored-shadow-distance 0px 0px $purple,
-    $shadow-box-shadow
+#{$shadow-box-shadow}
   ;
 }
 .ui.purple.cards > .card:hover,
@@ -663,7 +663,7 @@ a.ui.card:hover,
   box-shadow:
     $border-shadow,
     0px $colored-shadow-distance 0px 0px $purple-hover,
-    $shadow-hover-box-shadow
+#{$shadow-hover-box-shadow}
   ;
 }
 
@@ -674,7 +674,7 @@ a.ui.card:hover,
   box-shadow:
     $border-shadow,
     0px $colored-shadow-distance 0px 0px $pink,
-    $shadow-box-shadow
+#{$shadow-box-shadow}
   ;
 }
 .ui.pink.cards > .card:hover,
@@ -683,7 +683,7 @@ a.ui.card:hover,
   box-shadow:
     $border-shadow,
     0px $colored-shadow-distance 0px 0px $pink-hover,
-    $shadow-hover-box-shadow
+#{$shadow-hover-box-shadow}
   ;
 }
 
@@ -694,7 +694,7 @@ a.ui.card:hover,
   box-shadow:
     $border-shadow,
     0px $colored-shadow-distance 0px 0px $brown,
-    $shadow-box-shadow
+#{$shadow-box-shadow}
   ;
 }
 .ui.brown.cards > .card:hover,
@@ -703,7 +703,7 @@ a.ui.card:hover,
   box-shadow:
     $border-shadow,
     0px $colored-shadow-distance 0px 0px $brown-hover,
-    $shadow-hover-box-shadow
+#{$shadow-hover-box-shadow}
   ;
 }
 
@@ -714,7 +714,7 @@ a.ui.card:hover,
   box-shadow:
     $border-shadow,
     0px $colored-shadow-distance 0px 0px $grey,
-    $shadow-box-shadow
+#{$shadow-box-shadow}
   ;
 }
 .ui.grey.cards > .card:hover,
@@ -723,7 +723,7 @@ a.ui.card:hover,
   box-shadow:
     $border-shadow,
     0px $colored-shadow-distance 0px 0px $grey-hover,
-    $shadow-hover-box-shadow
+#{$shadow-hover-box-shadow}
   ;
 }
 
@@ -734,7 +734,7 @@ a.ui.card:hover,
   box-shadow:
     $border-shadow,
     0px $colored-shadow-distance 0px 0px $black,
-    $shadow-box-shadow
+#{$shadow-box-shadow}
   ;
 }
 .ui.black.cards > .card:hover,
@@ -743,7 +743,7 @@ a.ui.card:hover,
   box-shadow:
     $border-shadow,
     0px $colored-shadow-distance 0px 0px $black-hover,
-    $shadow-hover-box-shadow
+#{$shadow-hover-box-shadow}
   ;
 }
 
@@ -857,7 +857,7 @@ a.ui.card:hover,
 --------------------*/
 
 /* Mobile Only */
-$media only screen and (max-width : $largest-mobile-screen) {
+#{$media} only screen and (max-width : $largest-mobile-screen) {
   .ui.two.doubling.cards {
     margin-left: $one-card-offset;
     margin-right: $one-card-offset;
@@ -942,7 +942,7 @@ $media only screen and (max-width : $largest-mobile-screen) {
 }
 
 /* Tablet Only */
-$media only screen and (min-width : $tablet-breakpoint) and (max-width : $largest-tablet-screen) {
+#{$media} only screen and (min-width : $tablet-breakpoint) and (max-width : $largest-tablet-screen) {
   .ui.two.doubling.cards {
     margin-left: $one-card-offset;
     margin-right: $one-card-offset;
@@ -1029,8 +1029,7 @@ $media only screen and (min-width : $tablet-breakpoint) and (max-width : $larges
 /*-------------------
       Stackable
 --------------------*/
-
-$media only screen and (max-width : $largest-mobile-screen) {
+#{$media} only screen and (max-width : $largest-mobile-screen) {
   .ui.stackable.cards {
     display: block !important;
   }

@@ -165,9 +165,13 @@ private
   
   # Replace LESS variables with Sass ones.
   def replace_variables(less, scope=nil)
-    less.gsub(/\@([-\w]+)/) { get_sass_variable_name $1, scope }.
+    # Handle variables at the start of a string (Sass requires them to be #{})
+    less.gsub!(/^\s*\@([-\w]+)(\s+[^\s:])/) { '#{' + get_sass_variable_name($1, scope) + '}' + $2 }
+    # Handle most variable names
+    less.gsub!(/\@([-\w]+)/) { get_sass_variable_name $1, scope }
     # And interpolated variables
-         gsub(/\@\{([-\w]+)\}/) { '#{' + get_sass_variable_name($1, scope) + '}' }
+    less.gsub!(/\@\{([-\w]+)\}/) { '#{' + get_sass_variable_name($1, scope) + '}' }
+    less
   end
 
   def replace_fonts_url(less)

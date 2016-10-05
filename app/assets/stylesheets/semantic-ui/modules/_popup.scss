@@ -636,8 +636,7 @@ $element : 'popup';
 .ui[class*="very wide"].popup {
   max-width: $very-wide-width;
 }
-
-$media only screen and (max-width: $largest-mobile-screen) {
+#{$media} only screen and (max-width: $largest-mobile-screen) {
   .ui.wide.popup,
   .ui[class*="very wide"].popup {
     max-width: $max-width;

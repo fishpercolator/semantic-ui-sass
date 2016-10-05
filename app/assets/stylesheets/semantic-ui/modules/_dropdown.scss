@@ -432,23 +432,22 @@ select.ui.dropdown {
 .ui.selection.dropdown .menu > .message {
   padding: $selection-message-padding;
 }
-
-$media only screen and (max-width : $largest-mobile-screen) {
+#{$media} only screen and (max-width : $largest-mobile-screen) {
   .ui.selection.dropdown .menu {
     max-height: $selection-mobile-max-menu-height;
   }
 }
-$media only screen and (min-width: $tablet-breakpoint) {
+#{$media} only screen and (min-width: $tablet-breakpoint) {
   .ui.selection.dropdown .menu {
     max-height: $selection-tablet-max-menu-height;
   }
 }
-$media only screen and (min-width: $computer-breakpoint) {
+#{$media} only screen and (min-width: $computer-breakpoint) {
   .ui.selection.dropdown .menu {
     max-height: $selection-computer-max-menu-height;
   }
 }
-$media only screen and (min-width: $widescreen-monitor-breakpoint) {
+#{$media} only screen and (min-width: $widescreen-monitor-breakpoint) {
   .ui.selection.dropdown .menu {
     max-height: $selection-widescreen-max-menu-height;
   }
@@ -607,22 +606,22 @@ $media only screen and (min-width: $widescreen-monitor-breakpoint) {
   backface-visibility: hidden;
   -webkit-overflow-scrolling: touch;
 }
-$media only screen and (max-width : $largest-mobile-screen) {
+#{$media} only screen and (max-width : $largest-mobile-screen) {
   .ui.search.dropdown .menu {
     max-height: $search-mobile-max-menu-height;
   }
 }
-$media only screen and (min-width: $tablet-breakpoint) {
+#{$media} only screen and (min-width: $tablet-breakpoint) {
   .ui.search.dropdown .menu {
     max-height: $search-tablet-max-menu-height;
   }
 }
-$media only screen and (min-width: $computer-breakpoint) {
+#{$media} only screen and (min-width: $computer-breakpoint) {
   .ui.search.dropdown .menu {
     max-height: $search-computer-max-menu-height;
   }
 }
-$media only screen and (min-width: $widescreen-monitor-breakpoint) {
+#{$media} only screen and (min-width: $widescreen-monitor-breakpoint) {
   .ui.search.dropdown .menu {
     max-height: $search-widescreen-max-menu-height;
   }
@@ -809,8 +808,7 @@ $media only screen and (min-width: $widescreen-monitor-breakpoint) {
 .ui.loading.dropdown.button > i.icon:after {
   display: none;
 }
-
-$keyframes dropdown-spin {
+#{$keyframes} dropdown-spin {
   from {
     transform: rotate(0deg);
   }
@@ -1076,31 +1074,31 @@ $keyframes dropdown-spin {
 }
 
 /* Scrollbar in IE */
-$media all and (-ms-high-contrast:none) {
+#{$media} all and (-ms-high-contrast:none) {
   .ui.scrolling.dropdown .menu,
   .ui.dropdown .scrolling.menu {
     min-width: ~"calc(100% - "$scrollbar-width~")";
   }
 }
-$media only screen and (max-width : $largest-mobile-screen) {
+#{$media} only screen and (max-width : $largest-mobile-screen) {
   .ui.scrolling.dropdown .menu,
   .ui.dropdown .scrolling.menu {
     max-height: $scrolling-mobile-max-menu-height;
   }
 }
-$media only screen and (min-width: $tablet-breakpoint) {
+#{$media} only screen and (min-width: $tablet-breakpoint) {
   .ui.scrolling.dropdown .menu,
   .ui.dropdown .scrolling.menu {
     max-height: $scrolling-tablet-max-menu-height;
   }
 }
-$media only screen and (min-width: $computer-breakpoint) {
+#{$media} only screen and (min-width: $computer-breakpoint) {
   .ui.scrolling.dropdown .menu,
   .ui.dropdown .scrolling.menu {
     max-height: $scrolling-computer-max-menu-height;
   }
 }
-$media only screen and (min-width: $widescreen-monitor-breakpoint) {
+#{$media} only screen and (min-width: $widescreen-monitor-breakpoint) {
   .ui.scrolling.dropdown .menu,
   .ui.dropdown .scrolling.menu {
     max-height: $scrolling-widescreen-max-menu-height;

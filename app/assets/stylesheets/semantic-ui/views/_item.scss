@@ -336,7 +336,7 @@ $element : 'item';
 
 
 /* Tablet Only */
-$media only screen and (min-width: $tablet-breakpoint) and (max-width: $largest-tablet-screen) {
+#{$media} only screen and (min-width: $tablet-breakpoint) and (max-width: $largest-tablet-screen) {
   .ui.items > .item {
     margin: $tablet-item-spacing 0em;
   }
@@ -351,7 +351,7 @@ $media only screen and (min-width: $tablet-breakpoint) and (max-width: $largest-
 }
 
 /* Mobile Only */
-$media only screen and (max-width: $largest-mobile-screen) {
+#{$media} only screen and (max-width: $largest-mobile-screen) {
   .ui.items > .item {
     flex-direction: column;
     margin: $mobile-item-spacing 0em;

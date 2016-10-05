@@ -27,7 +27,7 @@ $element : 'container';
 }
 
 /* Mobile */
-$media only screen and (max-width: $largest-mobile-screen) {
+#{$media} only screen and (max-width: $largest-mobile-screen) {
   .ui.container {
     width: $mobile-width !important;
     margin-left: $mobile-gutter !important;
@@ -45,7 +45,7 @@ $media only screen and (max-width: $largest-mobile-screen) {
 }
 
 /* Tablet */
-$media only screen and (min-width: $tablet-breakpoint) and (max-width: $largest-tablet-screen) {
+#{$media} only screen and (min-width: $tablet-breakpoint) and (max-width: $largest-tablet-screen) {
   .ui.container {
     width: $tablet-width;
     margin-left: $tablet-gutter !important;
@@ -63,7 +63,7 @@ $media only screen and (min-width: $tablet-breakpoint) and (max-width: $largest-
 }
 
 /* Small Monitor */
-$media only screen and (min-width: $computer-breakpoint) and (max-width: $largest-small-monitor) {
+#{$media} only screen and (min-width: $computer-breakpoint) and (max-width: $largest-small-monitor) {
   .ui.container {
     width: $computer-width;
     margin-left: $computer-gutter !important;
@@ -81,7 +81,7 @@ $media only screen and (min-width: $computer-breakpoint) and (max-width: $larges
 }
 
 /* Large Monitor */
-$media only screen and (min-width: $large-monitor-breakpoint) {
+#{$media} only screen and (min-width: $large-monitor-breakpoint) {
   .ui.container {
     width: $large-monitor-width;
     margin-left: $large-monitor-gutter !important;

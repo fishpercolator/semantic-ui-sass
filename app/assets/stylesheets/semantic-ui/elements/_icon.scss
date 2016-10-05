@@ -21,8 +21,7 @@ $element : 'icon';
 /*******************************
              Icon
 *******************************/
-
-$font-face {
+#{$font-face} {
   font-family: 'Icons';
   src: $fallback-src;
   src: $src;
@@ -72,7 +71,7 @@ i.icon.loading {
   line-height: 1;
   animation: icon-loading $loading-duration linear infinite;
 }
-$keyframes icon-loading {
+#{$keyframes} icon-loading {
  from {
     transform: rotate(0deg);
  }

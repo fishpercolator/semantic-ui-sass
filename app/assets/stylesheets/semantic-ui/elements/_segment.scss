@@ -442,8 +442,7 @@ $element : 'segment';
   visibility: visible;
   z-index: $loader-line-z-index;
 }
-
-$keyframes segment-spin {
+#{$keyframes} segment-spin {
   from {
     transform: rotate(0deg);
   }

@@ -257,7 +257,7 @@ $element : 'step';
 ----------------*/
 
 /* Mobile (Default) */
-$media only screen and (max-width: ($largest-mobile-screen)) {
+#{$media} only screen and (max-width: ($largest-mobile-screen)) {
 
 .ui.steps {
   display: inline-flex;
@@ -390,7 +390,7 @@ $media only screen and (max-width: ($largest-mobile-screen)) {
 ---------------*/
 
 /* Tablet Or Below */
-$media only screen and (max-width: $largest-tablet-screen) {
+#{$media} only screen and (max-width: $largest-tablet-screen) {
 
 .ui[class*="tablet stackable"].steps {
   display: inline-flex;
