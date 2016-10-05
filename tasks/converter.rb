@@ -10,7 +10,6 @@ require "dotenv"
 require 'pathname'
 require 'find'
 require 'active_support/core_ext/string/inflections'
-require 'active_support/ordered_hash'
 
 Dotenv.load
 
@@ -62,7 +61,8 @@ class Converter
   
   # Generate a hash of variables from the theme and write them to a file
   def generate_variables
-    @variables = ActiveSupport::OrderedHash.new
+    @variables = []
+    @basic_vars = []
     # First, let's read all the site-wide variables
     parse_variable_file(File.join(paths.tmp_semantic_ui_theme, 'globals', 'site.variables'))
     
@@ -79,7 +79,25 @@ class Converter
 
     variable_file_contents = ""
     @variables.each {|k,v| variable_file_contents += "#{k}: #{v} !default;\n"}
-    save_file("variables", variable_file_contents, "", "")
+    save_file("variables", fix_less_syntax(variable_file_contents), "", "")
+    
+    # We need to reorder some of the basic vars
+    # 1. Each 'text-color' needs to be followed by its 'header-color'
+    %w{red orange yellow olive green teal blue violet purple pink brown}.each do |color|
+      header = @basic_vars.assoc("\$#{color}-header-color")
+      @basic_vars.delete(header)
+      text_idx = @basic_vars.index {|k,v| k == "\$#{color}-text-color"}
+      @basic_vars.insert(text_idx + 1, header)
+    end
+    # 2. loader-size needs to go after relative-big
+    ls = @basic_vars.assoc('$loader-size')
+    @basic_vars.delete(ls)
+    rb_idx = @basic_vars.index {|k,v| k == '$relative-big'}
+    @basic_vars.insert(rb_idx + 1, ls)
+    
+    basic_file_contents = ""    
+    @basic_vars.each {|k,v| basic_file_contents += "#{k}: #{v} !default;\n"}
+    save_file("basic_vars", fix_less_syntax(basic_file_contents), "", "")
   end
 
   def process_stylesheets_assets
@@ -119,6 +137,7 @@ private
   def convert(file, scope)
     file = remove_imports(file)
     file = replace_variables(file, scope)
+    file = fix_less_syntax(file)
     
     #file = replace_fonts_url(file)
     #file = replace_import_font_url(file)
@@ -163,12 +182,24 @@ private
     less.gsub(/^\s*\@import.*$/, '').gsub(/.load(UIOverrides|Fonts)\(\);/, '')
   end
   
+  # Fix LESS syntax that differs from Sass
+  def fix_less_syntax(less)
+    # Handle literal quotes
+    # Lines with a variable to be interpolated
+    less.gsub!(/~"(.*?)"(.*?)~"(.*?)"/, '\1#{\2}\3')
+    # Lines without
+    less.gsub!(/~"(.*?)"/, '\1')
+    less
+  end
+  
   # Replace LESS variables with Sass ones.
   def replace_variables(less, scope=nil)
     # Handle most variable names
     less.gsub!(/\@([-\w]+)/) { get_sass_variable_name $1, scope }
     # And interpolated variables
     less.gsub!(/\@\{([-\w]+)\}/) { '#{' + get_sass_variable_name($1, scope) + '}' }
+    # LESS 'unit' is done with + in sass
+    less.gsub!(/unit\((.*?),\s*(\w+)\s*\)/) { exp,unit = $1,$2; exp.sub!(/^\s+\((\d+)\s+/, '(\1px'); "#{exp} + 0#{unit}" }
     less
   end
 
@@ -194,9 +225,10 @@ private
   
   def get_sass_variable_name(less_name, scope=nil, force=false)
     # Special case - @media and @keyframes are to be passed directly to CSS
-    return "@#{less_name}" if %w{media keyframes}.include? less_name
+    return "@#{less_name}" if %w{media keyframes font-face}.include? less_name
     
     name = less_name.underscore.tr('_', '-')
+    name.sub! /^(?=\d)/, 'size' # Names starting with a number are banned in Sass
     if scope
       name = "#{scope.tr '/', '-'}-#{name}"
     end
@@ -205,18 +237,33 @@ private
     unless force
       # If a scope is provided and we don't have a variable in that scope,
       # assume it's in the global scope
-      if scope and !@variables.key? name
+      if scope and !@variables.assoc(name) and !@basic_vars.assoc(name)
         return get_sass_variable_name(less_name, nil)
       end
     end
     return name
   end
   
+  BASIC_VARS = %w{em font mini tiny small medium large big huge massive loader}.map {|s| "\$#{s}-size"} +
+               %w{$line-height $header-line-height $column-count} +
+               %w{mobile tablet computer large-monitor widescreen-monitor}.map {|s| "\$#{s}-breakpoint"}
+  
   def parse_variable_file(filename, scope=nil)
-    File.read(filename).scan(/^\s*\@([-\w]+)\s*:\s*(.*?);/) do |name, decl|
-      name_parsed = get_sass_variable_name(name, scope, true)
-      decl_parsed = replace_variables(decl, scope)
-      @variables[name_parsed] = decl_parsed
+    file = File.read(filename)
+    
+    # If the file has a 'Site Colors' section, treat everything after it
+    # as basic vars that need loading first.
+    sections = file.partition(%r{/\*\-+\s+Site Colors\s+\-+\*/}m)
+    sections.each_with_index do |text, i|
+      text.scan(/^\s*\@([-\w]+)\s*:\s*(.*?);/) do |name, decl|
+        name_parsed = get_sass_variable_name(name, scope, true)
+        decl_parsed = replace_variables(decl, scope)
+        if i == 2 or BASIC_VARS.include?(name_parsed)
+          @basic_vars << [name_parsed, decl_parsed]
+        else
+          @variables << [name_parsed, decl_parsed]
+        end
+      end
     end
   end
 

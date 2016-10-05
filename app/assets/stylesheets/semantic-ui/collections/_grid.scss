@@ -138,7 +138,7 @@ $element : 'grid';
   margin: ($row-spacing / 2) ($gutter-width / 2);
 }
 .ui.grid .column + .ui.vertical.divider {
-  height: ~"calc(50% - "($row-spacing/2)~")";
+  height: calc(50% - #{($row-spacing/2)});
 }
 
 /* Remove Border on Last Horizontal Segment */
@@ -1076,7 +1076,7 @@ $element : 'grid';
   top: 0em;
   left: 0px;
 
-  width: ~"calc(100% - "$gutter-width~")";
+  width: calc(100% - #{$gutter-width});
   height: 1px;
 
   margin: 0% ($gutter-width / 2);
@@ -1111,12 +1111,12 @@ $element : 'grid';
 .ui.relaxed[class*="vertically divided"].grid > .row:before {
   margin-left: ($relaxed-gutter-width / 2);
   margin-right: ($relaxed-gutter-width / 2);
-  width: ~"calc(100% - "$relaxed-gutter-width~")";
+  width: calc(100% - #{$relaxed-gutter-width});
 }
 .ui[class*="very relaxed"][class*="vertically divided"].grid > .row:before {
   margin-left: $very-relaxed-gutter-width;
   margin-right: $very-relaxed-gutter-width;
-  width: ~"calc(100% - "$very-relaxed-gutter-width~")";
+  width: calc(100% - #{$very-relaxed-gutter-width});
 }
 
 /*----------------------

@@ -22,7 +22,7 @@ $element : 'icon';
              Icon
 *******************************/
 
-$font-face {
+@font-face {
   font-family: 'Icons';
   src: $fallback-src;
   src: $src;
