@@ -1,5 +1,5 @@
 /*!
- * # Semantic UI 2.2.4 - Modal
+ * # Semantic UI - Modal
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -10,44 +10,50 @@
 
 
 /*******************************
+            Theme
+*******************************/
+
+$type    : 'module';
+$element : 'modal';
+
+
+/*******************************
              Modal
 *******************************/
 
 .ui.modal {
   display: none;
   position: fixed;
-  z-index: 1001;
+  z-index: $z-index;
+
   top: 50%;
   left: 50%;
   text-align: left;
-  background: #FFFFFF;
-  border: none;
-  box-shadow: 1px 3px 3px 0px rgba(0, 0, 0, 0.2), 1px 3px 15px 2px rgba(0, 0, 0, 0.2);
-  -webkit-transform-origin: 50% 25%;
-      -ms-transform-origin: 50% 25%;
-          transform-origin: 50% 25%;
-  border-radius: 0.28571429rem;
-  -webkit-user-select: text;
-     -moz-user-select: text;
-      -ms-user-select: text;
-          user-select: text;
+
+  background: $background;
+  border: $border;
+  box-shadow: $box-shadow;
+  transform-origin: $transform-origin;
+
+  border-radius: $border-radius;
+  user-select: text;
   will-change: top, left, margin, transform, opacity;
 }
+
 .ui.modal > :first-child:not(.icon),
 .ui.modal > .icon:first-child + * {
-  border-top-left-radius: 0.28571429rem;
-  border-top-right-radius: 0.28571429rem;
-}
-.ui.modal > :last-child {
-  border-bottom-left-radius: 0.28571429rem;
-  border-bottom-right-radius: 0.28571429rem;
+  border-top-left-radius: $border-radius;
+  border-top-right-radius: $border-radius;
 }
 
+.ui.modal > :last-child {
+  border-bottom-left-radius: $border-radius;
+  border-bottom-right-radius: $border-radius;
+}
 
 /*******************************
             Content
 *******************************/
-
 
 /*--------------
      Close
@@ -56,15 +62,17 @@
 .ui.modal > .close {
   cursor: pointer;
   position: absolute;
-  top: -2.5rem;
-  right: -2.5rem;
+  top: $close-top;
+  right: $close-right;
   z-index: 1;
-  opacity: 0.8;
-  font-size: 1.25em;
-  color: #FFFFFF;
-  width: 2.25rem;
-  height: 2.25rem;
-  padding: 0.625rem 0rem 0rem 0rem;
+
+  opacity: $close-opacity;
+  font-size: $close-size;
+  color: $close-color;
+
+  width: $close-hitbox;
+  height: $close-hitbox;
+  padding: $close-padding;
 }
 .ui.modal > .close:hover {
   opacity: 1;
@@ -76,18 +84,19 @@
 
 .ui.modal > .header {
   display: block;
-  font-family: $font-family;
-  background: #FFFFFF;
-  margin: 0em;
-  padding: 1.25rem 1.5rem;
-  box-shadow: none;
-  color: rgba(0, 0, 0, 0.85);
-  border-bottom: 1px solid rgba(34, 36, 38, 0.15);
+  font-family: $header-font-family;
+  background: $header-background;
+  margin: $header-margin;
+  padding: $header-padding;
+  box-shadow: $header-box-shadow;
+
+  color: $header-color;
+  border-bottom: $header-border;
 }
 .ui.modal > .header:not(.ui) {
-  font-size: 1.42857143rem;
-  line-height: 1.2857em;
-  font-weight: bold;
+  font-size: $header-font-size;
+  line-height: $header-line-height;
+  font-weight: $header-font-weight;
 }
 
 /*--------------
@@ -97,80 +106,56 @@
 .ui.modal > .content {
   display: block;
   width: 100%;
-  font-size: 1em;
-  line-height: 1.4;
-  padding: 1.5rem;
-  background: #FFFFFF;
+  font-size: $content-font-size;
+  line-height: $content-line-height;
+  padding: $content-padding;
+  background: $content-background;
 }
 .ui.modal > .image.content {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: row;
-      -ms-flex-direction: row;
-          flex-direction: row;
+  flex-direction: row;
 }
 
 /* Image */
 .ui.modal > .content > .image {
   display: block;
-  -webkit-box-flex: 0;
-  -webkit-flex: 0 1 auto;
-      -ms-flex: 0 1 auto;
-          flex: 0 1 auto;
-  width: '';
-  -webkit-align-self: top;
-      -ms-flex-item-align: top;
-          align-self: top;
+  flex: 0 1 auto;
+  width: $image-width;
+  align-self: $image-vertical-align;
 }
 .ui.modal > [class*="top aligned"] {
-  -webkit-align-self: top;
-      -ms-flex-item-align: top;
-          align-self: top;
+  align-self: top;
 }
 .ui.modal > [class*="middle aligned"] {
-  -webkit-align-self: middle;
-      -ms-flex-item-align: middle;
-          align-self: middle;
+  align-self: middle;
 }
 .ui.modal > [class*="stretched"] {
-  -webkit-align-self: stretch;
-      -ms-flex-item-align: stretch;
-          align-self: stretch;
+  align-self: stretch;
 }
 
 /* Description */
 .ui.modal > .content > .description {
   display: block;
-  -webkit-box-flex: 1;
-  -webkit-flex: 1 0 auto;
-      -ms-flex: 1 0 auto;
-          flex: 1 0 auto;
+  flex: 1 0 auto;
   min-width: 0px;
-  -webkit-align-self: top;
-      -ms-flex-item-align: top;
-          align-self: top;
+  align-self: $description-vertical-align;
 }
+
 .ui.modal > .content > .icon + .description,
 .ui.modal > .content > .image + .description {
-  -webkit-box-flex: 0;
-  -webkit-flex: 0 1 auto;
-      -ms-flex: 0 1 auto;
-          flex: 0 1 auto;
-  min-width: '';
-  width: auto;
-  padding-left: 2em;
+  flex: 0 1 auto;
+  min-width: $description-min-width;
+  width: $description-width;
+  padding-left: $description-distance;
 }
+
 /*rtl:ignore*/
 .ui.modal > .content > .image > i.icon {
   margin: 0em;
   opacity: 1;
   width: auto;
   line-height: 1;
-  font-size: 8rem;
+  font-size: $image-icon-size;
 }
 
 /*--------------
@@ -178,113 +163,111 @@
 ---------------*/
 
 .ui.modal > .actions {
-  background: #F9FAFB;
-  padding: 1rem 1rem;
-  border-top: 1px solid rgba(34, 36, 38, 0.15);
-  text-align: right;
+  background: $action-background;
+  padding: $action-padding;
+  border-top: $action-border;
+  text-align: $action-align;
 }
 .ui.modal .actions > .button {
-  margin-left: 0.75em;
+  margin-left: $button-distance;
 }
 
 /*-------------------
        Responsive
 --------------------*/
 
-
 /* Modal Width */
-@media only screen and (max-width: 767px) {
+$media only screen and (max-width : $largest-mobile-screen) {
   .ui.modal {
-    width: 95%;
-    margin: 0em 0em 0em -47.5%;
+    width: $mobile-width;
+    margin: $mobile-margin;
   }
 }
-@media only screen and (min-width: 768px) {
+$media only screen and (min-width : $tablet-breakpoint) {
   .ui.modal {
-    width: 88%;
-    margin: 0em 0em 0em -44%;
+    width: $tablet-width;
+    margin: $tablet-margin;
   }
 }
-@media only screen and (min-width: 992px) {
+$media only screen and (min-width : $computer-breakpoint) {
   .ui.modal {
-    width: 850px;
-    margin: 0em 0em 0em -425px;
+    width: $computer-width;
+    margin: $computer-margin;
   }
 }
-@media only screen and (min-width: 1200px) {
+$media only screen and (min-width : $large-monitor-breakpoint) {
   .ui.modal {
-    width: 900px;
-    margin: 0em 0em 0em -450px;
+    width: $large-monitor-width;
+    margin: $large-monitor-margin;
   }
 }
-@media only screen and (min-width: 1920px) {
+$media only screen and (min-width : $widescreen-monitor-breakpoint) {
   .ui.modal {
-    width: 950px;
-    margin: 0em 0em 0em -475px;
+    width: $widescreen-monitor-width;
+    margin: $widescreen-monitor-margin;
   }
 }
 
 /* Tablet and Mobile */
-@media only screen and (max-width: 991px) {
+$media only screen and (max-width : $largest-tablet-screen) {
   .ui.modal > .header {
-    padding-right: 2.25rem;
+    padding-right: $close-hitbox;
   }
   .ui.modal > .close {
-    top: 1.0535rem;
-    right: 1rem;
-    color: rgba(0, 0, 0, 0.87);
+    top: $inner-close-top;
+    right: $inner-close-right;
+    color: $inner-close-color;
   }
 }
 
 /* Mobile */
-@media only screen and (max-width: 767px) {
+$media only screen and (max-width : $largest-mobile-screen) {
+
   .ui.modal > .header {
-    padding: 0.75rem 1rem !important;
-    padding-right: 2.25rem !important;
+    padding: $mobile-header-padding !important;
+    padding-right: $close-hitbox !important;
   }
   .ui.modal > .content {
     display: block;
-    padding: 1rem !important;
+    padding: $mobile-content-padding !important;
   }
   .ui.modal > .close {
-    top: 0.5rem !important;
-    right: 0.5rem !important;
+    top: $mobile-close-top !important;
+    right: $mobile-close-right !important;
   }
+
   /*rtl:ignore*/
   .ui.modal .image.content {
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-    -webkit-flex-direction: column;
-        -ms-flex-direction: column;
-            flex-direction: column;
+    flex-direction: column;
   }
   .ui.modal .content > .image {
     display: block;
     max-width: 100%;
     margin: 0em auto !important;
     text-align: center;
-    padding: 0rem 0rem 1rem !important;
+    padding: $mobile-image-padding !important;
   }
   .ui.modal > .content > .image > i.icon {
-    font-size: 5rem;
+    font-size: $mobile-image-icon-size;
     text-align: center;
   }
+
   /*rtl:ignore*/
   .ui.modal .content > .description {
     display: block;
     width: 100% !important;
     margin: 0em !important;
-    padding: 1rem 0rem !important;
+    padding: $mobile-description-padding !important;
     box-shadow: none;
   }
-  
-/* Let Buttons Stack */
+
+  /* Let Buttons Stack */
   .ui.modal > .actions {
-    padding: 1rem 1rem 0rem !important;
+    padding: $mobile-action-padding !important;
   }
   .ui.modal .actions > .buttons,
   .ui.modal .actions > .button {
-    margin-bottom: 1rem;
+    margin-bottom: $mobile-button-distance;
   }
 }
 
@@ -293,9 +276,8 @@
 ---------------*/
 
 .ui.inverted.dimmer > .ui.modal {
-  box-shadow: 1px 3px 10px 2px rgba(0, 0, 0, 0.2);
+  box-shadow: $inverted-box-shadow;
 }
-
 
 /*******************************
              Types
@@ -306,7 +288,7 @@
   border: none;
   border-radius: 0em;
   box-shadow: none !important;
-  color: #FFFFFF;
+  color: $basic-modal-color;
 }
 .ui.basic.modal > .header,
 .ui.basic.modal > .content,
@@ -314,23 +296,24 @@
   background-color: transparent;
 }
 .ui.basic.modal > .header {
-  color: #FFFFFF;
+  color: $basic-modal-header-color;
 }
 .ui.basic.modal > .close {
-  top: 1rem;
-  right: 1.5rem;
+  top: $basic-modal-close-top;
+  right: $basic-modal-close-right;
 }
+
 .ui.inverted.dimmer > .basic.modal {
-  color: rgba(0, 0, 0, 0.87);
+  color: $basic-inverted-modal-color;
 }
 .ui.inverted.dimmer > .ui.basic.modal > .header {
-  color: rgba(0, 0, 0, 0.85);
+  color: $basic-inverted-modal-header-color;
 }
 
 /* Tablet and Mobile */
-@media only screen and (max-width: 991px) {
+$media only screen and (max-width : $largest-tablet-screen) {
   .ui.basic.modal > .close {
-    color: #FFFFFF;
+    color: $basic-inner-close-color;
   }
 }
 
@@ -343,16 +326,13 @@
   display: block;
 }
 
-
 /*******************************
            Variations
 *******************************/
 
-
 /*--------------
     Scrolling
 ---------------*/
-
 
 /* A modal that cannot fit on the page */
 .scrolling.dimmable.dimmed {
@@ -367,7 +347,7 @@
 }
 .modals.dimmer .ui.scrolling.modal {
   position: static !important;
-  margin: 3.5rem auto !important;
+  margin: $scrolling-margin auto !important;
 }
 
 /* undetached scrolling */
@@ -381,129 +361,123 @@
 .scrolling.undetached.dimmable .ui.scrolling.modal {
   position: absolute;
   left: 50%;
-  margin-top: 3.5rem !important;
+  margin-top: $scrolling-margin !important;
 }
 
 /* Coupling with Sidebar */
 .undetached.dimmable.dimmed > .pusher {
   z-index: auto;
 }
-@media only screen and (max-width: 991px) {
+
+$media only screen and (max-width : $largest-tablet-screen) {
   .modals.dimmer .ui.scrolling.modal {
-    margin-top: 1rem !important;
-    margin-bottom: 1rem !important;
+    margin-top: $mobile-scrolling-margin !important;
+    margin-bottom: $mobile-scrolling-margin !important;
   }
 }
+
 
 /*--------------
    Full Screen
 ---------------*/
 
 .ui.fullscreen.modal {
-  width: 95% !important;
-  left: 2.5% !important;
-  margin: 1em auto;
+  width: $full-screen-width !important;
+  left: $full-screen-offset !important;
+  margin: $full-screen-margin;
 }
 .ui.fullscreen.scrolling.modal {
   left: 0em !important;
 }
 .ui.fullscreen.modal > .header {
-  padding-right: 2.25rem;
+  padding-right: $close-hitbox;
 }
 .ui.fullscreen.modal > .close {
-  top: 1.0535rem;
-  right: 1rem;
-  color: rgba(0, 0, 0, 0.87);
+  top: $inner-close-top;
+  right: $inner-close-right;
+  color: $inner-close-color;
 }
+
 
 /*--------------
       Size
 ---------------*/
 
 .ui.modal {
-  font-size: 1rem;
+  font-size: $medium;
 }
 
 /* Small */
 .ui.small.modal > .header:not(.ui) {
-  font-size: 1.3em;
+  font-size: $small-header-size;
 }
 
 /* Small Modal Width */
-@media only screen and (max-width: 767px) {
+$media only screen and (max-width : $largest-mobile-screen) {
   .ui.small.modal {
-    width: 95%;
-    margin: 0em 0em 0em -47.5%;
+    width: $small-mobile-width;
+    margin: $small-mobile-margin;
   }
 }
-@media only screen and (min-width: 768px) {
+$media only screen and (min-width : $tablet-breakpoint) {
   .ui.small.modal {
-    width: 70.4%;
-    margin: 0em 0em 0em -35.2%;
+    width: $small-tablet-width;
+    margin: $small-tablet-margin;
   }
 }
-@media only screen and (min-width: 992px) {
+$media only screen and (min-width : $computer-breakpoint) {
   .ui.small.modal {
-    width: 680px;
-    margin: 0em 0em 0em -340px;
+    width: $small-computer-width;
+    margin: $small-computer-margin;
   }
 }
-@media only screen and (min-width: 1200px) {
+$media only screen and (min-width : $large-monitor-breakpoint) {
   .ui.small.modal {
-    width: 720px;
-    margin: 0em 0em 0em -360px;
+    width: $small-large-monitor-width;
+    margin: $small-large-monitor-margin;
   }
 }
-@media only screen and (min-width: 1920px) {
+$media only screen and (min-width : $widescreen-monitor-breakpoint) {
   .ui.small.modal {
-    width: 760px;
-    margin: 0em 0em 0em -380px;
+    width: $small-widescreen-monitor-width;
+    margin: $small-widescreen-monitor-margin;
   }
 }
 
 /* Large Modal Width */
 .ui.large.modal > .header {
-  font-size: 1.6em;
+  font-size: $large-header-size;
 }
-@media only screen and (max-width: 767px) {
+$media only screen and (max-width : $largest-mobile-screen) {
   .ui.large.modal {
-    width: 95%;
-    margin: 0em 0em 0em -47.5%;
+    width: $large-mobile-width;
+    margin: $large-mobile-margin;
   }
 }
-@media only screen and (min-width: 768px) {
+$media only screen and (min-width : $tablet-breakpoint) {
   .ui.large.modal {
-    width: 88%;
-    margin: 0em 0em 0em -44%;
+    width: $large-tablet-width;
+    margin: $large-tablet-margin;
   }
 }
-@media only screen and (min-width: 992px) {
+$media only screen and (min-width : $computer-breakpoint) {
   .ui.large.modal {
-    width: 1020px;
-    margin: 0em 0em 0em -510px;
+    width: $large-computer-width;
+    margin: $large-computer-margin;
   }
 }
-@media only screen and (min-width: 1200px) {
+$media only screen and (min-width : $large-monitor-breakpoint) {
   .ui.large.modal {
-    width: 1080px;
-    margin: 0em 0em 0em -540px;
+    width: $large-large-monitor-width;
+    margin: $large-large-monitor-margin;
   }
 }
-@media only screen and (min-width: 1920px) {
+$media only screen and (min-width : $widescreen-monitor-breakpoint) {
   .ui.large.modal {
-    width: 1140px;
-    margin: 0em 0em 0em -570px;
+    width: $large-widescreen-monitor-width;
+    margin: $large-widescreen-monitor-margin;
   }
 }
 
 
-/*******************************
-         Theme Overrides
-*******************************/
-
-
-
-/*******************************
-         Site Overrides
-*******************************/
-
+.loadUIOverrides();

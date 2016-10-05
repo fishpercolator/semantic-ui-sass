@@ -1,5 +1,5 @@
 /*!
- * # Semantic UI 2.2.4 - Form
+ * # Semantic UI - Form
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -8,11 +8,17 @@
  *
  */
 
+/*******************************
+            Theme
+*******************************/
+
+$type    : 'collection';
+$element : 'form';
+
 
 /*******************************
             Elements
 *******************************/
-
 
 /*--------------------
         Form
@@ -28,7 +34,7 @@
 ---------------------*/
 
 .ui.form > p {
-  margin: 1em 0em;
+  margin: $paragraph-margin;
 }
 
 /*--------------------
@@ -37,16 +43,19 @@
 
 .ui.form .field {
   clear: both;
-  margin: 0em 0em 1em;
+  margin: $field-margin;
 }
+
 .ui.form .field:last-child,
 .ui.form .fields:last-child .field {
   margin-bottom: 0em;
 }
+
 .ui.form .fields .field {
   clear: both;
   margin: 0em;
 }
+
 
 /*--------------------
         Labels
@@ -54,17 +63,18 @@
 
 .ui.form .field > label {
   display: block;
-  margin: 0em 0em 0.28571429rem 0em;
-  color: rgba(0, 0, 0, 0.87);
-  font-size: 0.92857143em;
-  font-weight: bold;
-  text-transform: none;
+  margin: $label-margin;
+  color: $label-color;
+  font-size: $label-font-size;
+  font-weight: $label-font-weight;
+  text-transform: $label-text-transform;
 }
 
 /*--------------------
     Standard Inputs
 ---------------------*/
 
+
 .ui.form textarea,
 .ui.form input:not([type]),
 .ui.form input[type="date"],
@@ -78,15 +88,16 @@
 .ui.form input[type="text"],
 .ui.form input[type="file"],
 .ui.form input[type="url"] {
-  width: 100%;
+  width: $input-width;
   vertical-align: top;
 }
 
 /* Set max height on unusual input */
 .ui.form ::-webkit-datetime-edit,
 .ui.form ::-webkit-inner-spin-button {
-  height: 1.2142em;
+  height: $input-line-height;
 }
+
 .ui.form input:not([type]),
 .ui.form input[type="date"],
 .ui.form input[type="datetime-local"],
@@ -99,49 +110,52 @@
 .ui.form input[type="text"],
 .ui.form input[type="file"],
 .ui.form input[type="url"] {
-  font-family: $font-family;
+  font-family: $input-font;
   margin: 0em;
   outline: none;
   -webkit-appearance: none;
-  tap-highlight-color: rgba(255, 255, 255, 0);
-  line-height: 1.2142em;
-  padding: 0.67861429em 1em;
-  font-size: 1em;
-  background: #FFFFFF;
-  border: 1px solid rgba(34, 36, 38, 0.15);
-  color: rgba(0, 0, 0, 0.87);
-  border-radius: 0.28571429rem;
-  box-shadow: 0em 0em 0em 0em transparent inset;
-  -webkit-transition: color 0.1s ease, border-color 0.1s ease;
-  transition: color 0.1s ease, border-color 0.1s ease;
+  tap-highlight-color:  rgba(255, 255, 255, 0);
+
+  line-height: $input-line-height;
+  padding: $input-padding;
+  font-size: $input-font-size;
+
+  background: $input-background;
+  border: $input-border;
+  color: $input-color;
+  border-radius: $input-border-radius;
+  box-shadow: $input-box-shadow;
+  transition: $input-transition;
 }
 
 /* Text Area */
 .ui.form textarea {
   margin: 0em;
   -webkit-appearance: none;
-  tap-highlight-color: rgba(255, 255, 255, 0);
-  padding: 0.78571429em 1em;
-  background: #FFFFFF;
-  border: 1px solid rgba(34, 36, 38, 0.15);
+  tap-highlight-color:  rgba(255, 255, 255, 0);
+
+  padding: $text-area-padding;
+  font-size: $text-area-font-size;
+  background: $text-area-background;
+  border: $text-area-border;
   outline: none;
-  color: rgba(0, 0, 0, 0.87);
-  border-radius: 0.28571429rem;
-  box-shadow: 0em 0em 0em 0em transparent inset;
-  -webkit-transition: color 0.1s ease, border-color 0.1s ease;
-  transition: color 0.1s ease, border-color 0.1s ease;
-  font-size: 1em;
-  line-height: 1.2857;
-  resize: vertical;
+  color: $input-color;
+  border-radius: $input-border-radius;
+  box-shadow: $input-box-shadow;
+  transition: $text-area-transition;
+  font-size: $text-area-font-size;
+  line-height: $text-area-line-height;
+  resize: $text-area-resize;
 }
 .ui.form textarea:not([rows]) {
-  height: 12em;
-  min-height: 8em;
-  max-height: 24em;
+  height: $text-area-height;
+  min-height: $text-area-min-height;
+  max-height: $text-area-max-height;
 }
+
 .ui.form textarea,
 .ui.form input[type="checkbox"] {
-  vertical-align: top;
+  vertical-align: $checkbox-vertical-align;
 }
 
 /*--------------------------
@@ -152,6 +166,7 @@
   width: auto;
 }
 
+
 /*--------------------
      Basic Select
 ---------------------*/
@@ -160,20 +175,18 @@
   display: block;
   height: auto;
   width: 100%;
-  background: #FFFFFF;
-  border: 1px solid rgba(34, 36, 38, 0.15);
-  border-radius: 0.28571429rem;
-  box-shadow: 0em 0em 0em 0em transparent inset;
-  padding: 0.62em 1em;
-  color: rgba(0, 0, 0, 0.87);
-  -webkit-transition: color 0.1s ease, border-color 0.1s ease;
-  transition: color 0.1s ease, border-color 0.1s ease;
+  background: $select-background;
+  border: $select-border;
+  border-radius: $select-border-radius;
+  box-shadow: $select-box-shadow;
+  padding: $select-padding;
+  color: $select-color;
+  transition: $select-transition;
 }
 
 /*--------------------
        Dropdown
 ---------------------*/
-
 
 /* Block */
 .ui.form .field > .selection.dropdown {
@@ -196,7 +209,6 @@
 /*--------------------
        UI Input
 ---------------------*/
-
 
 /* Block */
 .ui.form .field .ui.input,
@@ -229,12 +241,10 @@
 .ui.form .three.fields .ui.input input,
 .ui.form .two.fields .ui.input input,
 .ui.form .wide.field .ui.input input {
-  -webkit-box-flex: 1;
-  -webkit-flex: 1 0 auto;
-      -ms-flex: 1 0 auto;
-          flex: 1 0 auto;
+  flex: 1 0 auto;
   width: 0px;
 }
+
 
 /*--------------------
    Types of Messages
@@ -257,18 +267,18 @@
 
 .ui.form .field .prompt.label {
   white-space: normal;
-  background: #FFFFFF !important;
-  border: 1px solid #E0B4B4 !important;
-  color: #9F3A38 !important;
+  background: $prompt-background !important;
+  border: $prompt-border !important;
+  color: $prompt-text-color !important;
 }
 .ui.form .inline.fields .field .prompt,
 .ui.form .inline.field .prompt {
   vertical-align: top;
-  margin: -0.25em 0em -0.5em 0.5em;
+  margin: $inline-prompt-margin;
 }
 .ui.form .inline.fields .field .prompt:before,
 .ui.form .inline.field .prompt:before {
-  border-width: 0px 0px 1px 1px;
+  border-width: 0px 0px $inline-prompt-border-width $inline-prompt-border-width;
   bottom: auto;
   right: auto;
   top: 50%;
@@ -280,72 +290,75 @@
             States
 *******************************/
 
-
 /*--------------------
       Autofilled
 ---------------------*/
 
 .ui.form .field.field input:-webkit-autofill {
-  box-shadow: 0px 0px 0px 100px #FFFFF0 inset !important;
-  border-color: #E5DFA1 !important;
+  box-shadow: 0px 0px 0px 100px $input-auto-fill-background inset !important;
+  border-color: $input-auto-fill-border !important;
 }
 
 /* Focus */
 .ui.form .field.field input:-webkit-autofill:focus {
-  box-shadow: 0px 0px 0px 100px #FFFFF0 inset !important;
-  border-color: #D5C315 !important;
+  box-shadow: 0px 0px 0px 100px $input-auto-fill-focus-background inset !important;
+  border-color: $input-auto-fill-focus-border !important;
 }
 
 /* Error */
 .ui.form .error.error input:-webkit-autofill {
-  box-shadow: 0px 0px 0px 100px #FFFAF0 inset !important;
-  border-color: #E0B4B4 !important;
+  box-shadow: 0px 0px 0px 100px $input-auto-fill-error-background inset !important;
+  border-color: $input-auto-fill-error-border !important;
 }
+
+
 
 /*--------------------
       Placeholder
 ---------------------*/
 
-
 /* browsers require these rules separate */
 .ui.form ::-webkit-input-placeholder {
-  color: rgba(191, 191, 191, 0.87);
+  color: $input-placeholder-color;
 }
 .ui.form :-ms-input-placeholder {
-  color: rgba(191, 191, 191, 0.87);
+  color: $input-placeholder-color;
 }
 .ui.form ::-moz-placeholder {
-  color: rgba(191, 191, 191, 0.87);
+  color: $input-placeholder-color;
 }
+
 .ui.form :focus::-webkit-input-placeholder {
-  color: rgba(115, 115, 115, 0.87);
+  color: $input-placeholder-focus-color;
 }
 .ui.form :focus:-ms-input-placeholder {
-  color: rgba(115, 115, 115, 0.87);
+  color: $input-placeholder-focus-color;
 }
 .ui.form :focus::-moz-placeholder {
-  color: rgba(115, 115, 115, 0.87);
+  color: $input-placeholder-focus-color;
 }
 
 /* Error Placeholder */
 .ui.form .error ::-webkit-input-placeholder {
-  color: #e7bdbc;
+  color: $input-error-placeholder-color;
 }
 .ui.form .error :-ms-input-placeholder {
-  color: #e7bdbc !important;
+  color: $input-error-placeholder-color !important;
 }
 .ui.form .error ::-moz-placeholder {
-  color: #e7bdbc;
+  color: $input-error-placeholder-color;
 }
+
 .ui.form .error :focus::-webkit-input-placeholder {
-  color: #da9796;
+  color: $input-error-placeholder-focus-color;
 }
 .ui.form .error :focus:-ms-input-placeholder {
-  color: #da9796 !important;
+  color: $input-error-placeholder-focus-color !important;
 }
 .ui.form .error :focus::-moz-placeholder {
-  color: #da9796;
+  color: $input-error-placeholder-focus-color;
 }
+
 
 /*--------------------
         Focus
@@ -363,25 +376,25 @@
 .ui.form input[type="text"]:focus,
 .ui.form input[type="file"]:focus,
 .ui.form input[type="url"]:focus {
-  color: rgba(0, 0, 0, 0.95);
-  border-color: #85B7D9;
-  border-radius: 0.28571429rem;
-  background: #FFFFFF;
-  box-shadow: 0px 0em 0em 0em rgba(34, 36, 38, 0.35) inset;
+  color: $input-focus-color;
+  border-color: $input-focus-border-color;
+  border-radius: $input-focus-border-radius;
+  background: $input-focus-background;
+  box-shadow: $input-focus-box-shadow;
 }
 .ui.form textarea:focus {
-  color: rgba(0, 0, 0, 0.95);
-  border-color: #85B7D9;
-  border-radius: 0.28571429rem;
-  background: #FFFFFF;
-  box-shadow: 0px 0em 0em 0em rgba(34, 36, 38, 0.35) inset;
+  color: $text-area-focus-color;
+  border-color: $text-area-focus-border-color;
+  border-radius: $text-area-focus-border-radius;
+  background: $text-area-focus-background;
+  box-shadow: $text-area-focus-box-shadow;
   -webkit-appearance: none;
 }
+
 
 /*--------------------
         Success
 ---------------------*/
-
 
 /* On Form */
 .ui.form.success .success.message:not(:empty) {
@@ -391,16 +404,12 @@
   display: inline-block;
 }
 .ui.form.success .icon.success.message:not(:empty) {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
 }
 
 /*--------------------
         Warning
 ---------------------*/
-
 
 /* On Form */
 .ui.form.warning .warning.message:not(:empty) {
@@ -410,16 +419,12 @@
   display: inline-block;
 }
 .ui.form.warning .icon.warning.message:not(:empty) {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
 }
 
 /*--------------------
         Error
 ---------------------*/
-
 
 /* On Form */
 .ui.form.error .error.message:not(:empty) {
@@ -429,9 +434,6 @@
   display: inline-block;
 }
 .ui.form.error .icon.error.message:not(:empty) {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
 }
 
@@ -440,13 +442,15 @@
 .ui.form .field.error label,
 .ui.form .fields.error .field .input,
 .ui.form .field.error .input {
-  color: #9F3A38;
+  color: $form-error-color;
 }
+
 .ui.form .fields.error .field .corner.label,
 .ui.form .field.error .corner.label {
-  border-color: #9F3A38;
-  color: #FFFFFF;
+  border-color: $form-error-color;
+  color: $white;
 }
+
 .ui.form .fields.error .field textarea,
 .ui.form .fields.error .field select,
 .ui.form .fields.error .field input:not([type]),
@@ -475,11 +479,11 @@
 .ui.form .field.error input[type="text"],
 .ui.form .field.error input[type="file"],
 .ui.form .field.error input[type="url"] {
-  background: #FFF6F6;
-  border-color: #E0B4B4;
-  color: #9F3A38;
-  border-radius: '';
-  box-shadow: none;
+  background: $form-error-background;
+  border-color: $form-error-border;
+  color: $form-error-color;
+  border-radius: $input-error-border-radius;
+  box-shadow: $input-error-box-shadow;
 }
 .ui.form .field.error textarea:focus,
 .ui.form .field.error select:focus,
@@ -495,11 +499,12 @@
 .ui.form .field.error input[type="text"]:focus,
 .ui.form .field.error input[type="file"]:focus,
 .ui.form .field.error input[type="url"]:focus {
-  background: #FFF6F6;
-  border-color: #E0B4B4;
-  color: #9F3A38;
+  background: $input-error-focus-background;
+  border-color: $input-error-focus-border;
+  color: $input-error-focus-color;
+
   -webkit-appearance: none;
-  box-shadow: none;
+  box-shadow: $input-error-focus-box-shadow;
 }
 
 /* Preserve Native Select Stylings */
@@ -516,43 +521,44 @@
 .ui.form .field.error .ui.dropdown,
 .ui.form .field.error .ui.dropdown .text,
 .ui.form .field.error .ui.dropdown .item {
-  background: #FFF6F6;
-  color: #9F3A38;
+  background: $form-error-background;
+  color: $form-error-color;
 }
 .ui.form .fields.error .field .ui.dropdown,
 .ui.form .field.error .ui.dropdown {
-  border-color: #E0B4B4 !important;
+  border-color: $form-error-border !important;
 }
 .ui.form .fields.error .field .ui.dropdown:hover,
 .ui.form .field.error .ui.dropdown:hover {
-  border-color: #E0B4B4 !important;
+  border-color: $form-error-border !important;
 }
 .ui.form .fields.error .field .ui.dropdown:hover .menu,
 .ui.form .field.error .ui.dropdown:hover .menu {
-  border-color: #E0B4B4;
+  border-color: $form-error-border;
 }
 .ui.form .fields.error .field .ui.multiple.selection.dropdown > .label,
 .ui.form .field.error .ui.multiple.selection.dropdown > .label {
-  background-color: #EACBCB;
-  color: #9F3A38;
+  background-color: $dropdown-error-label-background;
+  color: $dropdown-error-label-color;
 }
 
 /* Hover */
 .ui.form .fields.error .field .ui.dropdown .menu .item:hover,
 .ui.form .field.error .ui.dropdown .menu .item:hover {
-  background-color: #FBE7E7;
+  background-color: $dropdown-error-hover-background;
 }
 
 /* Selected */
 .ui.form .fields.error .field .ui.dropdown .menu .selected.item,
 .ui.form .field.error .ui.dropdown .menu .selected.item {
-  background-color: #FBE7E7;
+  background-color: $dropdown-error-selected-background;
 }
+
 
 /* Active */
 .ui.form .fields.error .field .ui.dropdown .menu .active.item,
 .ui.form .field.error .ui.dropdown .menu .active.item {
-  background-color: #FDCFCF !important;
+  background-color: $dropdown-error-active-background !important;
 }
 
 /*--------------------
@@ -563,20 +569,20 @@
 .ui.form .field.error .checkbox:not(.toggle):not(.slider) label,
 .ui.form .fields.error .field .checkbox:not(.toggle):not(.slider) .box,
 .ui.form .field.error .checkbox:not(.toggle):not(.slider) .box {
-  color: #9F3A38;
+  color: $form-error-color;
 }
 .ui.form .fields.error .field .checkbox:not(.toggle):not(.slider) label:before,
 .ui.form .field.error .checkbox:not(.toggle):not(.slider) label:before,
 .ui.form .fields.error .field .checkbox:not(.toggle):not(.slider) .box:before,
 .ui.form .field.error .checkbox:not(.toggle):not(.slider) .box:before {
-  background: #FFF6F6;
-  border-color: #E0B4B4;
+  background: $form-error-background;
+  border-color: $form-error-border;
 }
 .ui.form .fields.error .field .checkbox label:after,
 .ui.form .field.error .checkbox label:after,
 .ui.form .fields.error .field .checkbox .box:after,
 .ui.form .field.error .checkbox .box:after {
-  color: #9F3A38;
+  color: $form-error-color;
 }
 
 /*--------------------
@@ -587,15 +593,16 @@
 .ui.form .disabled.field,
 .ui.form .field :disabled {
   pointer-events: none;
-  opacity: 0.45;
+  opacity: $disabled-opacity;
 }
 .ui.form .field.disabled > label,
 .ui.form .fields.disabled > label {
-  opacity: 0.45;
+  opacity: $disabled-label-opacity;
 }
 .ui.form .field.disabled :disabled {
   opacity: 1;
 }
+
 
 /*--------------
     Loading
@@ -611,49 +618,41 @@
   content: '';
   top: 0%;
   left: 0%;
-  background: rgba(255, 255, 255, 0.8);
+  background: $loader-dimmer-color;
   width: 100%;
   height: 100%;
-  z-index: 100;
+  z-index: $loader-dimmer-z-index;
 }
 .ui.loading.form:after {
   position: absolute;
   content: '';
   top: 50%;
   left: 50%;
-  margin: -1.5em 0em 0em -1.5em;
-  width: 3em;
-  height: 3em;
-  -webkit-animation: form-spin 0.6s linear;
-          animation: form-spin 0.6s linear;
-  -webkit-animation-iteration-count: infinite;
-          animation-iteration-count: infinite;
-  border-radius: 500rem;
-  border-color: #767676 rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1);
+
+  margin: $loader-margin;
+  width: $loader-size;
+  height: $loader-size;
+
+  animation: form-spin $loader-speed linear;
+  animation-iteration-count: infinite;
+
+  border-radius: $circular-radius;
+
+  border-color: $loader-line-color $loader-fill-color $loader-fill-color $loader-fill-color;
   border-style: solid;
-  border-width: 0.2em;
+  border-width: $loader-line-width;
+
   box-shadow: 0px 0px 0px 1px transparent;
   visibility: visible;
-  z-index: 101;
+  z-index: $loader-line-z-index;
 }
-@-webkit-keyframes form-spin {
+
+$keyframes form-spin {
   from {
-    -webkit-transform: rotate(0deg);
-            transform: rotate(0deg);
+    transform: rotate(0deg);
   }
   to {
-    -webkit-transform: rotate(360deg);
-            transform: rotate(360deg);
-  }
-}
-@keyframes form-spin {
-  from {
-    -webkit-transform: rotate(0deg);
-            transform: rotate(0deg);
-  }
-  to {
-    -webkit-transform: rotate(360deg);
-            transform: rotate(360deg);
+    transform: rotate(360deg);
   }
 }
 
@@ -661,7 +660,6 @@
 /*******************************
          Element Types
 *******************************/
-
 
 /*--------------------
      Required Field
@@ -672,16 +670,18 @@
 .ui.form .required.field > label:after,
 .ui.form .required.fields:not(.grouped) > .field > .checkbox:after,
 .ui.form .required.field > .checkbox:after {
-  margin: -0.2em 0em 0em 0.2em;
-  content: '*';
-  color: #DB2828;
+  margin: $required-margin;
+  content: $required-content;
+  color: $required-color;
 }
+
 .ui.form .required.fields:not(.grouped) > .field > label:after,
 .ui.form .required.fields.grouped > label:after,
 .ui.form .required.field > label:after {
   display: inline-block;
   vertical-align: top;
 }
+
 .ui.form .required.fields:not(.grouped) > .field > .checkbox:after,
 .ui.form .required.field > .checkbox:after {
   position: absolute;
@@ -710,7 +710,7 @@
 .ui.inverted.form .inline.fields .field > p,
 .ui.inverted.form .inline.field > label,
 .ui.inverted.form .inline.field > p {
-  color: rgba(255, 255, 255, 0.9);
+  color: $inverted-label-color;
 }
 
 /* Inverted Field */
@@ -726,36 +726,38 @@
 .ui.inverted.form input[type="text"],
 .ui.inverted.form input[type="file"],
 .ui.inverted.form input[type="url"] {
-  background: #FFFFFF;
-  border-color: rgba(255, 255, 255, 0.1);
-  color: rgba(0, 0, 0, 0.87);
-  box-shadow: none;
+  background: $inverted-input-background;
+  border-color: $inverted-input-border-color;
+  color: $inverted-input-color;
+  box-shadow: $inverted-input-box-shadow;
 }
+
 
 /*--------------------
      Field Groups
 ---------------------*/
 
-
 /* Grouped Vertically */
 .ui.form .grouped.fields {
   display: block;
-  margin: 0em 0em 1em;
+  margin: $grouped-margin;
 }
 .ui.form .grouped.fields:last-child {
   margin-bottom: 0em;
 }
+
 .ui.form .grouped.fields > label {
-  margin: 0em 0em 0.28571429rem 0em;
-  color: rgba(0, 0, 0, 0.87);
-  font-size: 0.92857143em;
-  font-weight: bold;
-  text-transform: none;
+  margin: $grouped-label-margin;
+  color: $grouped-label-color;
+  font-size: $grouped-label-font-size;
+  font-weight: $grouped-label-font-weight;
+  text-transform: $grouped-label-text-transform;
 }
+
 .ui.form .grouped.fields .field,
 .ui.form .grouped.inline.fields .field {
   display: block;
-  margin: 0.5em 0em;
+  margin: $grouped-field-margin;
   padding: 0em;
 }
 
@@ -763,27 +765,16 @@
         Fields
 ---------------------*/
 
-
 /* Split fields */
 .ui.form .fields {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: row;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  margin: 0em -0.5em 1em;
+  flex-direction: row;
+  margin: $fields-margin;
 }
 .ui.form .fields > .field {
-  -webkit-box-flex: 0;
-  -webkit-flex: 0 1 auto;
-      -ms-flex: 0 1 auto;
-          flex: 0 1 auto;
-  padding-left: 0.5em;
-  padding-right: 0.5em;
+  flex: 0 1 auto;
+  padding-left: ($gutter-width / 2);
+  padding-right: ($gutter-width / 2);
 }
 .ui.form .fields > .field:first-child {
   border-left: none;
@@ -793,48 +784,47 @@
 /* Other Combinations */
 .ui.form .two.fields > .fields,
 .ui.form .two.fields > .field {
-  width: 50%;
+  width: $two-column;
 }
 .ui.form .three.fields > .fields,
 .ui.form .three.fields > .field {
-  width: 33.33333333%;
+  width: $three-column;
 }
 .ui.form .four.fields > .fields,
 .ui.form .four.fields > .field {
-  width: 25%;
+  width: $four-column;
 }
 .ui.form .five.fields > .fields,
 .ui.form .five.fields > .field {
-  width: 20%;
+  width: $five-column;
 }
 .ui.form .six.fields > .fields,
 .ui.form .six.fields > .field {
-  width: 16.66666667%;
+  width: $six-column;
 }
 .ui.form .seven.fields > .fields,
 .ui.form .seven.fields > .field {
-  width: 14.28571429%;
+  width: $seven-column;
 }
 .ui.form .eight.fields > .fields,
 .ui.form .eight.fields > .field {
-  width: 12.5%;
+  width: $eight-column;
 }
 .ui.form .nine.fields > .fields,
 .ui.form .nine.fields > .field {
-  width: 11.11111111%;
+  width: $nine-column;
 }
 .ui.form .ten.fields > .fields,
 .ui.form .ten.fields > .field {
-  width: 10%;
+  width: $ten-column;
 }
 
 /* Swap to full width on mobile */
-@media only screen and (max-width: 767px) {
+$media only screen and (max-width : $largest-mobile-screen) {
   .ui.form .fields {
-    -webkit-flex-wrap: wrap;
-        -ms-flex-wrap: wrap;
-            flex-wrap: wrap;
+    flex-wrap: wrap;
   }
+
   .ui[class*="equal width"].form .fields > .field,
   .ui.form [class*="equal width"].fields > .field,
   .ui.form .two.fields > .fields,
@@ -855,68 +845,70 @@
   .ui.form .nine.fields > .field,
   .ui.form .ten.fields > .fields,
   .ui.form .ten.fields > .field {
-    width: 100% !important;
-    margin: 0em 0em 1em;
+    width: $one-column !important;
+    margin: 0em 0em $row-distance;
   }
 }
 
+
 /* Sizing Combinations */
 .ui.form .fields .wide.field {
-  width: 6.25%;
-  padding-left: 0.5em;
-  padding-right: 0.5em;
+  width: $one-wide;
+  padding-left: ($gutter-width / 2);
+  padding-right: ($gutter-width / 2);
 }
+
 .ui.form .one.wide.field {
-  width: 6.25% !important;
+  width: $one-wide !important;
 }
 .ui.form .two.wide.field {
-  width: 12.5% !important;
+  width: $two-wide !important;
 }
 .ui.form .three.wide.field {
-  width: 18.75% !important;
+  width: $three-wide !important;
 }
 .ui.form .four.wide.field {
-  width: 25% !important;
+  width: $four-wide !important;
 }
 .ui.form .five.wide.field {
-  width: 31.25% !important;
+  width: $five-wide !important;
 }
 .ui.form .six.wide.field {
-  width: 37.5% !important;
+  width: $six-wide !important;
 }
 .ui.form .seven.wide.field {
-  width: 43.75% !important;
+  width: $seven-wide !important;
 }
 .ui.form .eight.wide.field {
-  width: 50% !important;
+  width: $eight-wide !important;
 }
 .ui.form .nine.wide.field {
-  width: 56.25% !important;
+  width: $nine-wide !important;
 }
 .ui.form .ten.wide.field {
-  width: 62.5% !important;
+  width: $ten-wide !important;
 }
 .ui.form .eleven.wide.field {
-  width: 68.75% !important;
+  width: $eleven-wide !important;
 }
 .ui.form .twelve.wide.field {
-  width: 75% !important;
+  width: $twelve-wide !important;
 }
 .ui.form .thirteen.wide.field {
-  width: 81.25% !important;
+  width: $thirteen-wide !important;
 }
 .ui.form .fourteen.wide.field {
-  width: 87.5% !important;
+  width: $fourteen-wide !important;
 }
 .ui.form .fifteen.wide.field {
-  width: 93.75% !important;
+  width: $fifteen-wide !important;
 }
 .ui.form .sixteen.wide.field {
-  width: 100% !important;
+  width: $sixteen-wide !important;
 }
 
 /* Swap to full width on mobile */
-@media only screen and (max-width: 767px) {
+$media only screen and (max-width : $largest-mobile-screen) {
   .ui.form .two.fields > .fields,
   .ui.form .two.fields > .field,
   .ui.form .three.fields > .fields,
@@ -940,7 +932,7 @@
   .ui.form .fields > .fourteen.wide.field,
   .ui.form .fields > .fifteen.wide.field,
   .ui.form .fields > .sixteen.wide.field {
-    width: 100% !important;
+    width: $one-column !important;
   }
   .ui.form .fields {
     margin-bottom: 0em;
@@ -954,10 +946,7 @@
 .ui[class*="equal width"].form .fields > .field,
 .ui.form [class*="equal width"].fields > .field {
   width: 100%;
-  -webkit-box-flex: 1;
-  -webkit-flex: 1 1 auto;
-      -ms-flex: 1 1 auto;
-          flex: 1 1 auto;
+  flex: 1 1 auto;
 }
 
 /*--------------------
@@ -965,15 +954,12 @@
 ---------------------*/
 
 .ui.form .inline.fields {
-  margin: 0em 0em 1em;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-      -ms-flex-align: center;
-          align-items: center;
+  margin: $field-margin;
+  align-items: center;
 }
 .ui.form .inline.fields .field {
   margin: 0em;
-  padding: 0em 1em 0em 0em;
+  padding: $inline-fields-margin;
 }
 
 /* Inline Label */
@@ -987,15 +973,15 @@
   margin-top: 0em;
   margin-bottom: 0em;
   vertical-align: baseline;
-  font-size: 0.92857143em;
-  font-weight: bold;
-  color: rgba(0, 0, 0, 0.87);
-  text-transform: none;
+  font-size: $inline-label-font-size;
+  font-weight: $inline-label-font-weight;
+  color: $inline-label-color;
+  text-transform: $inline-label-text-transform;
 }
 
 /* Grouped Inline Label */
 .ui.form .inline.fields > label {
-  margin: 0.035714em 1em 0em 0em;
+  margin: $grouped-inline-label-margin;
 }
 
 /* Inline Input */
@@ -1005,16 +991,18 @@
 .ui.form .inline.field > select {
   display: inline-block;
   width: auto;
+
   margin-top: 0em;
   margin-bottom: 0em;
+
   vertical-align: middle;
-  font-size: 1em;
+  font-size: $inline-input-size;
 }
 
 /* Label */
 .ui.form .inline.fields .field > :first-child,
 .ui.form .inline.field > :first-child {
-  margin: 0em 0.85714286em 0em 0em;
+  margin: 0em $inline-label-distance 0em 0em;
 }
 .ui.form .inline.fields .field > :only-child,
 .ui.form .inline.field > :only-child {
@@ -1023,57 +1011,42 @@
 
 /* Wide */
 .ui.form .inline.fields .wide.field {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
 }
 .ui.form .inline.fields .wide.field > input,
 .ui.form .inline.fields .wide.field > select {
   width: 100%;
 }
 
+
 /*--------------------
         Sizes
 ---------------------*/
 
 .ui.mini.form {
-  font-size: 0.78571429rem;
+  font-size: $mini;
 }
 .ui.tiny.form {
-  font-size: 0.85714286rem;
+  font-size: $tiny;
 }
 .ui.small.form {
-  font-size: 0.92857143rem;
+  font-size: $small;
 }
 .ui.form {
-  font-size: 1rem;
+  font-size: $medium;
 }
 .ui.large.form {
-  font-size: 1.14285714rem;
+  font-size: $large;
 }
 .ui.big.form {
-  font-size: 1.28571429rem;
+  font-size: $big;
 }
 .ui.huge.form {
-  font-size: 1.42857143rem;
+  font-size: $huge;
 }
 .ui.massive.form {
-  font-size: 1.71428571rem;
+  font-size: $massive;
 }
 
-
-/*******************************
-         Theme Overrides
-*******************************/
-
-
-
-/*******************************
-         Site Overrides
-*******************************/
-
+.loadUIOverrides();

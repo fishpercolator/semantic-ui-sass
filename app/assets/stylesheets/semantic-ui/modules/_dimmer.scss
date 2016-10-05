@@ -1,5 +1,5 @@
 /*!
- * # Semantic UI 2.2.4 - Dimmer
+ * # Semantic UI - Dimmer
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -8,61 +8,65 @@
  *
  */
 
+/*******************************
+            Theme
+*******************************/
+
+$type    : 'module';
+$element : 'dimmer';
+
 
 /*******************************
             Dimmer
 *******************************/
 
 .dimmable:not(.body) {
-  position: relative;
+  position: $dimmable-position;
 }
+
 .ui.dimmer {
   display: none;
-  position: absolute;
+  position: $dimmer-position;
   top: 0em !important;
   left: 0em !important;
+
   width: 100%;
   height: 100%;
-  text-align: center;
-  vertical-align: middle;
-  background-color: rgba(0, 0, 0, 0.85);
-  opacity: 0;
-  line-height: 1;
-  -webkit-animation-fill-mode: both;
-          animation-fill-mode: both;
-  -webkit-animation-duration: 0.5s;
-          animation-duration: 0.5s;
-  -webkit-transition: background-color 0.5s linear;
-  transition: background-color 0.5s linear;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
+
+  text-align: $text-align;
+  vertical-align: $vertical-align;
+
+  background-color: $background-color;
+  opacity: $hidden-opacity;
+  line-height: $line-height;
+
+  animation-fill-mode: both;
+  animation-duration: $duration;
+  transition: $transition;
+
+  user-select: none;
   will-change: opacity;
-  z-index: 1000;
+  z-index: $z-index;
 }
 
 /* Dimmer Content */
 .ui.dimmer > .content {
   width: 100%;
   height: 100%;
-  display: table;
-  -webkit-user-select: text;
-     -moz-user-select: text;
-      -ms-user-select: text;
-          user-select: text;
+  display: $content-display;
+  user-select: text;
 }
 .ui.dimmer > .content > * {
-  display: table-cell;
-  vertical-align: middle;
-  color: #FFFFFF;
+  display: $content-child-display;
+  vertical-align: $vertical-align;
+  color: $text-color;
 }
+
 
 /* Loose Coupling */
 .ui.segment > .ui.dimmer {
   border-radius: inherit !important;
 }
-
 
 /*******************************
             States
@@ -70,43 +74,41 @@
 
 .animating.dimmable:not(body),
 .dimmed.dimmable:not(body) {
-  overflow: hidden;
+  overflow: $overflow;
 }
+
 .dimmed.dimmable > .ui.animating.dimmer,
 .dimmed.dimmable > .ui.visible.dimmer,
 .ui.active.dimmer {
   display: block;
-  opacity: 1;
+  opacity: $visible-opacity;
 }
+
 .ui.disabled.dimmer {
   width: 0 !important;
   height: 0 !important;
 }
 
-
 /*******************************
            Variations
 *******************************/
-
 
 /*--------------
       Page
 ---------------*/
 
 .ui.page.dimmer {
-  position: fixed;
-  -webkit-transform-style: '';
-          transform-style: '';
-  -webkit-perspective: 2000px;
-          perspective: 2000px;
-  -webkit-transform-origin: center center;
-      -ms-transform-origin: center center;
-          transform-origin: center center;
+  position: $page-dimmer-position;
+  transform-style: $transform-style;
+  perspective: $perspective;
+  transform-origin: center center;
 }
+
 body.animating.in.dimmable,
 body.dimmed.dimmable {
   overflow: hidden;
 }
+
 body.dimmable > .dimmer {
   position: fixed;
 }
@@ -116,22 +118,19 @@ body.dimmable > .dimmer {
 ---------------*/
 
 .blurring.dimmable > :not(.dimmer) {
-  -webkit-filter: blur(0px) grayscale(0);
-          filter: blur(0px) grayscale(0);
-  -webkit-transition: 800ms filter ease;
-  transition: 800ms filter ease;
+  filter: $blurred-start-filter;
+  transition: $blurred-transition;
 }
 .blurring.dimmed.dimmable > :not(.dimmer) {
-  -webkit-filter: blur(5px) grayscale(0.7);
-          filter: blur(5px) grayscale(0.7);
+  filter: $blurred-end-filter;
 }
 
 /* Dimmer Color */
 .blurring.dimmable > .dimmer {
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: $blurred-background-color;
 }
 .blurring.dimmable > .inverted.dimmer {
-  background-color: rgba(255, 255, 255, 0.6);
+  background-color: $blurred-inverted-background-color;
 }
 
 /*--------------
@@ -150,16 +149,15 @@ body.dimmable > .dimmer {
 ---------------*/
 
 .ui.inverted.dimmer {
-  background-color: rgba(255, 255, 255, 0.85);
+  background-color: $inverted-background-color;
 }
 .ui.inverted.dimmer > .content > * {
-  color: #FFFFFF;
+  color: $text-color;
 }
 
 /*--------------
      Simple
 ---------------*/
-
 
 /* Displays without javascript */
 .ui.simple.dimmer {
@@ -169,31 +167,22 @@ body.dimmable > .dimmer {
   width: 0%;
   height: 0%;
   z-index: -100;
-  background-color: rgba(0, 0, 0, 0);
+  background-color: $simple-start-background-color;
 }
 .dimmed.dimmable > .ui.simple.dimmer {
   overflow: visible;
   opacity: 1;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.85);
-  z-index: 1;
+  background-color: $simple-end-background-color;
+  z-index: $simple-z-index;
 }
+
 .ui.simple.inverted.dimmer {
-  background-color: rgba(255, 255, 255, 0);
+  background-color: $simple-inverted-start-background-color;
 }
 .dimmed.dimmable > .ui.simple.inverted.dimmer {
-  background-color: rgba(255, 255, 255, 0.85);
+  background-color: $simple-inverted-end-background-color;
 }
 
-
-/*******************************
-         Theme Overrides
-*******************************/
-
-
-
-/*******************************
-        User Overrides
-*******************************/
-
+.loadUIOverrides();

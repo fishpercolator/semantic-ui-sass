@@ -1,5 +1,5 @@
 /*!
- * # Semantic UI 2.2.4 - Breadcrumb
+ * # Semantic UI - Breadcrumb
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -8,6 +8,14 @@
  *
  */
 
+/*******************************
+            Theme
+*******************************/
+
+$type    : 'collection';
+$element : 'breadcrumb';
+
+
 
 /*******************************
            Breadcrumb
@@ -15,9 +23,9 @@
 
 .ui.breadcrumb {
   line-height: 1;
-  display: inline-block;
-  margin: 0em 0em;
-  vertical-align: middle;
+  display: $display;
+  margin: $vertical-margin 0em;
+  vertical-align: $vertical-align;
 }
 .ui.breadcrumb:first-child {
   margin-top: 0em;
@@ -26,34 +34,34 @@
   margin-bottom: 0em;
 }
 
-
 /*******************************
           Content
 *******************************/
 
-
 /* Divider */
 .ui.breadcrumb .divider {
   display: inline-block;
-  opacity: 0.7;
-  margin: 0em 0.21428571rem 0em;
-  font-size: 0.92857143em;
-  color: rgba(0, 0, 0, 0.4);
-  vertical-align: baseline;
+  opacity: $divider-opacity;
+  margin: 0em $divider-spacing 0em;
+
+  font-size: $divider-size;
+  color: $divider-color;
+  vertical-align: $divider-vertical-align;
 }
 
 /* Link */
 .ui.breadcrumb a {
-  color: #4183C4;
+  color: $link-color;
 }
 .ui.breadcrumb a:hover {
-  color: #1e70bf;
+  color: $link-hover-color;
 }
+
 
 /* Icon Divider */
 .ui.breadcrumb .icon.divider {
-  font-size: 0.85714286em;
-  vertical-align: baseline;
+  font-size: $icon-divider-size;
+  vertical-align: $icon-divider-vertical-align;
 }
 
 /* Section */
@@ -62,23 +70,22 @@
 }
 .ui.breadcrumb .section {
   display: inline-block;
-  margin: 0em;
-  padding: 0em;
+  margin: $section-margin;
+  padding: $section-padding;
 }
 
 /* Loose Coupling */
 .ui.breadcrumb.segment {
   display: inline-block;
-  padding: 0.78571429em 1em;
+  padding: $segment-padding;
 }
-
 
 /*******************************
             States
 *******************************/
 
 .ui.breadcrumb .active.section {
-  font-weight: bold;
+  font-weight: $active-font-weight;
 }
 
 
@@ -87,38 +94,28 @@
 *******************************/
 
 .ui.mini.breadcrumb {
-  font-size: 0.78571429rem;
+  font-size: $mini;
 }
 .ui.tiny.breadcrumb {
-  font-size: 0.85714286rem;
+  font-size: $tiny;
 }
 .ui.small.breadcrumb {
-  font-size: 0.92857143rem;
+  font-size: $small;
 }
 .ui.breadcrumb {
-  font-size: 1rem;
+  font-size: $medium;
 }
 .ui.large.breadcrumb {
-  font-size: 1.14285714rem;
+  font-size: $large;
 }
 .ui.big.breadcrumb {
-  font-size: 1.28571429rem;
+  font-size: $big;
 }
 .ui.huge.breadcrumb {
-  font-size: 1.42857143rem;
+  font-size: $huge;
 }
 .ui.massive.breadcrumb {
-  font-size: 1.71428571rem;
+  font-size: $massive;
 }
 
-
-/*******************************
-         Theme Overrides
-*******************************/
-
-
-
-/*******************************
-         Site Overrides
-*******************************/
-
+.loadUIOverrides();

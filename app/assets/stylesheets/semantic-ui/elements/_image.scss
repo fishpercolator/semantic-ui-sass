@@ -1,5 +1,5 @@
 /*!
- * # Semantic UI 2.2.4 - Image
+ * # Semantic UI - Image
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -7,6 +7,15 @@
  * http://opensource.org/licenses/MIT
  *
  */
+
+
+/*******************************
+            Theme
+*******************************/
+
+$type    : 'element';
+$element : 'image';
+
 
 
 /*******************************
@@ -18,11 +27,13 @@
   display: inline-block;
   vertical-align: middle;
   max-width: 100%;
-  background-color: transparent;
+  background-color: $placeholder-color;
 }
+
 img.ui.image {
   display: block;
 }
+
 .ui.image svg,
 .ui.image img {
   display: block;
@@ -44,10 +55,12 @@ img.ui.image {
   display: block;
   visibility: hidden;
 }
+
+
 .ui.disabled.images,
 .ui.disabled.image {
   cursor: default;
-  opacity: 0.45;
+  opacity: $disabled-opacity;
 }
 
 
@@ -100,7 +113,7 @@ img.ui.image {
 .ui.rounded.image,
 .ui.rounded.images .image > *,
 .ui.rounded.image > * {
-  border-radius: 0.3125em;
+  border-radius: $rounded-border-radius;
 }
 
 /*--------------
@@ -113,7 +126,7 @@ img.ui.image {
 .ui.bordered.image img,
 .ui.bordered.image svg,
 img.ui.bordered.image {
-  border: 1px solid rgba(0, 0, 0, 0.1);
+  border: $image-border;
 }
 
 /*--------------
@@ -124,11 +137,14 @@ img.ui.bordered.image {
 .ui.circular.image {
   overflow: hidden;
 }
+
 .ui.circular.images .image,
 .ui.circular.image,
 .ui.circular.images .image > *,
 .ui.circular.image > * {
-  border-radius: 500rem;
+  -webkit-border-radius: $circular-radius;
+  -moz-border-radius: $circular-radius;
+  border-radius: $circular-radius;
 }
 
 /*--------------
@@ -146,6 +162,7 @@ img.ui.bordered.image {
   height: auto;
 }
 
+
 /*--------------
      Avatar
 ---------------*/
@@ -156,11 +173,15 @@ img.ui.bordered.image {
 .ui.avatar.image img,
 .ui.avatar.image svg,
 .ui.avatar.image {
-  margin-right: 0.25em;
+  margin-right: $avatar-margin;
+
   display: inline-block;
-  width: 2em;
-  height: 2em;
-  border-radius: 500rem;
+  width: $avatar-size;
+  height: $avatar-size;
+
+  -webkit-border-radius: $circular-radius;
+  -moz-border-radius: $circular-radius;
+  border-radius: $circular-radius;
 }
 
 /*-------------------
@@ -169,16 +190,18 @@ img.ui.bordered.image {
 
 .ui.spaced.image {
   display: inline-block !important;
-  margin-left: 0.5em;
-  margin-right: 0.5em;
+  margin-left: $spaced-distance;
+  margin-right: $spaced-distance;
 }
+
 .ui[class*="left spaced"].image {
-  margin-left: 0.5em;
+  margin-left: $spaced-distance;
   margin-right: 0em;
 }
+
 .ui[class*="right spaced"].image {
   margin-left: 0em;
-  margin-right: 0.5em;
+  margin-right: $spaced-distance;
 }
 
 /*-------------------
@@ -188,20 +211,23 @@ img.ui.bordered.image {
 .ui.floated.image,
 .ui.floated.images {
   float: left;
-  margin-right: 1em;
-  margin-bottom: 1em;
+  margin-right: $floated-horizontal-margin;
+  margin-bottom: $floated-vertical-margin;
 }
 .ui.right.floated.images,
 .ui.right.floated.image {
   float: right;
   margin-right: 0em;
-  margin-bottom: 1em;
-  margin-left: 1em;
+  margin-bottom: $floated-vertical-margin;
+  margin-left: $floated-horizontal-margin;
 }
+
 .ui.floated.images:last-child,
 .ui.floated.image:last-child {
   margin-bottom: 0em;
 }
+
+
 .ui.centered.images,
 .ui.centered.image {
   margin-left: auto;
@@ -216,65 +242,65 @@ img.ui.bordered.image {
 .ui.mini.images img,
 .ui.mini.images svg,
 .ui.mini.image {
-  width: 35px;
+  width: $mini-width;
   height: auto;
-  font-size: 0.78571429rem;
+  font-size: $mini;
 }
 .ui.tiny.images .image,
 .ui.tiny.images img,
 .ui.tiny.images svg,
 .ui.tiny.image {
-  width: 80px;
+  width: $tiny-width;
   height: auto;
-  font-size: 0.85714286rem;
+  font-size: $tiny;
 }
 .ui.small.images .image,
 .ui.small.images img,
 .ui.small.images svg,
 .ui.small.image {
-  width: 150px;
+  width: $small-width;
   height: auto;
-  font-size: 0.92857143rem;
+  font-size: $small;
 }
 .ui.medium.images .image,
 .ui.medium.images img,
 .ui.medium.images svg,
 .ui.medium.image {
-  width: 300px;
+  width: $medium-width;
   height: auto;
-  font-size: 1rem;
+  font-size: $medium;
 }
 .ui.large.images .image,
 .ui.large.images img,
 .ui.large.images svg,
 .ui.large.image {
-  width: 450px;
+  width: $large-width;
   height: auto;
-  font-size: 1.14285714rem;
+  font-size: $large;
 }
 .ui.big.images .image,
 .ui.big.images img,
 .ui.big.images svg,
 .ui.big.image {
-  width: 600px;
+  width: $big-width;
   height: auto;
-  font-size: 1.28571429rem;
+  font-size: $big;
 }
 .ui.huge.images .image,
 .ui.huge.images img,
 .ui.huge.images svg,
 .ui.huge.image {
-  width: 800px;
+  width: $huge-width;
   height: auto;
-  font-size: 1.42857143rem;
+  font-size: $huge;
 }
 .ui.massive.images .image,
 .ui.massive.images img,
 .ui.massive.images svg,
 .ui.massive.image {
-  width: 960px;
+  width: $massive-width;
   height: auto;
-  font-size: 1.71428571rem;
+  font-size: $massive;
 }
 
 
@@ -284,23 +310,14 @@ img.ui.bordered.image {
 
 .ui.images {
   font-size: 0em;
-  margin: 0em -0.25rem 0rem;
+  margin: 0em -$image-horizontal-margin 0rem;
 }
+
 .ui.images .image,
 .ui.images img,
 .ui.images svg {
   display: inline-block;
-  margin: 0em 0.25rem 0.5rem;
+  margin: 0em $image-horizontal-margin $image-vertical-margin;
 }
 
-
-/*******************************
-         Theme Overrides
-*******************************/
-
-
-
-/*******************************
-         Site Overrides
-*******************************/
-
+.loadUIOverrides();

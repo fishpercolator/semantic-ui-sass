@@ -1,5 +1,5 @@
 /*!
- * # Semantic UI 2.2.4 - Comment
+ * # Semantic UI - Comment
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -7,6 +7,14 @@
  * http://opensource.org/licenses/MIT
  *
  */
+
+
+/*******************************
+            Theme
+*******************************/
+
+$type    : 'view';
+$element : 'comment';
 
 
 /*******************************
@@ -19,9 +27,10 @@
 ---------------*/
 
 .ui.comments {
-  margin: 1.5em 0em;
-  max-width: 650px;
+  margin: $margin;
+  max-width: $max-width;
 }
+
 .ui.comments:first-child {
   margin-top: 0em;
 }
@@ -35,35 +44,36 @@
 
 .ui.comments .comment {
   position: relative;
-  background: none;
-  margin: 0.5em 0em 0em;
-  padding: 0.5em 0em 0em;
-  border: none;
-  border-top: none;
-  line-height: 1.2;
+  background: $comment-background;
+  margin: $views-comment-margin;
+  padding: $comment-padding;
+  border: $comment-border;
+  border-top: $comment-divider;
+  line-height: $comment-line-height;
 }
 .ui.comments .comment:first-child {
-  margin-top: 0em;
-  padding-top: 0em;
+  margin-top: $first-comment-margin;
+  padding-top: $first-comment-padding;
 }
+
 
 /*--------------------
     Nested Comments
 ---------------------*/
 
 .ui.comments .comment .comments {
-  margin: 0em 0em 0.5em 0.5em;
-  padding: 1em 0em 1em 1em;
+  margin: $nested-comments-margin;
+  padding: $nested-comments-padding;
 }
-.ui.comments .comment .comments:before {
+.ui.comments .comment .comments:before{
   position: absolute;
   top: 0px;
   left: 0px;
 }
 .ui.comments .comment .comments .comment {
-  border: none;
-  border-top: none;
-  background: none;
+  border: $nested-comment-border;
+  border-top: $nested-comment-divider;
+  background: $nested-comment-background;
 }
 
 /*--------------
@@ -71,11 +81,11 @@
 ---------------*/
 
 .ui.comments .comment .avatar {
-  display: block;
-  width: 2.5em;
-  height: auto;
-  float: left;
-  margin: 0.2em 0em 0em;
+  display: $avatar-display;
+  width: $avatar-width;
+  height: $avatar-height;
+  float: $avatar-float;
+  margin: $avatar-margin;
 }
 .ui.comments .comment img.avatar,
 .ui.comments .comment .avatar img {
@@ -83,7 +93,7 @@
   margin: 0em auto;
   width: 100%;
   height: 100%;
-  border-radius: 0.25rem;
+  border-radius: $avatar-border-radius;
 }
 
 /*--------------
@@ -93,10 +103,9 @@
 .ui.comments .comment > .content {
   display: block;
 }
-
 /* If there is an avatar move content over */
 .ui.comments .comment > .avatar ~ .content {
-  margin-left: 3.5em;
+  margin-left: $content-margin;
 }
 
 /*--------------
@@ -104,15 +113,15 @@
 ---------------*/
 
 .ui.comments .comment .author {
-  font-size: 1em;
-  color: rgba(0, 0, 0, 0.87);
-  font-weight: bold;
+  font-size: $author-font-size;
+  color: $author-color;
+  font-weight: $author-font-weight;
 }
 .ui.comments .comment a.author {
   cursor: pointer;
 }
 .ui.comments .comment a.author:hover {
-  color: #1e70bf;
+  color: $author-hover-color;
 }
 
 /*--------------
@@ -120,14 +129,14 @@
 ---------------*/
 
 .ui.comments .comment .metadata {
-  display: inline-block;
-  margin-left: 0.5em;
-  color: rgba(0, 0, 0, 0.4);
-  font-size: 0.875em;
+  display: $metadata-display;
+  margin-left: $metadata-spacing;
+  color: $metadata-color;
+  font-size: $metadata-font-size;
 }
 .ui.comments .comment .metadata > * {
   display: inline-block;
-  margin: 0em 0.5em 0em 0em;
+  margin: 0em $metadata-content-spacing 0em 0em;
 }
 .ui.comments .comment .metadata > :last-child {
   margin-right: 0em;
@@ -138,32 +147,33 @@
 ---------------------*/
 
 .ui.comments .comment .text {
-  margin: 0.25em 0em 0.5em;
-  font-size: 1em;
-  word-wrap: break-word;
-  color: rgba(0, 0, 0, 0.87);
-  line-height: 1.3;
+  margin: $text-margin;
+  font-size: $text-font-size;
+  word-wrap: $text-word-wrap;
+  color: $text-color;
+  line-height: $text-line-height;
 }
+
 
 /*--------------------
      User Actions
 ---------------------*/
 
 .ui.comments .comment .actions {
-  font-size: 0.875em;
+  font-size: $action-font-size;
 }
 .ui.comments .comment .actions a {
   cursor: pointer;
   display: inline-block;
-  margin: 0em 0.75em 0em 0em;
-  color: rgba(0, 0, 0, 0.4);
+  margin: 0em $action-content-distance 0em 0em;
+  color: $action-link-color;
 }
 .ui.comments .comment .actions a:last-child {
   margin-right: 0em;
 }
 .ui.comments .comment .actions a.active,
 .ui.comments .comment .actions a:hover {
-  color: rgba(0, 0, 0, 0.8);
+  color: $action-link-hover-color;
 }
 
 /*--------------------
@@ -171,17 +181,16 @@
 ---------------------*/
 
 .ui.comments > .reply.form {
-  margin-top: 1em;
+  margin-top: $reply-distance;
 }
 .ui.comments .comment .reply.form {
   width: 100%;
-  margin-top: 1em;
+  margin-top: $views-comment-reply-distance;
 }
 .ui.comments .reply.form textarea {
-  font-size: 1em;
-  height: 12em;
+  font-size: $reply-font-size;
+  height: $reply-height;
 }
-
 
 /*******************************
             State
@@ -198,15 +207,14 @@
            Variations
 *******************************/
 
-
 /*--------------------
         Threaded
 ---------------------*/
 
 .ui.threaded.comments .comment .comments {
-  margin: -1.5em 0 -1em 1.25em;
-  padding: 3em 0em 2em 2.25em;
-  box-shadow: -1px 0px 0px rgba(34, 36, 38, 0.15);
+  margin: $threaded-comment-margin;
+  padding: $threaded-comment-padding;
+  box-shadow: $threaded-comment-box-shadow;
 }
 
 /*--------------------
@@ -215,56 +223,46 @@
 
 .ui.minimal.comments .comment .actions {
   opacity: 0;
-  position: absolute;
-  top: 0px;
-  right: 0px;
-  left: auto;
-  -webkit-transition: opacity 0.2s ease;
-  transition: opacity 0.2s ease;
-  -webkit-transition-delay: 0.1s;
-          transition-delay: 0.1s;
+  position: $minimal-action-position;
+  top: $minimal-action-top;
+  right: $minimal-action-right;
+  left: $minimal-action-left;
+  transition: $minimal-transition;
+  transition-delay: $minimal-transition-delay;
 }
 .ui.minimal.comments .comment > .content:hover > .actions {
   opacity: 1;
 }
+
 
 /*-------------------
         Sizes
 --------------------*/
 
 .ui.mini.comments {
-  font-size: 0.78571429rem;
+  font-size: $mini;
 }
 .ui.tiny.comments {
-  font-size: 0.85714286rem;
+  font-size: $tiny;
 }
 .ui.small.comments {
-  font-size: 0.9em;
+  font-size: $small;
 }
 .ui.comments {
-  font-size: 1em;
+  font-size: $medium;
 }
 .ui.large.comments {
-  font-size: 1.1em;
+  font-size: $large;
 }
 .ui.big.comments {
-  font-size: 1.28571429rem;
+  font-size: $big;
 }
 .ui.huge.comments {
-  font-size: 1.2em;
+  font-size: $huge;
 }
 .ui.massive.comments {
-  font-size: 1.71428571rem;
+  font-size: $massive;
 }
 
 
-/*******************************
-         Theme Overrides
-*******************************/
-
-
-
-/*******************************
-    User Variable Overrides
-*******************************/
-
+.loadUIOverrides();

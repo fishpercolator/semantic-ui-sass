@@ -1,5 +1,5 @@
 /*!
- * # Semantic UI 2.2.4 - Shape
+ * # Semantic UI - Shape
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -9,6 +9,15 @@
  */
 
 
+
+/*******************************
+            Theme
+*******************************/
+
+$type    : 'module';
+$element : 'shape';
+
+
 /*******************************
               Shape
 *******************************/
@@ -16,62 +25,58 @@
 .ui.shape {
   position: relative;
   vertical-align: top;
-  display: inline-block;
-  -webkit-perspective: 2000px;
-          perspective: 2000px;
-  -webkit-transition: left 0.6s ease-in-out, width 0.6s ease-in-out, height 0.6s ease-in-out, -webkit-transform 0.6s ease-in-out;
-  transition: left 0.6s ease-in-out, width 0.6s ease-in-out, height 0.6s ease-in-out, -webkit-transform 0.6s ease-in-out;
-  transition: transform 0.6s ease-in-out, left 0.6s ease-in-out, width 0.6s ease-in-out, height 0.6s ease-in-out;
-  transition: transform 0.6s ease-in-out, left 0.6s ease-in-out, width 0.6s ease-in-out, height 0.6s ease-in-out, -webkit-transform 0.6s ease-in-out;
+  display: $display;
+  perspective: $perspective;
+  transition: $transition;
 }
+
 .ui.shape .sides {
-  -webkit-transform-style: preserve-3d;
-          transform-style: preserve-3d;
+  transform-style: preserve-3d;
 }
+
 .ui.shape .side {
   opacity: 1;
   width: 100%;
-  margin: 0em !important;
-  -webkit-backface-visibility: hidden;
-          backface-visibility: hidden;
+
+  margin: $side-margin !important;
+  backface-visibility: $backface-visibility;
 }
+
 .ui.shape .side {
   display: none;
 }
-.ui.shape .side * {
-  -webkit-backface-visibility: visible !important;
-          backface-visibility: visible !important;
-}
 
+.ui.shape .side * {
+  backface-visibility: visible !important;
+}
 
 /*******************************
              Types
 *******************************/
 
 .ui.cube.shape .side {
-  min-width: 15em;
-  height: 15em;
-  padding: 2em;
-  background-color: #E6E6E6;
-  color: rgba(0, 0, 0, 0.87);
-  box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.3);
+  min-width: $cube-size;
+  height: $cube-size;
+
+  padding: $cube-padding;
+
+  background-color: $cube-background;
+  color: $cube-text-color;
+  box-shadow: $cube-box-shadow;
 }
 .ui.cube.shape .side > .content {
   width: 100%;
   height: 100%;
   display: table;
-  text-align: center;
-  -webkit-user-select: text;
-     -moz-user-select: text;
-      -ms-user-select: text;
-          user-select: text;
+
+  text-align: $cube-text-align;
+  user-select: text;
 }
 .ui.cube.shape .side > .content > div {
   display: table-cell;
   vertical-align: middle;
-  font-size: 2em;
+  font-size: $cube-font-size;
 }
-
 
 /*******************************
           Variations
@@ -92,7 +97,6 @@
              States
 *******************************/
 
-
 /*--------------
     Loading
 ---------------*/
@@ -103,6 +107,7 @@
   left: -9999px;
 }
 
+
 /*--------------
     Animating
 ---------------*/
@@ -112,11 +117,12 @@
   top: 0px;
   left: 0px;
   display: block;
-  z-index: 100;
+  z-index: $animating-z-index;
 }
 .ui.shape .hidden.side {
-  opacity: 0.6;
+  opacity: $hidden-side-opacity;
 }
+
 
 /*--------------
       CSS
@@ -126,14 +132,10 @@
   position: absolute;
 }
 .ui.shape.animating .sides {
-  -webkit-transition: left 0.6s ease-in-out, width 0.6s ease-in-out, height 0.6s ease-in-out, -webkit-transform 0.6s ease-in-out;
-  transition: left 0.6s ease-in-out, width 0.6s ease-in-out, height 0.6s ease-in-out, -webkit-transform 0.6s ease-in-out;
-  transition: transform 0.6s ease-in-out, left 0.6s ease-in-out, width 0.6s ease-in-out, height 0.6s ease-in-out;
-  transition: transform 0.6s ease-in-out, left 0.6s ease-in-out, width 0.6s ease-in-out, height 0.6s ease-in-out, -webkit-transform 0.6s ease-in-out;
+  transition: $transition;
 }
 .ui.shape.animating .side {
-  -webkit-transition: opacity 0.6s ease-in-out;
-  transition: opacity 0.6s ease-in-out;
+  transition: $side-transition;
 }
 
 /*--------------
@@ -144,14 +146,4 @@
   display: block;
 }
 
-
-/*******************************
-         Theme Overrides
-*******************************/
-
-
-
-/*******************************
-        User Overrides
-*******************************/
-
+.loadUIOverrides();

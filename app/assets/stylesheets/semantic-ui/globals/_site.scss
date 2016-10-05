@@ -1,5 +1,5 @@
 /*!
- * # Semantic UI 2.2.4 - Site
+ * # Semantic UI - Site
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -10,32 +10,41 @@
 
 
 /*******************************
+            Theme
+*******************************/
+
+$type    : 'global';
+$element : 'site';
+
+
+/*******************************
              Page
 *******************************/
 
-@if $import-google-fonts {
-  @import url($font-url);
-}
+.loadFonts();
 
 html,
 body {
   height: 100%;
 }
+
 html {
-  font-size: 14px;
+  font-size: $em-size;
 }
+
 body {
   margin: 0px;
   padding: 0px;
-  overflow-x: hidden;
-  min-width: 320px;
-  background: #FFFFFF;
-  font-family: $font-family;
-  font-size: 14px;
-  line-height: 1.4285em;
-  color: rgba(0, 0, 0, 0.87);
-  font-smoothing: antialiased;
+  overflow-x: $page-overflow-x;
+  min-width: $page-min-width;
+  background: $page-background;
+  font-family: $page-font;
+  font-size: $font-size;
+  line-height: $line-height;
+  color: $text-color;
+  font-smoothing: $font-smoothing;
 }
+
 
 
 /*******************************
@@ -47,28 +56,30 @@ h2,
 h3,
 h4,
 h5 {
-  font-family: $font-family;
-  line-height: 1.2857em;
-  margin: calc(2rem -  0.14285em ) 0em 1rem;
-  font-weight: bold;
+  font-family: $header-font;
+  line-height: $header-line-height;
+  margin: $header-margin;
+  font-weight: $header-font-weight;
   padding: 0em;
 }
+
 h1 {
   min-height: 1rem;
-  font-size: 2rem;
+  font-size: $h1;
 }
 h2 {
-  font-size: 1.714rem;
+  font-size: $h2;
 }
 h3 {
-  font-size: 1.28rem;
+  font-size: $h3;
 }
 h4 {
-  font-size: 1.071rem;
+  font-size: $h4;
 }
 h5 {
-  font-size: 1rem;
+  font-size: $h5;
 }
+
 h1:first-child,
 h2:first-child,
 h3:first-child,
@@ -76,6 +87,7 @@ h4:first-child,
 h5:first-child {
   margin-top: 0em;
 }
+
 h1:last-child,
 h2:last-child,
 h3:last-child,
@@ -90,8 +102,8 @@ h5:last-child {
 *******************************/
 
 p {
-  margin: 0em 0em 1em;
-  line-height: 1.4285em;
+  margin: $paragraph-margin;
+  line-height: $paragraph-line-height;
 }
 p:first-child {
   margin-top: 0em;
@@ -105,12 +117,12 @@ p:last-child {
 --------------------*/
 
 a {
-  color: #4183C4;
-  text-decoration: none;
+  color: $link-color;
+  text-decoration: $link-underline;
 }
 a:hover {
-  color: #1e70bf;
-  text-decoration: none;
+  color: $link-hover-color;
+  text-decoration: $link-hover-underline;
 }
 
 
@@ -118,46 +130,36 @@ a:hover {
           Highlighting
 *******************************/
 
-
 /* Site */
 ::-webkit-selection {
-  background-color: #CCE2FF;
-  color: rgba(0, 0, 0, 0.87);
+  background-color: $highlight-background;
+  color: $highlight-color;
 }
 ::-moz-selection {
-  background-color: #CCE2FF;
-  color: rgba(0, 0, 0, 0.87);
+  background-color: $highlight-background;
+  color: $highlight-color;
 }
 ::selection {
-  background-color: #CCE2FF;
-  color: rgba(0, 0, 0, 0.87);
+  background-color: $highlight-background;
+  color: $highlight-color;
 }
 
 /* Form */
 textarea::-webkit-selection,
 input::-webkit-selection {
-  background-color: rgba(100, 100, 100, 0.4);
-  color: rgba(0, 0, 0, 0.87);
+  background-color: $input-highlight-background;
+  color: $input-highlight-color;
 }
 textarea::-moz-selection,
 input::-moz-selection {
-  background-color: rgba(100, 100, 100, 0.4);
-  color: rgba(0, 0, 0, 0.87);
+  background-color: $input-highlight-background;
+  color: $input-highlight-color;
 }
 textarea::selection,
 input::selection {
-  background-color: rgba(100, 100, 100, 0.4);
-  color: rgba(0, 0, 0, 0.87);
+  background-color: $input-highlight-background;
+  color: $input-highlight-color;
 }
 
 
-/*******************************
-        Global Overrides
-*******************************/
-
-
-
-/*******************************
-         Site Overrides
-*******************************/
-
+.loadUIOverrides();

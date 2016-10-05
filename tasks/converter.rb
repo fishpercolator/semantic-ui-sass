@@ -8,6 +8,9 @@ require "pry"
 require "dotenv"
 
 require 'pathname'
+require 'find'
+require 'active_support/core_ext/string/inflections'
+require 'active_support/ordered_hash'
 
 Dotenv.load
 
@@ -35,6 +38,7 @@ class Converter
 
     checkout_repository
     choose_version(@branch)
+    generate_variables
     process_stylesheets_assets
     process_javascript_assets
     store_version
@@ -55,33 +59,39 @@ class Converter
   def choose_version(version)
     system %Q{cd '#{paths.tmp_semantic_ui}' && git checkout --quiet #{version}}
   end
-
-  def process_stylesheets_assets
-          # content = ""
-    Dir[File.join(paths.tmp_semantic_ui_definitions, '*')].each do |path|
-      # all = ""
-
-      Dir[File.join(path, "*.less")].each do |file|
-
-        filename = File.basename(file).gsub(".less", '.css')
-
-        Dir[File.join(paths.tmp_semantic_ui_components, "*.css")].each do |src|
-          name = File.basename(src)
-
-         if name == filename
-           file = open(src).read
-           file = convert(file)
-           save_file(name, file, File.basename(path))
-
-           # all << "@import '#{name.gsub(".css", "")}';\n"
-         end #filename
+  
+  # Generate a hash of variables from the theme and write them to a file
+  def generate_variables
+    @variables = ActiveSupport::OrderedHash.new
+    # First, let's read all the site-wide variables
+    parse_variable_file(File.join(paths.tmp_semantic_ui_theme, 'globals', 'site.variables'))
+    
+    # Now for each of the variable files, include their variables in a scope
+    root = paths.tmp_semantic_ui_theme
+    Find.find(root) do |path|
+      if path.end_with? '.variables'
+        scope = path.sub(%r{^#{Regexp.quote root}/}, '').sub(/\.variables$/,'')
+        if scope != 'globals/site' # we've done this one
+          parse_variable_file(path, scope)
         end
       end
-      # save_file("all", all, File.basename(path)) if all != ''
-      # content << "@import 'semantic-ui/#{File.basename(path)}/all';\n";
-
     end
-     # File.open("app/assets/stylesheets/semantic-ui.scss", "w+") { |file| file.write(content) }
+
+    variable_file_contents = ""
+    @variables.each {|k,v| variable_file_contents += "#{k}: #{v} !default;\n"}
+    save_file("variables", variable_file_contents, "", "")
+  end
+
+  def process_stylesheets_assets
+    root = paths.tmp_semantic_ui_definitions
+    Find.find(root) do |path|
+      if path.end_with? '.less'
+        scope, name = File.split(path.sub %r{^#{Regexp.quote root}/}, '')
+        converted = convert(File.read(path), scope)
+        name.sub! /\.less$/, ''
+        save_file(name, converted, scope)
+      end
+    end
   end
 
 
@@ -106,21 +116,24 @@ private
   end
 
 
-  def convert(file)
-    file = replace_fonts_url(file)
-    file = replace_import_font_url(file)
-    file = replace_font_family(file)
-    file = replace_image_urls(file)
-    file = replace_image_paths(file)
+  def convert(file, scope)
+    file = remove_imports(file)
+    file = replace_variables(file, scope)
+    
+    #file = replace_fonts_url(file)
+    #file = replace_import_font_url(file)
+    #file = replace_font_family(file)
+    #file = replace_image_urls(file)
+    #file = replace_image_paths(file)
 
     file
   end
 
 
-  def save_file(name, content, path, type='stylesheets')
+  def save_file(name, content, path, prefix='_')
 
     name = name.gsub(/\.css/, '')
-    file = "#{paths.stylesheets}/#{path}/_#{name}.scss"
+    file = "#{paths.stylesheets}/#{path}/#{prefix}#{name}.scss"
     dir = File.dirname(file)
     FileUtils.mkdir_p(dir) unless File.directory?(file)
     File.open(file, 'w+') { |f| f.write(content) }
@@ -144,6 +157,18 @@ private
     content = File.read(path).sub(/SEMANTIC_UI_SHA\s*=\s*['"][\w]+['"]/, "SEMANTIC_UI_SHA = '#@branch_sha'")
     File.open(path, 'w') { |f| f.write(content) }
   end
+  
+  # Remove LESS imports - we're going to let Asset Pipeline take care of that
+  def remove_imports(less)
+    less.gsub /^\s*\@import.*$/, ''
+  end
+  
+  # Replace LESS variables with Sass ones.
+  def replace_variables(less, scope=nil)
+    less.gsub(/\@([-\w]+)/) { get_sass_variable_name $1, scope }.
+    # And interpolated variables
+         gsub(/\@\{([-\w]+)\}/) { '#{' + get_sass_variable_name($1, scope) + '}' }
+  end
 
   def replace_fonts_url(less)
     less.gsub(/url\(\"\.\/\.\.\/themes\/default\/assets\/fonts\/?(.*?)\"\)/) {|s| "font-url(\"semantic-ui/#{$1}\")" }
@@ -164,6 +189,31 @@ private
   def replace_image_paths(less)
     less.gsub('../themes/default/assets/images/', 'semantic-ui/')
   end
+  
+  def get_sass_variable_name(less_name, scope=nil, force=false)
+    name = less_name.underscore.tr('_', '-')
+    if scope
+      name = "#{scope.tr '/', '-'}-#{name}"
+    end
+    name = "\$#{name}"
+    
+    unless force
+      # If a scope is provided and we don't have a variable in that scope,
+      # assume it's in the global scope
+      if scope and !@variables.key? name
+        return get_sass_variable_name(less_name, nil)
+      end
+    end
+    return name
+  end
+  
+  def parse_variable_file(filename, scope=nil)
+    File.read(filename).scan(/^\s*\@([-\w]+)\s*:\s*(.*?);/) do |name, decl|
+      name_parsed = get_sass_variable_name(name, scope, true)
+      decl_parsed = replace_variables(decl, scope)
+      @variables[name_parsed] = decl_parsed
+    end
+  end
 
 end
 
@@ -173,8 +223,7 @@ class Paths
    attr_reader :tmp_semantic_ui
    attr_reader :tmp_semantic_ui_src
    attr_reader :tmp_semantic_ui_definitions
-   attr_reader :tmp_semantic_ui_dist
-   attr_reader :tmp_semantic_ui_components
+   attr_reader :tmp_semantic_ui_theme
 
    attr_reader :fonts
    attr_reader :images
@@ -190,9 +239,8 @@ class Paths
      @tmp_semantic_ui_src = File.join(@tmp_semantic_ui, 'src')
      @tmp_semantic_ui_definitions = File.join(@tmp_semantic_ui_src, 'definitions')
 
-     @tmp_semantic_ui_dist = File.join(@tmp_semantic_ui, 'dist')
-     @tmp_semantic_ui_components = File.join(@tmp_semantic_ui_dist, 'components')
-
+     @tmp_semantic_ui_theme = File.join(@tmp_semantic_ui_src, 'themes', 'default')
+    
      @app = File.join(@root, 'app')
      @fonts = File.join(@app, 'assets', 'fonts', 'semantic-ui')
      @images = File.join(@app, 'assets', 'images', 'semantic-ui')

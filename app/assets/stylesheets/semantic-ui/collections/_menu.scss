@@ -11,28 +11,33 @@
 
 
 /*******************************
-            Standard
+            Theme
 *******************************/
 
+$type    : 'collection';
+$element : 'menu';
+
+
+/*******************************
+            Standard
+*******************************/
 
 /*--------------
       Menu
 ---------------*/
 
 .ui.menu {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
-  margin: 1rem 0em;
+  margin: $margin;
   font-family: $font-family;
-  background: #FFFFFF;
-  font-weight: normal;
-  border: 1px solid rgba(34, 36, 38, 0.15);
-  box-shadow: 0px 1px 2px 0 rgba(34, 36, 38, 0.15);
-  border-radius: 0.28571429rem;
-  min-height: 2.85714286em;
+  background: $background;
+  font-weight: $font-weight;
+  border: $border;
+  box-shadow: $box-shadow;
+  border-radius: $border-radius;
+  min-height: $min-height;
 }
+
 .ui.menu:after {
   content: '';
   display: block;
@@ -40,12 +45,14 @@
   clear: both;
   visibility: hidden;
 }
+
 .ui.menu:first-child {
   margin-top: 0rem;
 }
 .ui.menu:last-child {
   margin-bottom: 0rem;
 }
+
 
 /*--------------
     Sub-Menu
@@ -54,10 +61,8 @@
 .ui.menu .menu {
   margin: 0em;
 }
+
 .ui.menu:not(.vertical) > .menu {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
 }
 
@@ -66,39 +71,29 @@
 ---------------*/
 
 .ui.menu:not(.vertical) .item {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
 }
+
 .ui.menu .item {
   position: relative;
   vertical-align: middle;
   line-height: 1;
   text-decoration: none;
   -webkit-tap-highlight-color: transparent;
-  -webkit-box-flex: 0;
-  -webkit-flex: 0 0 auto;
-      -ms-flex: 0 0 auto;
-          flex: 0 0 auto;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
-  background: none;
-  padding: 0.92857143em 1.14285714em;
-  text-transform: none;
-  color: rgba(0, 0, 0, 0.87);
-  font-weight: normal;
-  -webkit-transition: background 0.1s ease, box-shadow 0.1s ease, color 0.1s ease;
-  transition: background 0.1s ease, box-shadow 0.1s ease, color 0.1s ease;
+  flex: 0 0 auto;
+  user-select: none;
+
+  background: $item-background;
+  padding: $item-vertical-padding $item-horizontal-padding;
+  text-transform: $item-text-transform;
+  color: $item-text-color;
+  font-weight: $item-font-weight;
+  transition: $item-transition;
 }
+
 .ui.menu > .item:first-child {
-  border-radius: 0.28571429rem 0px 0px 0.28571429rem;
+  border-radius: $border-radius 0px 0px $border-radius;
 }
 
 /* Border */
@@ -108,8 +103,9 @@
   top: 0%;
   right: 0px;
   height: 100%;
-  width: 1px;
-  background: rgba(34, 36, 38, 0.1);
+
+  width: $divider-size;
+  background: $divider-background;
 }
 
 /*--------------
@@ -119,11 +115,8 @@
 .ui.menu .text.item > *,
 .ui.menu .item > a:not(.ui),
 .ui.menu .item > p:only-child {
-  -webkit-user-select: text;
-     -moz-user-select: text;
-      -ms-user-select: text;
-          user-select: text;
-  line-height: 1.3;
+  user-select: text;
+  line-height: $text-line-height;
 }
 .ui.menu .item > p:first-child {
   margin-top: 0;
@@ -137,9 +130,9 @@
 ---------------*/
 
 .ui.menu .item > i.icon {
-  opacity: 0.9;
-  float: none;
-  margin: 0em 0.35714286em 0em 0em;
+  opacity: $icon-opacity;
+  float: $icon-float;
+  margin: $icon-margin;
 }
 
 /*--------------
@@ -148,32 +141,22 @@
 
 .ui.menu:not(.vertical) .item > .button {
   position: relative;
-  top: 0em;
-  margin: -0.5em 0em;
-  padding-bottom: 0.78571429em;
-  padding-top: 0.78571429em;
-  font-size: 1em;
+  top: $button-offset;
+  margin: $button-margin;
+  padding-bottom: $button-vertical-padding;
+  padding-top: $button-vertical-padding;
+  font-size: $button-size;
 }
 
 /*----------------
  Grid / Container
 -----------------*/
 
-.ui.menu > .grid,
+.ui.menu >  .grid,
 .ui.menu > .container {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: inherit;
-  -webkit-align-items: inherit;
-      -ms-flex-align: inherit;
-          align-items: inherit;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: inherit;
-      -ms-flex-direction: inherit;
-          flex-direction: inherit;
+  align-items: inherit;
+  flex-direction: inherit;
 }
 
 /*--------------
@@ -185,14 +168,15 @@
 }
 .ui.menu:not(.vertical) .item > .input {
   position: relative;
-  top: 0em;
-  margin: -0.5em 0em;
+  top: $input-offset;
+  margin: $input-vertical-margin 0em;
 }
 .ui.menu .item > .input input {
-  font-size: 1em;
-  padding-top: 0.57142857em;
-  padding-bottom: 0.57142857em;
+  font-size: $input-size;
+  padding-top: $input-vertical-padding;
+  padding-bottom: $input-vertical-padding;
 }
+
 
 /*--------------
      Header
@@ -201,14 +185,15 @@
 .ui.menu .header.item,
 .ui.vertical.menu .header.item {
   margin: 0em;
-  background: '';
-  text-transform: normal;
-  font-weight: bold;
+  background: $header-background;
+  text-transform: $header-text-transform;
+  font-weight: $header-weight;
 }
+
 .ui.vertical.menu .item > .header:not(.ui) {
-  margin: 0em 0em 0.5em;
-  font-size: 1em;
-  font-weight: bold;
+  margin: $vertical-header-margin;
+  font-size: $vertical-header-font-size;
+  font-weight: $vertical-header-font-weight;
 }
 
 /*--------------
@@ -219,78 +204,76 @@
 /* Dropdown Icon */
 .ui.menu .item > i.dropdown.icon {
   padding: 0em;
-  float: right;
-  margin: 0em 0em 0em 1em;
+  float: $dropdown-icon-float;
+  margin: 0em 0em 0em $dropdown-icon-distance;
 }
 
 /* Menu */
 .ui.menu .dropdown.item .menu {
   left: 0px;
-  min-width: calc(100% - 1px);
-  border-radius: 0em 0em 0.28571429rem 0.28571429rem;
-  background: #FFFFFF;
-  margin: 0em 0px 0px;
-  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.08);
-  -webkit-box-orient: vertical !important;
-  -webkit-box-direction: normal !important;
-  -webkit-flex-direction: column !important;
-      -ms-flex-direction: column !important;
-          flex-direction: column !important;
+  min-width: ~"calc(100% - 1px)";
+  border-radius: 0em 0em $dropdown-menu-border-radius $dropdown-menu-border-radius;
+  background: $dropdown-background;
+  margin: $dropdown-menu-distance 0px 0px;
+  box-shadow: $dropdown-menu-box-shadow;
+  flex-direction: column !important;
 }
+
 
 /* Menu Items */
 .ui.menu .ui.dropdown .menu > .item {
   margin: 0;
   text-align: left;
-  font-size: 1em !important;
-  padding: 0.78571429em 1.14285714em !important;
-  background: transparent !important;
-  color: rgba(0, 0, 0, 0.87) !important;
-  text-transform: none !important;
-  font-weight: normal !important;
-  box-shadow: none !important;
-  -webkit-transition: none !important;
-  transition: none !important;
+  font-size: $dropdown-item-font-size !important;
+  padding: $dropdown-item-padding !important;
+  background: $dropdown-item-background !important;
+  color: $dropdown-item-color !important;
+  text-transform: $dropdown-item-text-transform !important;
+  font-weight: $dropdown-item-font-weight !important;
+  box-shadow: $dropdown-item-box-shadow !important;
+  transition: $dropdown-item-transition !important;
 }
 .ui.menu .ui.dropdown .menu > .item:hover {
-  background: rgba(0, 0, 0, 0.05) !important;
-  color: rgba(0, 0, 0, 0.95) !important;
+  background: $dropdown-hovered-item-background !important;
+  color: $dropdown-hovered-item-color !important;
 }
 .ui.menu .ui.dropdown .menu > .selected.item {
-  background: rgba(0, 0, 0, 0.05) !important;
-  color: rgba(0, 0, 0, 0.95) !important;
+  background: $dropdown-selected-item-background !important;
+  color: $dropdown-selected-item-color !important;
 }
 .ui.menu .ui.dropdown .menu > .active.item {
-  background: rgba(0, 0, 0, 0.03) !important;
-  font-weight: bold !important;
-  color: rgba(0, 0, 0, 0.95) !important;
+  background: $dropdown-active-item-background !important;
+  font-weight: $dropdown-active-item-font-weight !important;
+  color: $dropdown-active-item-color !important;
 }
+
 .ui.menu .ui.dropdown.item .menu .item:not(.filtered) {
   display: block;
 }
 .ui.menu .ui.dropdown .menu > .item .icon:not(.dropdown) {
   display: inline-block;
-  font-size: 1em !important;
-  float: none;
-  margin: 0em 0.75em 0em 0em;
+  font-size: $dropdown-item-icon-font-size !important;
+  float: $dropdown-item-icon-float;
+  margin: $dropdown-item-icon-margin;
 }
+
 
 /* Secondary */
 .ui.secondary.menu .dropdown.item > .menu,
 .ui.text.menu .dropdown.item > .menu {
-  border-radius: 0.28571429rem;
-  margin-top: 0.35714286em;
+  border-radius: $dropdown-menu-border-radius;
+  margin-top: $secondary-dropdown-menu-distance;
 }
 
 /* Pointing */
 .ui.menu .pointing.dropdown.item .menu {
-  margin-top: 0.75em;
+  margin-top: $pointing-dropdown-menu-distance;
 }
 
 /* Inverted */
 .ui.inverted.menu .search.dropdown.item > .search,
 .ui.inverted.menu .search.dropdown.item > .text {
-  color: rgba(255, 255, 255, 0.9);
+  color: $inverted-selection-dropdown-color;
 }
 
 /* Vertical */
@@ -302,9 +285,9 @@
 .ui.vertical.menu .dropdown.item .menu {
   left: 100%;
   min-width: 0;
-  margin: 0em 0em 0em 0em;
-  box-shadow: 0 1px 3px 0px rgba(0, 0, 0, 0.08);
-  border-radius: 0em 0.28571429rem 0.28571429rem 0.28571429rem;
+  margin: 0em 0em 0em $dropdown-menu-distance;
+  box-shadow: $dropdown-vertical-menu-box-shadow;
+  border-radius: 0em $dropdown-menu-border-radius $dropdown-menu-border-radius $dropdown-menu-border-radius;
 }
 .ui.vertical.menu .dropdown.item.upward .menu {
   bottom: 0;
@@ -330,20 +313,20 @@
 ---------------*/
 
 .ui.menu .item > .label {
-  background: #999999;
-  color: #FFFFFF;
-  margin-left: 1em;
-  padding: 0.3em 0.78571429em;
+  background: $label-background;
+  color: $label-text-color;
+  margin-left: $label-text-margin;
+  padding: $label-vertical-padding $label-horizontal-padding;
 }
 .ui.vertical.menu .item > .label {
-  background: #999999;
-  color: #FFFFFF;
-  margin-top: -0.15em;
-  margin-bottom: -0.15em;
-  padding: 0.3em 0.78571429em;
+  background: $label-background;
+  color: $label-text-color;
+  margin-top: $label-offset;
+  margin-bottom: $label-offset;
+  padding: $label-vertical-padding $label-horizontal-padding;
 }
 .ui.menu .item > .floating.label {
-  padding: 0.3em 0.78571429em;
+  padding: $label-vertical-padding $label-horizontal-padding;
 }
 
 /*--------------
@@ -353,27 +336,25 @@
 .ui.menu .item > img:not(.ui) {
   display: inline-block;
   vertical-align: middle;
-  margin: -0.3em 0em;
-  width: 2.5em;
+  margin: $image-margin;
+  width: $image-width;
 }
 .ui.vertical.menu .item > img:not(.ui):only-child {
   display: block;
   max-width: 100%;
-  width: auto;
+  width: $vertical-image-width;
 }
-
 
 /*******************************
           Coupling
 *******************************/
 
-
 /*--------------
      Sidebar
 ---------------*/
 
-
 /* Show vertical dividers below last */
+
 .ui.vertical.sidebar.menu > .item:first-child:before {
   display: block !important;
 }
@@ -386,16 +367,16 @@
     Container
 ---------------*/
 
-@media only screen and (max-width: 767px) {
+$media only screen and (max-width: $largest-mobile-screen) {
   .ui.menu > .ui.container {
     width: 100% !important;
     margin-left: 0em !important;
     margin-right: 0em !important;
   }
 }
-@media only screen and (min-width: 768px) {
+$media only screen and (min-width: $tablet-breakpoint) {
   .ui.menu:not(.secondary):not(.text):not(.tabular):not(.borderless) > .container > .item:not(.right):not(.borderless):first-child {
-    border-left: 1px solid rgba(34, 36, 38, 0.1);
+    border-left: $divider-size solid $divider-background;
   }
 }
 
@@ -404,19 +385,20 @@
              States
 *******************************/
 
-
 /*--------------
       Hover
 ---------------*/
+
 
 .ui.link.menu .item:hover,
 .ui.menu .dropdown.item:hover,
 .ui.menu .link.item:hover,
 .ui.menu a.item:hover {
   cursor: pointer;
-  background: rgba(0, 0, 0, 0.03);
-  color: rgba(0, 0, 0, 0.95);
+  background: $hover-item-background;
+  color: $hover-item-text-color;
 }
+
 
 /*--------------
      Pressed
@@ -425,22 +407,23 @@
 .ui.link.menu .item:active,
 .ui.menu .link.item:active,
 .ui.menu a.item:active {
-  background: rgba(0, 0, 0, 0.03);
-  color: rgba(0, 0, 0, 0.95);
+  background: $pressed-item-background;
+  color: $pressed-item-text-color;
 }
+
 
 /*--------------
      Active
 ---------------*/
 
-.ui.menu .active.item {
-  background: rgba(0, 0, 0, 0.05);
-  color: rgba(0, 0, 0, 0.95);
-  font-weight: normal;
-  box-shadow: none;
+.ui.menu .active.item  {
+  background: $active-item-background;
+  color: $active-item-text-color;
+  font-weight: $active-item-font-weight;
+  box-shadow: $active-item-box-shadow;
 }
 .ui.menu .active.item > i.icon {
-  opacity: 1;
+  opacity: $active-icon-opacity;
 }
 
 /*--------------
@@ -449,9 +432,10 @@
 
 .ui.menu .active.item:hover,
 .ui.vertical.menu .active.item:hover {
-  background-color: rgba(0, 0, 0, 0.05);
-  color: rgba(0, 0, 0, 0.95);
+  background-color: $active-hover-item-background;
+  color: $active-hover-item-color;
 }
+
 
 /*--------------
      Disabled
@@ -461,7 +445,7 @@
 .ui.menu .item.disabled:hover {
   cursor: default;
   background-color: transparent !important;
-  color: rgba(40, 40, 40, 0.3);
+  color: $disabled-text-color;
 }
 
 
@@ -469,28 +453,19 @@
              Types
 *******************************/
 
-
 /*------------------
 Floated Menu / Item
 -------------------*/
 
-
 /* Left Floated */
 .ui.menu:not(.vertical) .left.item,
 .ui.menu:not(.vertical) .left.menu {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
   margin-right: auto !important;
 }
-
 /* Right Floated */
 .ui.menu:not(.vertical) .right.item,
 .ui.menu:not(.vertical) .right.menu {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
   margin-left: auto !important;
 }
@@ -502,84 +477,79 @@ Floated Menu / Item
   left: 0;
 }
 
+
 /*--------------
     Vertical
 ---------------*/
 
 .ui.vertical.menu {
   display: block;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: column;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  background: #FFFFFF;
-  box-shadow: 0px 1px 2px 0 rgba(34, 36, 38, 0.15);
+  flex-direction: column;
+  background: $vertical-background;
+  box-shadow: $vertical-box-shadow;
 }
 
 /*--- Item ---*/
-
 .ui.vertical.menu .item {
   display: block;
-  background: none;
+  background: $vertical-item-background;
   border-top: none;
   border-right: none;
 }
 .ui.vertical.menu > .item:first-child {
-  border-radius: 0.28571429rem 0.28571429rem 0px 0px;
+  border-radius: $border-radius $border-radius 0px 0px;
 }
 .ui.vertical.menu > .item:last-child {
-  border-radius: 0px 0px 0.28571429rem 0.28571429rem;
+  border-radius: 0px 0px $border-radius $border-radius;
 }
 
 /*--- Label ---*/
-
 .ui.vertical.menu .item > .label {
   float: right;
   text-align: center;
 }
 
 /*--- Icon ---*/
-
 .ui.vertical.menu .item > i.icon {
-  width: 1.18em;
-  float: right;
-  margin: 0em 0em 0em 0.5em;
+  width: $icon-width;
+  float: $vertical-icon-float;
+  margin: $vertical-icon-margin;
 }
 .ui.vertical.menu .item > .label + i.icon {
-  float: none;
-  margin: 0em 0.5em 0em 0em;
+  float: $label-and-icon-float;
+  margin: $label-and-icon-margin;
 }
 
-/*--- Border ---*/
 
+/*--- Border ---*/
 .ui.vertical.menu .item:before {
   position: absolute;
   content: '';
   top: 0%;
   left: 0px;
   width: 100%;
-  height: 1px;
-  background: rgba(34, 36, 38, 0.1);
+  height: $divider-size;
+  background: $vertical-divider-background;
 }
+
 .ui.vertical.menu .item:first-child:before {
   display: none !important;
 }
 
-/*--- Sub Menu ---*/
 
+/*--- Sub Menu ---*/
 .ui.vertical.menu .item > .menu {
-  margin: 0.5em -1.14285714em 0em;
+  margin: $sub-menu-margin;
 }
 .ui.vertical.menu .menu .item {
   background: none;
-  padding: 0.5em 1.33333333em;
-  font-size: 0.85714286em;
-  color: rgba(0, 0, 0, 0.5);
+  padding: $sub-menu-vertical-padding $sub-menu-horizontal-padding;
+  font-size: $sub-menu-font-size;
+  color: $sub-menu-text-color;
 }
 .ui.vertical.menu .item .menu a.item:hover,
 .ui.vertical.menu .item .menu .link.item:hover {
-  color: rgba(0, 0, 0, 0.85);
+  color: $dark-text-color;
 }
 .ui.vertical.menu .menu .item:before {
   display: none;
@@ -587,27 +557,28 @@ Floated Menu / Item
 
 /* Vertical Active */
 .ui.vertical.menu .active.item {
-  background: rgba(0, 0, 0, 0.05);
+  background: $active-item-background;
   border-radius: 0em;
-  box-shadow: none;
+  box-shadow: $vertical-active-box-shadow;
 }
 .ui.vertical.menu > .active.item:first-child {
-  border-radius: 0.28571429rem 0.28571429rem 0em 0em;
+  border-radius: $border-radius $border-radius 0em 0em;
 }
 .ui.vertical.menu > .active.item:last-child {
-  border-radius: 0em 0em 0.28571429rem 0.28571429rem;
+  border-radius: 0em 0em $border-radius $border-radius;
 }
 .ui.vertical.menu > .active.item:only-child {
-  border-radius: 0.28571429rem;
+  border-radius: $border-radius;
 }
 .ui.vertical.menu .active.item .menu .active.item {
   border-left: none;
 }
 .ui.vertical.menu .item .menu .active.item {
-  background-color: transparent;
-  font-weight: bold;
-  color: rgba(0, 0, 0, 0.95);
+  background-color: $sub-menu-active-background;
+  font-weight: $sub-menu-active-font-weight;
+  color: $sub-menu-active-text-color;
 }
+
 
 /*--------------
      Tabular
@@ -617,20 +588,21 @@ Floated Menu / Item
   border-radius: 0em;
   box-shadow: none !important;
   border: none;
-  background: none transparent;
-  border-bottom: 1px solid #D4D4D5;
+  background: $tabular-background;
+  border-bottom: $tabular-border-width solid $tabular-border-color;
 }
 .ui.tabular.fluid.menu {
-  width: calc(100% +  2px ) !important;
+  width: $tabular-fluid-width !important;
 }
 .ui.tabular.menu .item {
   background: transparent;
   border-bottom: none;
-  border-left: 1px solid transparent;
-  border-right: 1px solid transparent;
-  border-top: 2px solid transparent;
-  padding: 0.92857143em 1.42857143em;
-  color: rgba(0, 0, 0, 0.87);
+
+  border-left: $tabular-border-width solid transparent;
+  border-right: $tabular-border-width solid transparent;
+  border-top: $tabular-opposite-border-width solid transparent;
+  padding: $tabular-vertical-padding $tabular-horizontal-padding;
+  color: $tabular-text-color;
 }
 .ui.tabular.menu .item:before {
   display: none;
@@ -639,19 +611,19 @@ Floated Menu / Item
 /* Hover */
 .ui.tabular.menu .item:hover {
   background-color: transparent;
-  color: rgba(0, 0, 0, 0.8);
+  color: $tabular-hovered-text-color;
 }
 
 /* Active */
 .ui.tabular.menu .active.item {
-  background: none #FFFFFF;
-  color: rgba(0, 0, 0, 0.95);
-  border-top-width: 1px;
-  border-color: #D4D4D5;
-  font-weight: bold;
-  margin-bottom: -1px;
-  box-shadow: none;
-  border-radius: 0.28571429rem 0.28571429rem 0px 0px !important;
+  background: $tabular-active-background;
+  color: $tabular-active-color;
+  border-top-width: $tabular-border-width;
+  border-color: $tabular-border-color;
+  font-weight: $tabular-active-weight;
+  margin-bottom: -$tabular-border-width;
+  box-shadow: $tabular-active-box-shadow;
+  border-radius: $tabular-border-radius $tabular-border-radius 0px 0px !important;
 }
 
 /* Coupling with segment for attachment */
@@ -665,88 +637,90 @@ Floated Menu / Item
 }
 .top.attached.segment + .ui.bottom.tabular.menu {
   position: relative;
-  width: calc(100% +  2px );
-  left: -1px;
+  width: $tabular-fluid-width;
+  left: -$tabular-fluid-offset;
 }
 
 /* Bottom Vertical Tabular */
 .ui.bottom.tabular.menu {
-  background: none transparent;
+  background: $tabular-background;
   border-radius: 0em;
   box-shadow: none !important;
   border-bottom: none;
-  border-top: 1px solid #D4D4D5;
+  border-top: $tabular-border-width solid $tabular-border-color;
 }
 .ui.bottom.tabular.menu .item {
   background: none;
-  border-left: 1px solid transparent;
-  border-right: 1px solid transparent;
-  border-bottom: 1px solid transparent;
+  border-left: $tabular-border-width solid transparent;
+  border-right: $tabular-border-width solid transparent;
+  border-bottom: $tabular-border-width solid transparent;
   border-top: none;
 }
 .ui.bottom.tabular.menu .active.item {
-  background: none #FFFFFF;
-  color: rgba(0, 0, 0, 0.95);
-  border-color: #D4D4D5;
-  margin: -1px 0px 0px 0px;
-  border-radius: 0px 0px 0.28571429rem 0.28571429rem !important;
+  background: $tabular-active-background;
+  color: $tabular-active-color;
+  border-color: $tabular-border-color;
+  margin: -$tabular-border-width 0px 0px 0px;
+  border-radius: 0px 0px $tabular-border-radius $tabular-border-radius !important;
 }
 
 /* Vertical Tabular (Left) */
 .ui.vertical.tabular.menu {
-  background: none transparent;
+  background: $tabular-vertical-background;
   border-radius: 0em;
   box-shadow: none !important;
   border-bottom: none;
-  border-right: 1px solid #D4D4D5;
+  border-right: $tabular-border-width solid $tabular-border-color;
 }
 .ui.vertical.tabular.menu .item {
   background: none;
-  border-left: 1px solid transparent;
-  border-bottom: 1px solid transparent;
-  border-top: 1px solid transparent;
+  border-left: $tabular-border-width solid transparent;
+  border-bottom: $tabular-border-width solid transparent;
+  border-top: $tabular-border-width solid transparent;
   border-right: none;
 }
 .ui.vertical.tabular.menu .active.item {
-  background: none #FFFFFF;
-  color: rgba(0, 0, 0, 0.95);
-  border-color: #D4D4D5;
-  margin: 0px -1px 0px 0px;
-  border-radius: 0.28571429rem 0px 0px 0.28571429rem !important;
+  background: $tabular-active-background;
+  color: $tabular-active-color;
+  border-color: $tabular-border-color;
+  margin: 0px -$tabular-border-width 0px 0px;
+  border-radius: $tabular-border-radius 0px 0px $tabular-border-radius !important;
 }
 
 /* Vertical Right Tabular */
 .ui.vertical.right.tabular.menu {
-  background: none transparent;
+  background: $tabular-vertical-background;
   border-radius: 0em;
   box-shadow: none !important;
   border-bottom: none;
   border-right: none;
-  border-left: 1px solid #D4D4D5;
+  border-left: $tabular-border-width solid $tabular-border-color;
 }
 .ui.vertical.right.tabular.menu .item {
   background: none;
-  border-right: 1px solid transparent;
-  border-bottom: 1px solid transparent;
-  border-top: 1px solid transparent;
+  border-right: $tabular-border-width solid transparent;
+  border-bottom: $tabular-border-width solid transparent;
+  border-top: $tabular-border-width solid transparent;
   border-left: none;
 }
 .ui.vertical.right.tabular.menu .active.item {
-  background: none #FFFFFF;
-  color: rgba(0, 0, 0, 0.95);
-  border-color: #D4D4D5;
-  margin: 0px 0px 0px -1px;
-  border-radius: 0px 0.28571429rem 0.28571429rem 0px !important;
+  background: $tabular-active-background;
+  color: $tabular-active-color;
+  border-color: $tabular-border-color;
+  margin: 0px 0px 0px -$tabular-border-width;
+  border-radius: 0px $tabular-border-radius $tabular-border-radius 0px !important;
 }
 
 /* Dropdown */
 .ui.tabular.menu .active.dropdown.item {
   margin-bottom: 0px;
-  border-left: 1px solid transparent;
-  border-right: 1px solid transparent;
-  border-top: 2px solid transparent;
+  border-left: $tabular-border-width solid transparent;
+  border-right: $tabular-border-width solid transparent;
+  border-top: $tabular-opposite-border-width solid transparent;
   border-bottom: none;
 }
+
+
 
 /*--------------
    Pagination
@@ -754,23 +728,21 @@ Floated Menu / Item
 
 .ui.pagination.menu {
   margin: 0em;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
   display: inline-flex;
   vertical-align: middle;
 }
 .ui.pagination.menu .item:last-child {
-  border-radius: 0em 0.28571429rem 0.28571429rem 0em;
+  border-radius: 0em $border-radius $border-radius 0em;
 }
 .ui.compact.menu .item:last-child {
-  border-radius: 0em 0.28571429rem 0.28571429rem 0em;
+  border-radius: 0em $border-radius $border-radius 0em;
 }
 .ui.pagination.menu .item:last-child:before {
   display: none;
 }
+
 .ui.pagination.menu .item {
-  min-width: 3em;
+  min-width: $pagination-min-width;
   text-align: center;
 }
 .ui.pagination.menu .icon.item i.icon {
@@ -780,9 +752,9 @@ Floated Menu / Item
 /* Active */
 .ui.pagination.menu .active.item {
   border-top: none;
-  padding-top: 0.92857143em;
-  background-color: rgba(0, 0, 0, 0.05);
-  color: rgba(0, 0, 0, 0.95);
+  padding-top: $item-vertical-padding;
+  background-color: $pagination-active-background;
+  color: $pagination-active-text-color;
   box-shadow: none;
 }
 
@@ -791,9 +763,9 @@ Floated Menu / Item
 ---------------*/
 
 .ui.secondary.menu {
-  background: none;
-  margin-left: -0.35714286em;
-  margin-right: -0.35714286em;
+  background: $secondary-background;
+  margin-left: -$secondary-item-spacing;
+  margin-right: -$secondary-item-spacing;
   border-radius: 0em;
   border: none;
   box-shadow: none;
@@ -801,17 +773,14 @@ Floated Menu / Item
 
 /* Item */
 .ui.secondary.menu .item {
-  -webkit-align-self: center;
-      -ms-flex-item-align: center;
-          align-self: center;
+  align-self: center;
   box-shadow: none;
   border: none;
-  padding: 0.78571429em 0.92857143em;
-  margin: 0em 0.35714286em;
-  background: none;
-  -webkit-transition: color 0.1s ease;
-  transition: color 0.1s ease;
-  border-radius: 0.28571429rem;
+  padding: $secondary-item-padding;
+  margin: $secondary-item-margin;
+  background: $secondary-item-background;
+  transition: $secondary-item-transition;
+  border-radius: $secondary-item-border-radius;
 }
 
 /* No Divider */
@@ -822,8 +791,8 @@ Floated Menu / Item
 /* Header */
 .ui.secondary.menu .header.item {
   border-radius: 0em;
-  border-right: none;
-  background: none transparent;
+  border-right: $secondary-header-border;
+  background: $secondary-header-background;
 }
 
 /* Image */
@@ -835,39 +804,40 @@ Floated Menu / Item
 .ui.secondary.menu .dropdown.item:hover,
 .ui.secondary.menu .link.item:hover,
 .ui.secondary.menu a.item:hover {
-  background: rgba(0, 0, 0, 0.05);
-  color: rgba(0, 0, 0, 0.95);
+  background: $secondary-hover-item-background;
+  color: $secondary-hover-item-color;
 }
 
 /* Active */
 .ui.secondary.menu .active.item {
   box-shadow: none;
-  background: rgba(0, 0, 0, 0.05);
-  color: rgba(0, 0, 0, 0.95);
-  border-radius: 0.28571429rem;
+  background: $secondary-active-item-background;
+  color: $secondary-active-item-color;
+  border-radius: $secondary-item-border-radius;
 }
 
 /* Active Hover */
 .ui.secondary.menu .active.item:hover {
   box-shadow: none;
-  background: rgba(0, 0, 0, 0.05);
-  color: rgba(0, 0, 0, 0.95);
+  background: $secondary-active-hover-item-background;
+  color: $secondary-active-hover-item-color;
 }
+
 
 /* Inverted */
 .ui.secondary.inverted.menu .link.item,
 .ui.secondary.inverted.menu a.item {
-  color: rgba(255, 255, 255, 0.7) !important;
+  color: $secondary-inverted-color !important;
 }
 .ui.secondary.inverted.menu .dropdown.item:hover,
 .ui.secondary.inverted.menu .link.item:hover,
 .ui.secondary.inverted.menu a.item:hover {
-  background: rgba(255, 255, 255, 0.08);
-  color: #ffffff !important;
+  background: $secondary-inverted-hover-background;
+  color: $secondary-inverted-hover-color !important;
 }
 .ui.secondary.inverted.menu .active.item {
-  background: rgba(255, 255, 255, 0.15);
-  color: #ffffff !important;
+  background: $secondary-inverted-active-background;
+  color: $secondary-inverted-active-color !important;
 }
 
 /* Fix item margins */
@@ -884,12 +854,13 @@ Floated Menu / Item
 
 /* Sub Menu */
 .ui.vertical.secondary.menu .item:not(.dropdown) > .menu {
-  margin: 0em -0.92857143em;
+  margin: $secondary-menu-sub-menu-margin;
 }
 .ui.vertical.secondary.menu .item:not(.dropdown) > .menu > .item {
-  margin: 0em;
-  padding: 0.5em 1.33333333em;
+  margin: $secondary-menu-sub-menu-item-margin;
+  padding: $secondary-menu-sub-menu-item-padding;
 }
+
 
 /*---------------------
    Secondary Vertical
@@ -897,8 +868,8 @@ Floated Menu / Item
 
 .ui.secondary.vertical.menu > .item {
   border: none;
-  margin: 0em 0em 0.35714286em;
-  border-radius: 0.28571429rem !important;
+  margin: $secondary-vertical-item-margin;
+  border-radius: $secondary-vertical-item-border-radius !important;
 }
 .ui.secondary.vertical.menu > .header.item {
   border-radius: 0em;
@@ -921,25 +892,24 @@ Floated Menu / Item
 .ui.secondary.pointing.menu {
   margin-left: 0em;
   margin-right: 0em;
-  border-bottom: 2px solid rgba(34, 36, 38, 0.15);
+  border-bottom: $secondary-pointing-border-width solid $secondary-pointing-border-color;
 }
+
 .ui.secondary.pointing.menu .item {
   border-bottom-color: transparent;
   border-bottom-style: solid;
   border-radius: 0em;
-  -webkit-align-self: flex-end;
-      -ms-flex-item-align: end;
-          align-self: flex-end;
-  margin: 0em 0em -2px;
-  padding: 0.85714286em 1.14285714em;
-  border-bottom-width: 2px;
-  -webkit-transition: color 0.1s ease;
-  transition: color 0.1s ease;
+  align-self: flex-end;
+
+  margin: 0em 0em -$secondary-pointing-border-width;
+  padding: $secondary-pointing-item-vertical-padding $secondary-pointing-item-horizontal-padding;
+  border-bottom-width: $secondary-pointing-border-width;
+  transition: $secondary-item-transition;
 }
 
 /* Item Types */
 .ui.secondary.pointing.menu .header.item {
-  color: rgba(0, 0, 0, 0.85) !important;
+  color: $secondary-pointing-header-color !important;
 }
 .ui.secondary.pointing.menu .text.item {
   box-shadow: none !important;
@@ -953,7 +923,7 @@ Floated Menu / Item
 .ui.secondary.pointing.menu .link.item:hover,
 .ui.secondary.pointing.menu a.item:hover {
   background-color: transparent;
-  color: rgba(0, 0, 0, 0.87);
+  color: $secondary-pointing-hover-text-color;
 }
 
 /* Pressed */
@@ -961,75 +931,77 @@ Floated Menu / Item
 .ui.secondary.pointing.menu .link.item:active,
 .ui.secondary.pointing.menu a.item:active {
   background-color: transparent;
-  border-color: rgba(34, 36, 38, 0.15);
+  border-color: $secondary-pointing-border-color;
 }
 
 /* Active */
 .ui.secondary.pointing.menu .active.item {
   background-color: transparent;
   box-shadow: none;
-  border-color: #1B1C1D;
-  font-weight: bold;
-  color: rgba(0, 0, 0, 0.95);
+  border-color: $secondary-pointing-active-border-color;
+  font-weight: $secondary-pointing-active-font-weight;
+  color: $secondary-pointing-active-text-color;
 }
 
 /* Active Hover */
 .ui.secondary.pointing.menu .active.item:hover {
-  border-color: #1B1C1D;
-  color: rgba(0, 0, 0, 0.95);
+  border-color: $secondary-pointing-active-hover-border-color;
+  color: $secondary-pointing-active-hover-text-color;
 }
 
 /* Active Dropdown */
 .ui.secondary.pointing.menu .active.dropdown.item {
-  border-color: transparent;
+  border-color: $secondary-pointing-active-dropdown-border-color;
 }
 
 /* Vertical Pointing */
 .ui.secondary.vertical.pointing.menu {
   border-bottom-width: 0px;
-  border-right-width: 2px;
+  border-right-width: $secondary-pointing-border-width;
   border-right-style: solid;
-  border-right-color: rgba(34, 36, 38, 0.15);
+  border-right-color: $secondary-pointing-border-color;
 }
 .ui.secondary.vertical.pointing.menu .item {
   border-bottom: none;
   border-right-style: solid;
   border-right-color: transparent;
   border-radius: 0em !important;
-  margin: 0em -2px 0em 0em;
-  border-right-width: 2px;
+  margin: $secondary-vertical-pointing-item-margin;
+  border-right-width: $secondary-pointing-border-width;
 }
 
 /* Vertical Active */
 .ui.secondary.vertical.pointing.menu .active.item {
-  border-color: #1B1C1D;
+  border-color: $secondary-pointing-active-border-color;
 }
 
 /* Inverted */
 .ui.secondary.inverted.pointing.menu {
-  border-color: rgba(255, 255, 255, 0.1);
+  border-color: $secondary-pointing-inverted-border-color;
 }
+
 .ui.secondary.inverted.pointing.menu {
-  border-width: 2px;
-  border-color: rgba(34, 36, 38, 0.15);
+  border-width: $secondary-pointing-border-width;
+  border-color: $secondary-pointing-border-color;
 }
 .ui.secondary.inverted.pointing.menu .item {
-  color: rgba(255, 255, 255, 0.9);
+  color: $secondary-pointing-inverted-item-text-color;
 }
 .ui.secondary.inverted.pointing.menu .header.item {
-  color: #FFFFFF !important;
+  color: $secondary-pointing-inverted-item-header-color !important;
 }
 
 /* Hover */
 .ui.secondary.inverted.pointing.menu .link.item:hover,
 .ui.secondary.inverted.pointing.menu a.item:hover {
-  color: rgba(0, 0, 0, 0.95);
+  color: $secondary-pointing-inverted-item-hover-text-color;
 }
+
 
 /* Active */
 .ui.secondary.inverted.pointing.menu .active.item {
-  border-color: #FFFFFF;
-  color: #ffffff;
+  border-color: $secondary-pointing-inverted-active-border-color;
+  color: $secondary-pointing-inverted-active-color;
 }
 
 /*--------------
@@ -1041,20 +1013,18 @@ Floated Menu / Item
   border-radius: 0px;
   box-shadow: none;
   border: none;
-  margin: 1em -0.5em;
+
+  margin: $text-menu-margin;
 }
 .ui.text.menu .item {
   border-radius: 0px;
   box-shadow: none;
-  -webkit-align-self: center;
-      -ms-flex-item-align: center;
-          align-self: center;
-  margin: 0em 0em;
-  padding: 0.35714286em 0.5em;
-  font-weight: normal;
-  color: rgba(0, 0, 0, 0.6);
-  -webkit-transition: opacity 0.1s ease;
-  transition: opacity 0.1s ease;
+  align-self: center;
+  margin: $text-menu-item-margin;
+  padding: $text-menu-item-padding;
+  font-weight: $text-menu-item-font-weight;
+  color: $text-menu-item-color;
+  transition: $text-menu-item-transition;
 }
 
 /* Border */
@@ -1067,10 +1037,10 @@ Floated Menu / Item
 .ui.text.menu .header.item {
   background-color: transparent;
   opacity: 1;
-  color: rgba(0, 0, 0, 0.85);
-  font-size: 0.92857143em;
-  text-transform: uppercase;
-  font-weight: bold;
+  color: $text-menu-header-color;
+  font-size: $text-menu-header-size;
+  text-transform: $text-menu-header-text-transform;
+  font-weight: $text-menu-header-font-weight;
 }
 
 /* Image */
@@ -1079,15 +1049,13 @@ Floated Menu / Item
 }
 
 /*--- fluid text ---*/
-
 .ui.text.item.menu .item {
   margin: 0em;
 }
 
 /*--- vertical text ---*/
-
 .ui.vertical.text.menu {
-  margin: 1em 0em;
+  margin: $text-vertical-menu-margin;
 }
 .ui.vertical.text.menu:first-child {
   margin-top: 0rem;
@@ -1096,46 +1064,43 @@ Floated Menu / Item
   margin-bottom: 0rem;
 }
 .ui.vertical.text.menu .item {
-  margin: 0.57142857em 0em;
+  margin: $text-vertical-menu-item-margin;
   padding-left: 0em;
   padding-right: 0em;
 }
 .ui.vertical.text.menu .item > i.icon {
-  float: none;
-  margin: 0em 0.35714286em 0em 0em;
+  float: $text-vertical-menu-icon-float;
+  margin: $icon-margin;
 }
 .ui.vertical.text.menu .header.item {
-  margin: 0.57142857em 0em 0.71428571em;
+  margin: $text-vertical-menu-header-margin;
 }
 
 /* Vertical Sub Menu */
 .ui.vertical.text.menu .item:not(.dropdown) > .menu {
-  margin: 0em;
+  margin: $text-menu-sub-menu-margin;
 }
 .ui.vertical.text.menu .item:not(.dropdown) > .menu > .item {
-  margin: 0em;
-  padding: 0.5em 0em;
+  margin: $text-menu-sub-menu-item-margin;
+  padding: $text-menu-sub-menu-item-padding;
 }
 
 /*--- hover ---*/
-
 .ui.text.menu .item:hover {
   opacity: 1;
   background-color: transparent;
 }
 
 /*--- active ---*/
-
 .ui.text.menu .active.item {
   background-color: transparent;
   border: none;
   box-shadow: none;
-  font-weight: normal;
-  color: rgba(0, 0, 0, 0.95);
+  font-weight: $text-menu-active-item-font-weight;
+  color: $text-menu-active-item-color;
 }
 
 /*--- active hover ---*/
-
 .ui.text.menu .active.item:hover {
   background-color: transparent;
 }
@@ -1166,7 +1131,6 @@ Floated Menu / Item
     Icon Only
 ---------------*/
 
-
 /* Vertical Menu */
 .ui.vertical.icon.menu {
   display: inline-block;
@@ -1176,8 +1140,8 @@ Floated Menu / Item
 /* Item */
 .ui.icon.menu .item {
   height: auto;
-  text-align: center;
-  color: #1B1C1D;
+  text-align: $icon-menu-text-align;
+  color: $icon-menu-item-color;
 }
 
 /* Icon */
@@ -1207,13 +1171,12 @@ Floated Menu / Item
 
 /* Inverted */
 .ui.inverted.icon.menu .item {
-  color: #FFFFFF;
+  color: $icon-menu-inverted-item-color;
 }
 
 /*--------------
    Labeled Icon
 ---------------*/
-
 
 /* Menu */
 .ui.labeled.icon.menu {
@@ -1221,21 +1184,17 @@ Floated Menu / Item
 }
 
 /* Item */
-.ui.labeled.icon.menu .item {
-  min-width: 6em;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: column;
-      -ms-flex-direction: column;
-          flex-direction: column;
+.ui.labeled.icon.menu  .item {
+  min-width: $labeled-icon-min-width;
+  flex-direction: column;
 }
 
 /* Icon */
 .ui.labeled.icon.menu .item > .icon:not(.dropdown) {
   height: 1em;
   display: block;
-  font-size: 1.71428571em !important;
-  margin: 0em auto 0.5rem !important;
+  font-size: $labeled-icon-size !important;
+  margin: 0em auto $labeled-icon-text-margin !important;
 }
 
 /* Fluid */
@@ -1248,18 +1207,13 @@ Floated Menu / Item
            Variations
 *******************************/
 
-
 /*--------------
     Stackable
 ---------------*/
 
-@media only screen and (max-width: 767px) {
+$media only screen and (max-width: $largest-mobile-screen) {
   .ui.stackable.menu {
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-    -webkit-flex-direction: column;
-        -ms-flex-direction: column;
-            flex-direction: column;
+    flex-direction: column;
   }
   .ui.stackable.menu .item {
     width: 100% !important;
@@ -1271,9 +1225,10 @@ Floated Menu / Item
     bottom: 0px;
     left: 0px;
     width: 100%;
-    height: 1px;
-    background: rgba(34, 36, 38, 0.1);
+    height: $divider-size;
+    background: $vertical-divider-background;
   }
+
   .ui.stackable.menu .left.menu,
   .ui.stackable.menu .left.item {
     margin-right: 0 !important;
@@ -1288,167 +1243,162 @@ Floated Menu / Item
      Colors
 ---------------*/
 
-
 /*--- Standard Colors  ---*/
-
 .ui.menu .red.active.item,
 .ui.red.menu .active.item {
-  border-color: #DB2828 !important;
-  color: #DB2828 !important;
+  border-color: $red !important;
+  color: $red !important;
 }
 .ui.menu .orange.active.item,
 .ui.orange.menu .active.item {
-  border-color: #F2711C !important;
-  color: #F2711C !important;
+  border-color: $orange !important;
+  color: $orange !important;
 }
 .ui.menu .yellow.active.item,
 .ui.yellow.menu .active.item {
-  border-color: #FBBD08 !important;
-  color: #FBBD08 !important;
+  border-color: $yellow !important;
+  color: $yellow !important;
 }
 .ui.menu .olive.active.item,
 .ui.olive.menu .active.item {
-  border-color: #B5CC18 !important;
-  color: #B5CC18 !important;
+  border-color: $olive !important;
+  color: $olive !important;
 }
 .ui.menu .green.active.item,
 .ui.green.menu .active.item {
-  border-color: #21BA45 !important;
-  color: #21BA45 !important;
+  border-color: $green !important;
+  color: $green !important;
 }
 .ui.menu .teal.active.item,
 .ui.teal.menu .active.item {
-  border-color: #00B5AD !important;
-  color: #00B5AD !important;
+  border-color: $teal !important;
+  color: $teal !important;
 }
 .ui.menu .blue.active.item,
 .ui.blue.menu .active.item {
-  border-color: #2185D0 !important;
-  color: #2185D0 !important;
+  border-color: $blue !important;
+  color: $blue !important;
 }
 .ui.menu .violet.active.item,
 .ui.violet.menu .active.item {
-  border-color: #6435C9 !important;
-  color: #6435C9 !important;
+  border-color: $violet !important;
+  color: $violet !important;
 }
 .ui.menu .purple.active.item,
 .ui.purple.menu .active.item {
-  border-color: #A333C8 !important;
-  color: #A333C8 !important;
+  border-color: $purple !important;
+  color: $purple !important;
 }
 .ui.menu .pink.active.item,
 .ui.pink.menu .active.item {
-  border-color: #E03997 !important;
-  color: #E03997 !important;
+  border-color: $pink !important;
+  color: $pink !important;
 }
 .ui.menu .brown.active.item,
 .ui.brown.menu .active.item {
-  border-color: #A5673F !important;
-  color: #A5673F !important;
+  border-color: $brown !important;
+  color: $brown !important;
 }
 .ui.menu .grey.active.item,
 .ui.grey.menu .active.item {
-  border-color: #767676 !important;
-  color: #767676 !important;
+  border-color: $grey !important;
+  color: $grey !important;
 }
+
 
 /*--------------
     Inverted
 ---------------*/
 
 .ui.inverted.menu {
-  border: 0px solid transparent;
-  background: #1B1C1D;
-  box-shadow: none;
+  border: $inverted-border;
+  background: $inverted-background;
+  box-shadow: $inverted-box-shadow;
 }
 
 /* Menu Item */
 .ui.inverted.menu .item,
 .ui.inverted.menu .item > a:not(.ui) {
-  background: transparent;
-  color: rgba(255, 255, 255, 0.9);
+  background: $inverted-item-background;
+  color: $inverted-item-text-color;
 }
 .ui.inverted.menu .item.menu {
-  background: transparent;
+  background: $inverted-sub-menu-background;
 }
 
 /*--- Border ---*/
-
 .ui.inverted.menu .item:before {
-  background: rgba(255, 255, 255, 0.08);
+  background: $inverted-divider-background;
 }
 .ui.vertical.inverted.menu .item:before {
-  background: rgba(255, 255, 255, 0.08);
+  background: $inverted-vertical-divider-background;
 }
 
 /* Sub Menu */
 .ui.vertical.inverted.menu .menu .item,
 .ui.vertical.inverted.menu .menu .item a:not(.ui) {
-  color: rgba(255, 255, 255, 0.5);
+  color: $inverted-sub-menu-color;
 }
 
 /* Header */
 .ui.inverted.menu .header.item {
   margin: 0em;
-  background: transparent;
+  background: $inverted-header-background;
   box-shadow: none;
 }
 
 /* Disabled */
 .ui.inverted.menu .item.disabled,
 .ui.inverted.menu .item.disabled:hover {
-  color: rgba(225, 225, 225, 0.3);
+  color: $inverted-disabled-text-color;
 }
 
 /*--- Hover ---*/
-
 .ui.link.inverted.menu .item:hover,
 .ui.inverted.menu .dropdown.item:hover,
 .ui.inverted.menu .link.item:hover,
 .ui.inverted.menu a.item:hover {
-  background: rgba(255, 255, 255, 0.08);
-  color: #ffffff;
+  background: $inverted-hover-background;
+  color: $inverted-hover-color;
 }
 .ui.vertical.inverted.menu .item .menu a.item:hover,
 .ui.vertical.inverted.menu .item .menu .link.item:hover {
-  background: transparent;
-  color: #ffffff;
+  background: $inverted-sub-menu-background;
+  color: $inverted-sub-menu-hover-color;
 }
 
 /*--- Pressed ---*/
-
 .ui.inverted.menu a.item:active,
-.ui.inverted.menu .link.item:active {
-  background: rgba(255, 255, 255, 0.08);
-  color: #ffffff;
+.ui.inverted.menu .link.item:active{
+  background: $inverted-menu-pressed-background;
+  color: $inverted-menu-pressed-color;
 }
 
 /*--- Active ---*/
-
 .ui.inverted.menu .active.item {
-  background: rgba(255, 255, 255, 0.15);
-  color: #ffffff !important;
+  background: $inverted-active-background;
+  color: $inverted-active-color !important;
 }
 .ui.inverted.vertical.menu .item .menu .active.item {
-  background: transparent;
-  color: #FFFFFF;
+  background: $inverted-sub-menu-active-background;
+  color: $inverted-sub-menu-active-color;
 }
 .ui.inverted.pointing.menu .active.item:after {
-  background: #3D3E3F !important;
+  background: $inverted-arrow-active-color !important;
   margin: 0em !important;
   box-shadow: none !important;
   border: none !important;
 }
 
 /*--- Active Hover ---*/
-
 .ui.inverted.menu .active.item:hover {
-  background: rgba(255, 255, 255, 0.15);
-  color: #FFFFFF !important;
+  background: $inverted-active-hover-background;
+  color: $inverted-active-hover-color !important;
 }
 .ui.inverted.pointing.menu .active.item:hover:after {
-  background: #3D3E3F !important;
+  background: $inverted-arrow-active-hover-color !important;
 }
+
 
 /*--------------
      Floated
@@ -1456,164 +1406,166 @@ Floated Menu / Item
 
 .ui.floated.menu {
   float: left;
-  margin: 0rem 0.5rem 0rem 0rem;
+  margin: 0rem $floated-distance 0rem 0rem;
 }
 .ui.floated.menu .item:last-child:before {
   display: none;
 }
+
 .ui.right.floated.menu {
   float: right;
-  margin: 0rem 0rem 0rem 0.5rem;
+  margin: 0rem 0rem 0rem $floated-distance;
 }
+
 
 /*--------------
     Inverted
 ---------------*/
 
-
 /* Red */
 .ui.inverted.menu .red.active.item,
 .ui.inverted.red.menu {
-  background-color: #DB2828;
+  background-color: $red;
 }
 .ui.inverted.red.menu .item:before {
-  background-color: rgba(34, 36, 38, 0.1);
+  background-color: $inverted-colored-divider-background;
 }
 .ui.inverted.red.menu .active.item {
-  background-color: rgba(0, 0, 0, 0.1) !important;
+  background-color: $inverted-colored-active-background !important;
 }
 
 /* Orange */
 .ui.inverted.menu .orange.active.item,
 .ui.inverted.orange.menu {
-  background-color: #F2711C;
+  background-color: $orange;
 }
 .ui.inverted.orange.menu .item:before {
-  background-color: rgba(34, 36, 38, 0.1);
+  background-color: $inverted-colored-divider-background;
 }
 .ui.inverted.orange.menu .active.item {
-  background-color: rgba(0, 0, 0, 0.1) !important;
+  background-color: $inverted-colored-active-background !important;
 }
 
 /* Yellow */
 .ui.inverted.menu .yellow.active.item,
 .ui.inverted.yellow.menu {
-  background-color: #FBBD08;
+  background-color: $yellow;
 }
 .ui.inverted.yellow.menu .item:before {
-  background-color: rgba(34, 36, 38, 0.1);
+  background-color: $inverted-colored-divider-background;
 }
 .ui.inverted.yellow.menu .active.item {
-  background-color: rgba(0, 0, 0, 0.1) !important;
+  background-color: $inverted-colored-active-background !important;
 }
 
 /* Olive */
 .ui.inverted.menu .olive.active.item,
 .ui.inverted.olive.menu {
-  background-color: #B5CC18;
+  background-color: $olive;
 }
 .ui.inverted.olive.menu .item:before {
-  background-color: rgba(34, 36, 38, 0.1);
+  background-color: $inverted-colored-divider-background;
 }
 .ui.inverted.olive.menu .active.item {
-  background-color: rgba(0, 0, 0, 0.1) !important;
+  background-color: $inverted-colored-active-background !important;
 }
 
 /* Green */
 .ui.inverted.menu .green.active.item,
 .ui.inverted.green.menu {
-  background-color: #21BA45;
+  background-color: $green;
 }
 .ui.inverted.green.menu .item:before {
-  background-color: rgba(34, 36, 38, 0.1);
+  background-color: $inverted-colored-divider-background;
 }
 .ui.inverted.green.menu .active.item {
-  background-color: rgba(0, 0, 0, 0.1) !important;
+  background-color: $inverted-colored-active-background !important;
 }
 
 /* Teal */
 .ui.inverted.menu .teal.active.item,
 .ui.inverted.teal.menu {
-  background-color: #00B5AD;
+  background-color: $teal;
 }
 .ui.inverted.teal.menu .item:before {
-  background-color: rgba(34, 36, 38, 0.1);
+  background-color: $inverted-colored-divider-background;
 }
 .ui.inverted.teal.menu .active.item {
-  background-color: rgba(0, 0, 0, 0.1) !important;
+  background-color: $inverted-colored-active-background !important;
 }
 
 /* Blue */
 .ui.inverted.menu .blue.active.item,
 .ui.inverted.blue.menu {
-  background-color: #2185D0;
+  background-color: $blue;
 }
 .ui.inverted.blue.menu .item:before {
-  background-color: rgba(34, 36, 38, 0.1);
+  background-color: $inverted-colored-divider-background;
 }
 .ui.inverted.blue.menu .active.item {
-  background-color: rgba(0, 0, 0, 0.1) !important;
+  background-color: $inverted-colored-active-background !important;
 }
 
 /* Violet */
 .ui.inverted.menu .violet.active.item,
 .ui.inverted.violet.menu {
-  background-color: #6435C9;
+  background-color: $violet;
 }
 .ui.inverted.violet.menu .item:before {
-  background-color: rgba(34, 36, 38, 0.1);
+  background-color: $inverted-colored-divider-background;
 }
 .ui.inverted.violet.menu .active.item {
-  background-color: rgba(0, 0, 0, 0.1) !important;
+  background-color: $inverted-colored-active-background !important;
 }
 
 /* Purple */
 .ui.inverted.menu .purple.active.item,
 .ui.inverted.purple.menu {
-  background-color: #A333C8;
+  background-color: $purple;
 }
 .ui.inverted.purple.menu .item:before {
-  background-color: rgba(34, 36, 38, 0.1);
+  background-color: $inverted-colored-divider-background;
 }
 .ui.inverted.purple.menu .active.item {
-  background-color: rgba(0, 0, 0, 0.1) !important;
+  background-color: $inverted-colored-active-background !important;
 }
 
 /* Pink */
 .ui.inverted.menu .pink.active.item,
 .ui.inverted.pink.menu {
-  background-color: #E03997;
+  background-color: $pink;
 }
 .ui.inverted.pink.menu .item:before {
-  background-color: rgba(34, 36, 38, 0.1);
+  background-color: $inverted-colored-divider-background;
 }
 .ui.inverted.pink.menu .active.item {
-  background-color: rgba(0, 0, 0, 0.1) !important;
+  background-color: $inverted-colored-active-background !important;
 }
 
 /* Brown */
 .ui.inverted.menu .brown.active.item,
 .ui.inverted.brown.menu {
-  background-color: #A5673F;
+  background-color: $brown;
 }
 .ui.inverted.brown.menu .item:before {
-  background-color: rgba(34, 36, 38, 0.1);
+  background-color: $inverted-colored-divider-background;
 }
 .ui.inverted.brown.menu .active.item {
-  background-color: rgba(0, 0, 0, 0.1) !important;
+  background-color: $inverted-colored-active-background !important;
 }
 
 /* Grey */
 .ui.inverted.menu .grey.active.item,
 .ui.inverted.grey.menu {
-  background-color: #767676;
+  background-color: $grey;
 }
 .ui.inverted.grey.menu .item:before {
-  background-color: rgba(34, 36, 38, 0.1);
+  background-color: $inverted-colored-divider-background;
 }
 .ui.inverted.grey.menu .active.item {
-  background-color: rgba(0, 0, 0, 0.1) !important;
+  background-color: $inverted-colored-active-background !important;
 }
+
 
 /*--------------
      Fitted
@@ -1627,14 +1579,14 @@ Floated Menu / Item
 .ui.horizontally.fitted.menu .item,
 .ui.horizontally.fitted.menu .item .menu .item,
 .ui.menu .horizontally.fitted.item {
-  padding-top: 0.92857143em;
-  padding-bottom: 0.92857143em;
+  padding-top: $item-vertical-padding;
+  padding-bottom: $item-vertical-padding;
 }
 .ui.vertically.fitted.menu .item,
 .ui.vertically.fitted.menu .item .menu .item,
 .ui.menu .vertically.fitted.item {
-  padding-left: 1.14285714em;
-  padding-right: 1.14285714em;
+  padding-left: $item-horizontal-padding;
+  padding-right: $item-horizontal-padding;
 }
 
 /*--------------
@@ -1652,9 +1604,6 @@ Floated Menu / Item
 --------------------*/
 
 .ui.compact.menu {
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
   display: inline-flex;
   margin: 0em;
   vertical-align: middle;
@@ -1663,7 +1612,7 @@ Floated Menu / Item
   display: inline-block;
 }
 .ui.compact.menu .item:last-child {
-  border-radius: 0em 0.28571429rem 0.28571429rem 0em;
+  border-radius: 0em $border-radius $border-radius 0em;
 }
 .ui.compact.menu .item:last-child:before {
   display: none;
@@ -1684,6 +1633,7 @@ Floated Menu / Item
   width: 100% !important;
 }
 
+
 /*-------------------
       Evenly Sized
 --------------------*/
@@ -1696,14 +1646,13 @@ Floated Menu / Item
   margin-left: 0em !important;
   margin-right: 0em !important;
   text-align: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  justify-content: center;
 }
+
 .ui.item.menu .item:last-child:before {
   display: none;
 }
+
 .ui.menu.two.item .item {
   width: 50%;
 }
@@ -1753,6 +1702,7 @@ Floated Menu / Item
 .ui.menu.fixed .item:last-child {
   border-radius: 0px !important;
 }
+
 .ui.fixed.menu,
 .ui[class*="top fixed"].menu {
   top: 0px;
@@ -1799,8 +1749,9 @@ Floated Menu / Item
 
 /* Coupling with Grid */
 .ui.fixed.menu + .ui.grid {
-  padding-top: 2.75rem;
+  padding-top: $fixed-preceding-grid-margin;
 }
+
 
 /*-------------------
        Pointing
@@ -1812,19 +1763,19 @@ Floated Menu / Item
   content: '';
   top: 100%;
   left: 50%;
-  -webkit-transform: translateX(-50%) translateY(-50%) rotate(45deg);
-      -ms-transform: translateX(-50%) translateY(-50%) rotate(45deg);
-          transform: translateX(-50%) translateY(-50%) rotate(45deg);
+  transform: translateX(-50%) translateY(-50%) rotate(45deg);
   background: none;
-  margin: 0.5px 0em 0em;
-  width: 0.57142857em;
-  height: 0.57142857em;
+
+  margin: ($arrow-border-width / 2) 0em 0em;
+  width: $arrow-size;
+  height: $arrow-size;
+
   border: none;
-  border-bottom: 1px solid #D4D4D5;
-  border-right: 1px solid #D4D4D5;
-  z-index: 2;
-  -webkit-transition: background 0.1s ease;
-  transition: background 0.1s ease;
+  border-bottom: $arrow-border;
+  border-right: $arrow-border;
+
+  z-index: $arrow-z-index;
+  transition: $arrow-transition;
 }
 .ui.vertical.pointing.menu .item:after {
   position: absolute;
@@ -1832,13 +1783,13 @@ Floated Menu / Item
   right: 0%;
   bottom: auto;
   left: auto;
-  -webkit-transform: translateX(50%) translateY(-50%) rotate(45deg);
-      -ms-transform: translateX(50%) translateY(-50%) rotate(45deg);
-          transform: translateX(50%) translateY(-50%) rotate(45deg);
-  margin: 0em -0.5px 0em 0em;
+
+  transform: translateX(50%) translateY(-50%) rotate(45deg);
+  margin: 0em -($arrow-border-width / 2) 0em 0em;
+
   border: none;
-  border-top: 1px solid #D4D4D5;
-  border-right: 1px solid #D4D4D5;
+  border-top: $arrow-border;
+  border-right: $arrow-border;
 }
 
 /* Active */
@@ -1857,38 +1808,40 @@ Floated Menu / Item
 
 /* Colors */
 .ui.pointing.menu .active.item:hover:after {
-  background-color: #F2F2F2;
+  background-color: $arrow-hover-color;
 }
 .ui.pointing.menu .active.item:after {
-  background-color: #F2F2F2;
+  background-color: $arrow-active-color;
 }
 .ui.pointing.menu .active.item:hover:after {
-  background-color: #F2F2F2;
+  background-color: $arrow-active-hover-color;
 }
+
 .ui.vertical.pointing.menu .active.item:hover:after {
-  background-color: #F2F2F2;
+  background-color: $arrow-vertical-hover-color;
 }
 .ui.vertical.pointing.menu .active.item:after {
-  background-color: #F2F2F2;
+  background-color: $arrow-vertical-active-color;
 }
 .ui.vertical.pointing.menu .menu .active.item:after {
-  background-color: #FFFFFF;
+  background-color: $arrow-vertical-sub-menu-color;
 }
+
+
 
 /*--------------
     Attached
 ---------------*/
-
 
 /* Middle */
 .ui.attached.menu {
   top: 0px;
   bottom: 0px;
   border-radius: 0px;
-  margin: 0em -1px;
-  width: calc(100% +  2px );
-  max-width: calc(100% +  2px );
-  box-shadow: none;
+  margin: 0em $attached-horizontal-offset;
+  width: $attached-width;
+  max-width: $attached-width;
+  box-shadow: $attached-box-shadow;
 }
 .ui.attached + .ui.attached.menu:not(.top) {
   border-top: none;
@@ -1898,9 +1851,9 @@ Floated Menu / Item
 .ui[class*="top attached"].menu {
   bottom: 0px;
   margin-bottom: 0em;
-  top: 0px;
-  margin-top: 1rem;
-  border-radius: 0.28571429rem 0.28571429rem 0em 0em;
+  top: $attached-top-offset;
+  margin-top: $vertical-margin;
+  border-radius: $border-radius $border-radius 0em 0em;
 }
 .ui.menu[class*="top attached"]:first-child {
   margin-top: 0em;
@@ -1910,10 +1863,10 @@ Floated Menu / Item
 .ui[class*="bottom attached"].menu {
   bottom: 0px;
   margin-top: 0em;
-  top: 0px;
-  margin-bottom: 1rem;
-  box-shadow: 0px 1px 2px 0 rgba(34, 36, 38, 0.15), none;
-  border-radius: 0em 0em 0.28571429rem 0.28571429rem;
+  top: $attached-bottom-offset;
+  margin-bottom: $vertical-margin;
+  box-shadow: $attached-bottom-box-shadow;
+  border-radius: 0em 0em $border-radius $border-radius;
 }
 .ui[class*="bottom attached"].menu:last-child {
   margin-bottom: 0em;
@@ -1921,15 +1874,15 @@ Floated Menu / Item
 
 /* Attached Menu Item */
 .ui.top.attached.menu > .item:first-child {
-  border-radius: 0.28571429rem 0em 0em 0em;
+  border-radius: $border-radius 0em 0em 0em;
 }
 .ui.bottom.attached.menu > .item:first-child {
-  border-radius: 0em 0em 0em 0.28571429rem;
+  border-radius: 0em 0em 0em $border-radius;
 }
 
 /* Tabular Attached */
 .ui.attached.menu:not(.tabular) {
-  border: 1px solid #D4D4D5;
+  border: $attached-border;
 }
 .ui.attached.inverted.menu {
   border: none;
@@ -1944,79 +1897,68 @@ Floated Menu / Item
      Sizes
 ---------------*/
 
-
 /* Mini */
 .ui.mini.menu {
-  font-size: 0.78571429rem;
+  font-size: $mini;
 }
 .ui.mini.vertical.menu {
-  width: 9rem;
+  width: $mini-width;
 }
 
 /* Tiny */
 .ui.tiny.menu {
-  font-size: 0.85714286rem;
+  font-size: $tiny;
 }
 .ui.tiny.vertical.menu {
-  width: 11rem;
+  width: $tiny-width;
 }
 
 /* Small */
 .ui.small.menu {
-  font-size: 0.92857143rem;
+  font-size: $small;
 }
 .ui.small.vertical.menu {
-  width: 13rem;
+  width: $small-width;
 }
 
 /* Medium */
 .ui.menu {
-  font-size: 1rem;
+  font-size: $medium;
 }
 .ui.vertical.menu {
-  width: 15rem;
+  width: $medium-width;
 }
 
 /* Large */
 .ui.large.menu {
-  font-size: 1.07142857rem;
+  font-size: $large;
 }
 .ui.large.vertical.menu {
-  width: 18rem;
+  width: $large-width;
 }
 
 /* Huge */
 .ui.huge.menu {
-  font-size: 1.14285714rem;
+  font-size: $huge;
 }
 .ui.huge.vertical.menu {
-  width: 20rem;
+  width: $huge-width;
 }
 
 /* Big */
 .ui.big.menu {
-  font-size: 1.21428571rem;
+  font-size: $big;
 }
 .ui.big.vertical.menu {
-  width: 22rem;
+  width: $big-width;
 }
 
 /* Massive */
 .ui.massive.menu {
-  font-size: 1.28571429rem;
+  font-size: $massive;
 }
 .ui.massive.vertical.menu {
-  width: 25rem;
+  width: $massive-width;
 }
 
-
-/*******************************
-         Theme Overrides
-*******************************/
-
-
-
-/*******************************
-         Site Overrides
-*******************************/
-
+.loadUIOverrides();

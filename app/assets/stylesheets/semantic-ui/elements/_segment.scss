@@ -1,5 +1,5 @@
 /*!
- * # Semantic UI 2.2.4 - Segment
+ * # Semantic UI - Segment
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -8,6 +8,13 @@
  *
  */
 
+/*******************************
+            Theme
+*******************************/
+
+$type    : 'element';
+$element : 'segment';
+
 
 /*******************************
             Segment
@@ -15,13 +22,14 @@
 
 .ui.segment {
   position: relative;
-  background: #FFFFFF;
-  box-shadow: 0px 1px 2px 0 rgba(34, 36, 38, 0.15);
-  margin: 1rem 0em;
-  padding: 1em 1em;
-  border-radius: 0.28571429rem;
-  border: 1px solid rgba(34, 36, 38, 0.15);
+  background: $background;
+  box-shadow: $box-shadow;
+  margin: $margin;
+  padding: $padding;
+  border-radius: $border-radius;
+  border: $border;
 }
+
 .ui.segment:first-child {
   margin-top: 0em;
 }
@@ -29,29 +37,31 @@
   margin-bottom: 0em;
 }
 
+
 /* Vertical */
 .ui.vertical.segment {
   margin: 0em;
   padding-left: 0em;
   padding-right: 0em;
+
   background: none transparent;
   border-radius: 0px;
   box-shadow: none;
   border: none;
-  border-bottom: 1px solid rgba(34, 36, 38, 0.15);
+  border-bottom: $border-width solid $border-color;
 }
 .ui.vertical.segment:last-child {
   border-bottom: none;
 }
 
+
 /*-------------------
     Loose Coupling
 --------------------*/
 
-
 /* Header */
 .ui.inverted.segment > .ui.header {
-  color: #FFFFFF;
+  color: $white;
 }
 
 /* Label */
@@ -76,22 +86,22 @@
 .ui.page.grid.segment,
 .ui.grid > .row > .ui.segment.column,
 .ui.grid > .ui.segment.column {
-  padding-top: 2em;
-  padding-bottom: 2em;
+  padding-top: $page-grid-margin;
+  padding-bottom: $page-grid-margin;
 }
 .ui.grid.segment {
-  margin: 1rem 0em;
-  border-radius: 0.28571429rem;
+  margin: $margin;
+  border-radius: $border-radius;
 }
 
 /* Table */
 .ui.basic.table.segment {
-  background: #FFFFFF;
-  border: 1px solid rgba(34, 36, 38, 0.15);
-  box-shadow: 0px 1px 2px 0 rgba(34, 36, 38, 0.15);
+  background: $background;
+  border: $border;
+  box-shadow: $box-shadow;
 }
 .ui[class*="very basic"].table.segment {
-  padding: 1em 1em;
+  padding: $padding;
 }
 
 
@@ -99,16 +109,15 @@
              Types
 *******************************/
 
-
 /*-------------------
         Piled
 --------------------*/
 
 .ui.piled.segments,
 .ui.piled.segment {
-  margin: 3em 0em;
-  box-shadow: '';
-  z-index: auto;
+  margin: $piled-margin 0em;
+  box-shadow: $piled-box-shadow;
+  z-index: $piled-z-index;
 }
 .ui.piled.segment:first-child {
   margin-top: 0em;
@@ -120,7 +129,7 @@
 .ui.piled.segments:before,
 .ui.piled.segment:after,
 .ui.piled.segment:before {
-  background-color: #FFFFFF;
+  background-color: $white;
   visibility: visible;
   content: '';
   display: block;
@@ -128,29 +137,25 @@
   left: 0px;
   position: absolute;
   width: 100%;
-  border: 1px solid rgba(34, 36, 38, 0.15);
-  box-shadow: '';
+  border: $piled-border;
+  box-shadow: $piled-box-shadow;
 }
 .ui.piled.segments:before,
 .ui.piled.segment:before {
-  -webkit-transform: rotate(-1.2deg);
-      -ms-transform: rotate(-1.2deg);
-          transform: rotate(-1.2deg);
+  transform: rotate(-$piled-degrees);
   top: 0;
   z-index: -2;
 }
 .ui.piled.segments:after,
 .ui.piled.segment:after {
-  -webkit-transform: rotate(1.2deg);
-      -ms-transform: rotate(1.2deg);
-          transform: rotate(1.2deg);
+  transform: rotate($piled-degrees);
   top: 0;
   z-index: -1;
 }
 
 /* Piled Attached */
 .ui[class*="top attached"].piled.segment {
-  margin-top: 3em;
+  margin-top: $piled-margin;
   margin-bottom: 0em;
 }
 .ui.piled.segment[class*="top attached"]:first-child {
@@ -158,7 +163,7 @@
 }
 .ui.piled.segment[class*="bottom attached"] {
   margin-top: 0em;
-  margin-bottom: 3em;
+  margin-bottom: $piled-margin;
 }
 .ui.piled.segment[class*="bottom attached"]:last-child {
   margin-bottom: 0em;
@@ -169,7 +174,7 @@
 --------------------*/
 
 .ui.stacked.segment {
-  padding-bottom: 1.4em;
+  padding-bottom: $stacked-padding;
 }
 .ui.stacked.segments:before,
 .ui.stacked.segments:after,
@@ -177,12 +182,14 @@
 .ui.stacked.segment:after {
   content: '';
   position: absolute;
-  bottom: -3px;
+  bottom: -($stacked-height / 2);
   left: 0%;
-  border-top: 1px solid rgba(34, 36, 38, 0.15);
-  background: rgba(0, 0, 0, 0.03);
+
+  border-top: 1px solid $border-color;
+  background: $stacked-page-background;
+
   width: 100%;
-  height: 6px;
+  height: $stacked-height;
   visibility: visible;
 }
 .ui.stacked.segments:before,
@@ -202,8 +209,8 @@
 .ui.stacked.inverted.segments:after,
 .ui.stacked.inverted.segment:before,
 .ui.stacked.inverted.segment:after {
-  background-color: rgba(0, 0, 0, 0.03);
-  border-top: 1px solid rgba(34, 36, 38, 0.35);
+  background-color: $subtle-transparent-black;
+  border-top: 1px solid $selected-border-color;
 }
 
 /*-------------------
@@ -211,10 +218,11 @@
 --------------------*/
 
 .ui.padded.segment {
-  padding: 1.5em;
+  padding: $padded-segment-padding;
 }
+
 .ui[class*="very padded"].segment {
-  padding: 3em;
+  padding: $very-padded-segment-padding;
 }
 
 /*-------------------
@@ -227,18 +235,12 @@
 
 /* Compact Group */
 .ui.compact.segments {
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
   display: inline-flex;
 }
 .ui.compact.segments .segment,
 .ui.segments .compact.segment {
   display: block;
-  -webkit-box-flex: 0;
-  -webkit-flex: 0 1 auto;
-      -ms-flex: 0 1 auto;
-          flex: 0 1 auto;
+  flex: 0 1 auto;
 }
 
 /*-------------------
@@ -247,7 +249,7 @@
 
 .ui.circular.segment {
   display: table-cell;
-  padding: 2em;
+  padding: $circular-padding;
   text-align: center;
   vertical-align: middle;
   border-radius: 500em;
@@ -259,7 +261,7 @@
 
 .ui.raised.segments,
 .ui.raised.segment {
-  box-shadow: 0px 2px 4px 0px rgba(34, 36, 38, 0.12), 0px 2px 10px 0px rgba(34, 36, 38, 0.15);
+  box-shadow: $raised-box-shadow;
 }
 
 
@@ -267,19 +269,14 @@
             Groups
 *******************************/
 
-
 /* Group */
 .ui.segments {
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: column;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  flex-direction: column;
   position: relative;
-  margin: 1rem 0em;
-  border: 1px solid rgba(34, 36, 38, 0.15);
-  box-shadow: 0px 1px 2px 0 rgba(34, 36, 38, 0.15);
-  border-radius: 0.28571429rem;
+  margin: $grouped-margin;
+  border: $grouped-border;
+  box-shadow: $grouped-box-shadow;
+  border-radius: $grouped-border-radius;
 }
 .ui.segments:first-child {
   margin-top: 0em;
@@ -288,45 +285,50 @@
   margin-bottom: 0em;
 }
 
+
 /* Nested Segment */
 .ui.segments > .segment {
   top: 0px;
   bottom: 0px;
   border-radius: 0px;
-  margin: 0em;
-  width: auto;
-  box-shadow: none;
-  border: none;
-  border-top: 1px solid rgba(34, 36, 38, 0.15);
+  margin: $grouped-segment-margin;
+  width: $grouped-segment-width;
+  box-shadow: $grouped-segment-box-shadow;
+  border: $grouped-segment-border;
+  border-top: $grouped-segment-divider;
 }
+
 .ui.segments:not(.horizontal) > .segment:first-child {
+  top: $attached-top-offset;
+  bottom: 0px;
   border-top: none;
   margin-top: 0em;
   bottom: 0px;
   margin-bottom: 0em;
-  top: 0px;
-  border-radius: 0.28571429rem 0.28571429rem 0em 0em;
+  top: $attached-top-offset;
+  border-radius: $border-radius $border-radius 0em 0em;
 }
 
 /* Bottom */
 .ui.segments:not(.horizontal) > .segment:last-child {
-  top: 0px;
+  top: $attached-bottom-offset;
   bottom: 0px;
   margin-top: 0em;
   margin-bottom: 0em;
-  box-shadow: 0px 1px 2px 0 rgba(34, 36, 38, 0.15), none;
-  border-radius: 0em 0em 0.28571429rem 0.28571429rem;
+  box-shadow: $attached-bottom-box-shadow;
+  border-radius: 0em 0em $border-radius $border-radius;
 }
 
 /* Only */
 .ui.segments:not(.horizontal) > .segment:only-child {
-  border-radius: 0.28571429rem;
+  border-radius: $border-radius;
 }
+
 
 /* Nested Group */
 .ui.segments > .ui.segments {
-  border-top: 1px solid rgba(34, 36, 38, 0.15);
-  margin: 1rem 1rem;
+  border-top: $grouped-segment-divider;
+  margin: $nested-group-margin;
 }
 .ui.segments > .segments:first-child {
   border-top: none;
@@ -337,23 +339,16 @@
 
 /* Horizontal Group */
 .ui.horizontal.segments {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: row;
-      -ms-flex-direction: row;
-          flex-direction: row;
+  flex-direction: row;
   background-color: transparent;
   border-radius: 0px;
   padding: 0em;
-  background-color: #FFFFFF;
-  box-shadow: 0px 1px 2px 0 rgba(34, 36, 38, 0.15);
-  margin: 1rem 0em;
-  border-radius: 0.28571429rem;
-  border: 1px solid rgba(34, 36, 38, 0.15);
+  background-color: $background;
+  box-shadow: $box-shadow;
+  margin: $margin;
+  border-radius: $border-radius;
+  border: $border;
 }
 
 /* Nested Horizontal Group */
@@ -363,24 +358,20 @@
   border-radius: 0px;
   border: none;
   box-shadow: none;
-  border-top: 1px solid rgba(34, 36, 38, 0.15);
+  border-top: $grouped-segment-divider;
 }
 
 /* Horizontal Segment */
 .ui.horizontal.segments > .segment {
-  -webkit-box-flex: 1;
-  -webkit-flex: 1 1 auto;
-          flex: 1 1 auto;
-  -ms-flex: 1 1 0px;
-  
-/* Solves #2550 MS Flex */
+  flex: 1 1 auto;
+  -ms-flex: 1 1 0px; /* Solves #2550 MS Flex */
   margin: 0em;
   min-width: 0px;
   background-color: transparent;
   border-radius: 0px;
   border: none;
   box-shadow: none;
-  border-left: 1px solid rgba(34, 36, 38, 0.15);
+  border-left: $border-width solid $border-color;
 }
 
 /* Border Fixes */
@@ -396,14 +387,13 @@
             States
 *******************************/
 
-
 /*--------------
     Disabled
 ---------------*/
 
 .ui.disabled.segment {
-  opacity: 0.45;
-  color: rgba(40, 40, 40, 0.3);
+  opacity: $disabled-opacity;
+  color: $disabled-text-color;
 }
 
 /*--------------
@@ -416,7 +406,6 @@
   pointer-events: none;
   text-shadow: none !important;
   color: transparent !important;
-  -webkit-transition: all 0s linear;
   transition: all 0s linear;
 }
 .ui.loading.segment:before {
@@ -424,50 +413,42 @@
   content: '';
   top: 0%;
   left: 0%;
-  background: rgba(255, 255, 255, 0.8);
+  background: $loader-dimmer-color;
   width: 100%;
   height: 100%;
-  border-radius: 0.28571429rem;
-  z-index: 100;
+  border-radius: $border-radius;
+  z-index: $loader-dimmer-z-index;
 }
 .ui.loading.segment:after {
   position: absolute;
   content: '';
   top: 50%;
   left: 50%;
-  margin: -1.5em 0em 0em -1.5em;
-  width: 3em;
-  height: 3em;
-  -webkit-animation: segment-spin 0.6s linear;
-          animation: segment-spin 0.6s linear;
-  -webkit-animation-iteration-count: infinite;
-          animation-iteration-count: infinite;
-  border-radius: 500rem;
-  border-color: #767676 rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1);
+
+  margin: $loader-margin;
+  width: $loader-size;
+  height: $loader-size;
+
+  animation: segment-spin $loader-speed linear;
+  animation-iteration-count: infinite;
+
+  border-radius: $circular-radius;
+
+  border-color: $loader-line-color $loader-fill-color $loader-fill-color $loader-fill-color;
   border-style: solid;
-  border-width: 0.2em;
+  border-width: $loader-line-width;
+
   box-shadow: 0px 0px 0px 1px transparent;
   visibility: visible;
-  z-index: 101;
+  z-index: $loader-line-z-index;
 }
-@-webkit-keyframes segment-spin {
+
+$keyframes segment-spin {
   from {
-    -webkit-transform: rotate(0deg);
-            transform: rotate(0deg);
+    transform: rotate(0deg);
   }
   to {
-    -webkit-transform: rotate(360deg);
-            transform: rotate(360deg);
-  }
-}
-@keyframes segment-spin {
-  from {
-    -webkit-transform: rotate(0deg);
-            transform: rotate(0deg);
-  }
-  to {
-    -webkit-transform: rotate(360deg);
-            transform: rotate(360deg);
+    transform: rotate(360deg);
   }
 }
 
@@ -482,10 +463,10 @@
 --------------------*/
 
 .ui.basic.segment {
-  background: none transparent;
-  box-shadow: none;
-  border: none;
-  border-radius: 0px;
+  background: $basic-background;
+  box-shadow: $basic-box-shadow;
+  border: $basic-border;
+  border-radius: $basic-border-radius;
 }
 
 /*-------------------
@@ -504,122 +485,121 @@
        Colors
 --------------------*/
 
-
 /* Red */
 .ui.red.segment:not(.inverted) {
-  border-top: 2px solid #DB2828;
+  border-top: $colored-border-size solid $red;
 }
 .ui.inverted.red.segment {
-  background-color: #DB2828 !important;
-  color: #FFFFFF !important;
+  background-color: $red !important;
+  color: $white !important;
 }
 
 /* Orange */
 .ui.orange.segment:not(.inverted) {
-  border-top: 2px solid #F2711C;
+  border-top: $colored-border-size solid $orange;
 }
 .ui.inverted.orange.segment {
-  background-color: #F2711C !important;
-  color: #FFFFFF !important;
+  background-color: $orange !important;
+  color: $white !important;
 }
 
 /* Yellow */
 .ui.yellow.segment:not(.inverted) {
-  border-top: 2px solid #FBBD08;
+  border-top: $colored-border-size solid $yellow;
 }
 .ui.inverted.yellow.segment {
-  background-color: #FBBD08 !important;
-  color: #FFFFFF !important;
+  background-color: $yellow !important;
+  color: $white !important;
 }
 
 /* Olive */
 .ui.olive.segment:not(.inverted) {
-  border-top: 2px solid #B5CC18;
+  border-top: $colored-border-size solid $olive;
 }
 .ui.inverted.olive.segment {
-  background-color: #B5CC18 !important;
-  color: #FFFFFF !important;
+  background-color: $olive !important;
+  color: $white !important;
 }
 
 /* Green */
 .ui.green.segment:not(.inverted) {
-  border-top: 2px solid #21BA45;
+  border-top: $colored-border-size solid $green;
 }
 .ui.inverted.green.segment {
-  background-color: #21BA45 !important;
-  color: #FFFFFF !important;
+  background-color: $green !important;
+  color: $white !important;
 }
 
 /* Teal */
 .ui.teal.segment:not(.inverted) {
-  border-top: 2px solid #00B5AD;
+  border-top: $colored-border-size solid $teal;
 }
 .ui.inverted.teal.segment {
-  background-color: #00B5AD !important;
-  color: #FFFFFF !important;
+  background-color: $teal !important;
+  color: $white !important;
 }
 
 /* Blue */
 .ui.blue.segment:not(.inverted) {
-  border-top: 2px solid #2185D0;
+  border-top: $colored-border-size solid $blue;
 }
 .ui.inverted.blue.segment {
-  background-color: #2185D0 !important;
-  color: #FFFFFF !important;
+  background-color: $blue !important;
+  color: $white !important;
 }
 
 /* Violet */
 .ui.violet.segment:not(.inverted) {
-  border-top: 2px solid #6435C9;
+  border-top: $colored-border-size solid $violet;
 }
 .ui.inverted.violet.segment {
-  background-color: #6435C9 !important;
-  color: #FFFFFF !important;
+  background-color: $violet !important;
+  color: $white !important;
 }
 
 /* Purple */
 .ui.purple.segment:not(.inverted) {
-  border-top: 2px solid #A333C8;
+  border-top: $colored-border-size solid $purple;
 }
 .ui.inverted.purple.segment {
-  background-color: #A333C8 !important;
-  color: #FFFFFF !important;
+  background-color: $purple !important;
+  color: $white !important;
 }
 
 /* Pink */
 .ui.pink.segment:not(.inverted) {
-  border-top: 2px solid #E03997;
+  border-top: $colored-border-size solid $pink;
 }
 .ui.inverted.pink.segment {
-  background-color: #E03997 !important;
-  color: #FFFFFF !important;
+  background-color: $pink !important;
+  color: $white !important;
 }
 
 /* Brown */
 .ui.brown.segment:not(.inverted) {
-  border-top: 2px solid #A5673F;
+  border-top: $colored-border-size solid $brown;
 }
 .ui.inverted.brown.segment {
-  background-color: #A5673F !important;
-  color: #FFFFFF !important;
+  background-color: $brown !important;
+  color: $white !important;
 }
 
 /* Grey */
 .ui.grey.segment:not(.inverted) {
-  border-top: 2px solid #767676;
+  border-top: $colored-border-size solid $grey;
 }
 .ui.inverted.grey.segment {
-  background-color: #767676 !important;
-  color: #FFFFFF !important;
+  background-color: $grey !important;
+  color: $white !important;
 }
 
 /* Black */
 .ui.black.segment:not(.inverted) {
-  border-top: 2px solid #1B1C1D;
+  border-top: $colored-border-size solid $black;
 }
 .ui.inverted.black.segment {
-  background-color: #1B1C1D !important;
-  color: #FFFFFF !important;
+  background-color: $black !important;
+  color: $white !important;
 }
 
 /*-------------------
@@ -643,12 +623,13 @@
 .ui.floated.segment,
 .ui[class*="left floated"].segment {
   float: left;
-  margin-right: 1em;
+  margin-right: $floated-distance;
 }
 .ui[class*="right floated"].segment {
   float: right;
-  margin-left: 1em;
+  margin-left: $floated-distance;
 }
+
 
 /*-------------------
       Inverted
@@ -660,65 +641,62 @@
 }
 .ui.inverted.segment,
 .ui.primary.inverted.segment {
-  background: #1B1C1D;
-  color: rgba(255, 255, 255, 0.9);
+  background: $inverted-background;
+  color: $inverted-text-color;
 }
 
 /* Nested */
 .ui.inverted.segment .segment {
-  color: rgba(0, 0, 0, 0.87);
+  color: $text-color;
 }
 .ui.inverted.segment .inverted.segment {
-  color: rgba(255, 255, 255, 0.9);
+  color: $inverted-text-color;
 }
 
 /* Attached */
 .ui.inverted.attached.segment {
-  border-color: #555555;
+  border-color: $solid-white-border-color;
 }
 
 /*-------------------
      Emphasis
 --------------------*/
 
-
 /* Secondary */
 .ui.secondary.segment {
-  background: #F3F4F5;
-  color: rgba(0, 0, 0, 0.6);
+  background: $secondary-background;
+  color: $secondary-color;
 }
 .ui.secondary.inverted.segment {
-  background: #4c4f52 -webkit-linear-gradient(rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.2) 100%);
-  background: #4c4f52 linear-gradient(rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.2) 100%);
-  color: rgba(255, 255, 255, 0.8);
+  background: $secondary-inverted-background;
+  color: $secondary-inverted-color;
 }
 
 /* Tertiary */
 .ui.tertiary.segment {
-  background: #DCDDDE;
-  color: rgba(0, 0, 0, 0.6);
+  background: $tertiary-background;
+  color: $tertiary-color;
 }
 .ui.tertiary.inverted.segment {
-  background: #717579 -webkit-linear-gradient(rgba(255, 255, 255, 0.35) 0%, rgba(255, 255, 255, 0.35) 100%);
-  background: #717579 linear-gradient(rgba(255, 255, 255, 0.35) 0%, rgba(255, 255, 255, 0.35) 100%);
-  color: rgba(255, 255, 255, 0.8);
+  background: $tertiary-inverted-background;
+  color: $tertiary-inverted-color;
 }
+
 
 /*-------------------
       Attached
 --------------------*/
-
 
 /* Middle */
 .ui.attached.segment {
   top: 0px;
   bottom: 0px;
   border-radius: 0px;
-  margin: 0em -1px;
-  width: calc(100% +  2px );
-  max-width: calc(100% +  2px );
-  box-shadow: none;
-  border: 1px solid #D4D4D5;
+  margin: 0em $attached-horizontal-offset;
+  width: $attached-width;
+  max-width: $attached-width;
+  box-shadow: $attached-box-shadow;
+  border: $attached-border;
 }
 .ui.attached:not(.message) + .ui.attached.segment:not(.top) {
   border-top: none;
@@ -728,9 +706,9 @@
 .ui[class*="top attached"].segment {
   bottom: 0px;
   margin-bottom: 0em;
-  top: 0px;
-  margin-top: 1rem;
-  border-radius: 0.28571429rem 0.28571429rem 0em 0em;
+  top: $attached-top-offset;
+  margin-top: $vertical-margin;
+  border-radius: $border-radius $border-radius 0em 0em;
 }
 .ui.segment[class*="top attached"]:first-child {
   margin-top: 0em;
@@ -740,10 +718,10 @@
 .ui.segment[class*="bottom attached"] {
   bottom: 0px;
   margin-top: 0em;
-  top: 0px;
-  margin-bottom: 1rem;
-  box-shadow: 0px 1px 2px 0 rgba(34, 36, 38, 0.15), none;
-  border-radius: 0em 0em 0.28571429rem 0.28571429rem;
+  top: $attached-bottom-offset;
+  margin-bottom: $vertical-margin;
+  box-shadow: $attached-bottom-box-shadow;
+  border-radius: 0em 0em $border-radius $border-radius;
 }
 .ui.segment[class*="bottom attached"]:last-child {
   margin-bottom: 0em;
@@ -755,45 +733,35 @@
 
 .ui.mini.segments .segment,
 .ui.mini.segment {
-  font-size: 0.78571429rem;
+  font-size: $mini;
 }
 .ui.tiny.segments .segment,
 .ui.tiny.segment {
-  font-size: 0.85714286rem;
+  font-size: $tiny;
 }
 .ui.small.segments .segment,
 .ui.small.segment {
-  font-size: 0.92857143rem;
+  font-size: $small;
 }
 .ui.segments .segment,
 .ui.segment {
-  font-size: 1rem;
+  font-size: $medium;
 }
 .ui.large.segments .segment,
 .ui.large.segment {
-  font-size: 1.14285714rem;
+  font-size: $large;
 }
 .ui.big.segments .segment,
 .ui.big.segment {
-  font-size: 1.28571429rem;
+  font-size: $big;
 }
 .ui.huge.segments .segment,
 .ui.huge.segment {
-  font-size: 1.42857143rem;
+  font-size: $huge;
 }
 .ui.massive.segments .segment,
 .ui.massive.segment {
-  font-size: 1.71428571rem;
+  font-size: $massive;
 }
 
-
-/*******************************
-         Theme Overrides
-*******************************/
-
-
-
-/*******************************
-         Site Overrides
-*******************************/
-
+.loadUIOverrides();

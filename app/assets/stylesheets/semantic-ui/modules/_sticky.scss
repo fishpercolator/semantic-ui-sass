@@ -1,5 +1,5 @@
 /*!
- * # Semantic UI 2.2.4 - Sticky
+ * # Semantic UI - Sticky
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -10,21 +10,26 @@
 
 
 /*******************************
+            Theme
+*******************************/
+
+$type    : 'module';
+$element : 'sticky';
+
+
+/*******************************
             Sticky
 *******************************/
 
 .ui.sticky {
   position: static;
-  -webkit-transition: none;
-  transition: none;
-  z-index: 800;
+  transition: $transition;
+  z-index: $z-index;
 }
-
 
 /*******************************
             States
 *******************************/
-
 
 /* Bound */
 .ui.sticky.bound {
@@ -65,14 +70,4 @@
   position: sticky;
 }
 
-
-/*******************************
-         Theme Overrides
-*******************************/
-
-
-
-/*******************************
-         Site Overrides
-*******************************/
-
+.loadUIOverrides();

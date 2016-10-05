@@ -1,5 +1,5 @@
 /*!
- * # Semantic UI 2.2.4 - Statistic
+ * # Semantic UI - Statistic
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -8,29 +8,30 @@
  *
  */
 
+/*******************************
+            Theme
+*******************************/
+
+$type    : 'view';
+$element : 'statistic';
+
 
 /*******************************
            Statistic
 *******************************/
 
-
 /* Standalone */
 .ui.statistic {
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
   display: inline-flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: column;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  margin: 1em 0em;
-  max-width: auto;
+  flex-direction: column;
+  margin: $margin;
+  max-width: $max-width;
 }
+
 .ui.statistic + .ui.statistic {
-  margin: 0em 0em 0em 1.5em;
+  margin: 0em 0em 0em $horizontal-spacing;
 }
+
 .ui.statistic:first-child {
   margin-top: 0em;
 }
@@ -39,48 +40,27 @@
 }
 
 
+
 /*******************************
             Group
 *******************************/
 
-
 /* Grouped */
 .ui.statistics {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: start;
-  -webkit-align-items: flex-start;
-      -ms-flex-align: start;
-          align-items: flex-start;
-  -webkit-flex-wrap: wrap;
-      -ms-flex-wrap: wrap;
-          flex-wrap: wrap;
+  align-items: flex-start;
+  flex-wrap: wrap;
 }
 .ui.statistics > .statistic {
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
   display: inline-flex;
-  -webkit-box-flex: 0;
-  -webkit-flex: 0 1 auto;
-      -ms-flex: 0 1 auto;
-          flex: 0 1 auto;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: column;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  margin: 0em 1.5em 2em;
-  max-width: auto;
+  flex: 0 1 auto;
+  flex-direction: column;
+  margin: $element-margin;
+  max-width: $element-max-width;
 }
 .ui.statistics {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
-  margin: 1em -1.5em -2em;
+  margin: $group-margin;
 }
 
 /* Clearing */
@@ -92,6 +72,7 @@
   overflow: hidden;
   visibility: hidden;
 }
+
 .ui.statistics:first-child {
   margin-top: 0em;
 }
@@ -111,13 +92,13 @@
 
 .ui.statistics .statistic > .value,
 .ui.statistic > .value {
-  font-family: $font-family;
-  font-size: 4rem;
-  font-weight: normal;
-  line-height: 1em;
-  color: #1B1C1D;
-  text-transform: uppercase;
-  text-align: center;
+  font-family: $value-font;
+  font-size: $value-size;
+  font-weight: $value-font-weight;
+  line-height: $value-line-height;
+  color: $value-color;
+  text-transform: $value-text-transform;
+  text-align: $text-align;
 }
 
 /*--------------
@@ -126,31 +107,31 @@
 
 .ui.statistics .statistic > .label,
 .ui.statistic > .label {
-  font-family: $font-family;
-  font-size: 1em;
-  font-weight: bold;
-  color: rgba(0, 0, 0, 0.87);
-  text-transform: uppercase;
-  text-align: center;
+  font-family: $label-font;
+  font-size: $label-size;
+  font-weight: $label-font-weight;
+  color: $label-color;
+  text-transform: $label-text-transform;
+  text-align: $text-align;
 }
 
 /* Top Label */
 .ui.statistics .statistic > .label ~ .value,
 .ui.statistic > .label ~ .value {
-  margin-top: 0rem;
+  margin-top: $top-label-distance;
 }
 
 /* Bottom Label */
 .ui.statistics .statistic > .value ~ .label,
 .ui.statistic > .value ~ .label {
-  margin-top: 0rem;
+  margin-top: $bottom-label-distance;
 }
+
 
 
 /*******************************
              Types
 *******************************/
-
 
 /*--------------
    Icon Value
@@ -169,9 +150,9 @@
 
 .ui.statistics .statistic > .text.value,
 .ui.statistic > .text.value {
-  line-height: 1em;
-  min-height: 2em;
-  font-weight: bold;
+  line-height: $text-value-line-height;
+  min-height: $text-value-min-height;
+  font-weight: $text-value-font-weight;
   text-align: center;
 }
 .ui.statistics .statistic > .text.value + .label,
@@ -185,9 +166,10 @@
 
 .ui.statistics .statistic > .value img,
 .ui.statistic > .value img {
-  max-height: 3rem;
-  vertical-align: baseline;
+  max-height: $image-height;
+  vertical-align: $image-vertical-align;
 }
+
 
 
 /*******************************
@@ -199,122 +181,119 @@
       Count
 ---------------*/
 
+
 .ui.ten.statistics {
-  margin: 0em 0em -2em;
+  margin: $views-item-group-margin;
 }
 .ui.ten.statistics .statistic {
-  min-width: 10%;
-  margin: 0em 0em 2em;
+  min-width: $ten-column;
+  margin: $item-margin;
 }
+
 .ui.nine.statistics {
-  margin: 0em 0em -2em;
+  margin: $views-item-group-margin;
 }
 .ui.nine.statistics .statistic {
-  min-width: 11.11111111%;
-  margin: 0em 0em 2em;
+  min-width: $nine-column;
+  margin: $item-margin;
 }
+
 .ui.eight.statistics {
-  margin: 0em 0em -2em;
+  margin: $views-item-group-margin;
 }
 .ui.eight.statistics .statistic {
-  min-width: 12.5%;
-  margin: 0em 0em 2em;
+  min-width: $eight-column;
+  margin: $item-margin;
 }
+
 .ui.seven.statistics {
-  margin: 0em 0em -2em;
+  margin: $views-item-group-margin;
 }
 .ui.seven.statistics .statistic {
-  min-width: 14.28571429%;
-  margin: 0em 0em 2em;
+  min-width: $seven-column;
+  margin: $item-margin;
 }
+
 .ui.six.statistics {
-  margin: 0em 0em -2em;
+  margin: $views-item-group-margin;
 }
 .ui.six.statistics .statistic {
-  min-width: 16.66666667%;
-  margin: 0em 0em 2em;
+  min-width: $six-column;
+  margin: $item-margin;
 }
+
 .ui.five.statistics {
-  margin: 0em 0em -2em;
+  margin: $views-item-group-margin;
 }
 .ui.five.statistics .statistic {
-  min-width: 20%;
-  margin: 0em 0em 2em;
+  min-width: $five-column;
+  margin: $item-margin;
 }
+
 .ui.four.statistics {
-  margin: 0em 0em -2em;
+  margin: $views-item-group-margin;
 }
 .ui.four.statistics .statistic {
-  min-width: 25%;
-  margin: 0em 0em 2em;
+  min-width: $four-column;
+  margin: $item-margin;
 }
+
 .ui.three.statistics {
-  margin: 0em 0em -2em;
+  margin: $views-item-group-margin;
 }
 .ui.three.statistics .statistic {
-  min-width: 33.33333333%;
-  margin: 0em 0em 2em;
+  min-width: $three-column;
+  margin: $item-margin;
 }
+
 .ui.two.statistics {
-  margin: 0em 0em -2em;
+  margin: $views-item-group-margin;
 }
 .ui.two.statistics .statistic {
-  min-width: 50%;
-  margin: 0em 0em 2em;
+  min-width: $two-column;
+  margin: $item-margin;
 }
+
 .ui.one.statistics {
-  margin: 0em 0em -2em;
+  margin: $views-item-group-margin;
 }
 .ui.one.statistics .statistic {
-  min-width: 100%;
-  margin: 0em 0em 2em;
+  min-width: $one-column;
+  margin: $item-margin;
 }
+
+
+
 
 /*--------------
    Horizontal
 ---------------*/
 
 .ui.horizontal.statistic {
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: row;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-      -ms-flex-align: center;
-          align-items: center;
+  flex-direction: row;
+  align-items: center;
 }
 .ui.horizontal.statistics {
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: column;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  flex-direction: column;
   margin: 0em;
   max-width: none;
 }
 .ui.horizontal.statistics .statistic {
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: row;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-      -ms-flex-align: center;
-          align-items: center;
+  flex-direction: row;
+  align-items: center;
   max-width: none;
-  margin: 1em 0em;
+  margin: $horizontal-group-element-margin;
 }
+
 .ui.horizontal.statistic > .text.value,
 .ui.horizontal.statistics > .statistic > .text.value {
   min-height: 0em !important;
 }
 .ui.horizontal.statistics .statistic > .value .icon,
 .ui.horizontal.statistic > .value .icon {
-  width: 1.18em;
+  width: $icon-width;
 }
+
 .ui.horizontal.statistics .statistic > .value,
 .ui.horizontal.statistic > .value {
   display: inline-block;
@@ -324,7 +303,7 @@
 .ui.horizontal.statistic > .label {
   display: inline-block;
   vertical-align: middle;
-  margin: 0em 0em 0em 0.75em;
+  margin: 0em 0em 0em $horizontal-label-distance;
 }
 
 /*--------------
@@ -334,62 +313,62 @@
 .ui.red.statistics .statistic > .value,
 .ui.statistics .red.statistic > .value,
 .ui.red.statistic > .value {
-  color: #DB2828;
+  color: $red;
 }
 .ui.orange.statistics .statistic > .value,
 .ui.statistics .orange.statistic > .value,
 .ui.orange.statistic > .value {
-  color: #F2711C;
+  color: $orange;
 }
 .ui.yellow.statistics .statistic > .value,
 .ui.statistics .yellow.statistic > .value,
 .ui.yellow.statistic > .value {
-  color: #FBBD08;
+  color: $yellow;
 }
 .ui.olive.statistics .statistic > .value,
 .ui.statistics .olive.statistic > .value,
 .ui.olive.statistic > .value {
-  color: #B5CC18;
+  color: $olive;
 }
 .ui.green.statistics .statistic > .value,
 .ui.statistics .green.statistic > .value,
 .ui.green.statistic > .value {
-  color: #21BA45;
+  color: $green;
 }
 .ui.teal.statistics .statistic > .value,
 .ui.statistics .teal.statistic > .value,
 .ui.teal.statistic > .value {
-  color: #00B5AD;
+  color: $teal;
 }
 .ui.blue.statistics .statistic > .value,
 .ui.statistics .blue.statistic > .value,
 .ui.blue.statistic > .value {
-  color: #2185D0;
+  color: $blue;
 }
 .ui.violet.statistics .statistic > .value,
 .ui.statistics .violet.statistic > .value,
 .ui.violet.statistic > .value {
-  color: #6435C9;
+  color: $violet;
 }
 .ui.purple.statistics .statistic > .value,
 .ui.statistics .purple.statistic > .value,
 .ui.purple.statistic > .value {
-  color: #A333C8;
+  color: $purple;
 }
 .ui.pink.statistics .statistic > .value,
 .ui.statistics .pink.statistic > .value,
 .ui.pink.statistic > .value {
-  color: #E03997;
+  color: $pink;
 }
 .ui.brown.statistics .statistic > .value,
 .ui.statistics .brown.statistic > .value,
 .ui.brown.statistic > .value {
-  color: #A5673F;
+  color: $brown;
 }
 .ui.grey.statistics .statistic > .value,
 .ui.statistics .grey.statistic > .value,
 .ui.grey.statistic > .value {
-  color: #767676;
+  color: $grey;
 }
 
 /*--------------
@@ -398,71 +377,72 @@
 
 .ui.inverted.statistics .statistic > .value,
 .ui.inverted.statistic .value {
-  color: #FFFFFF;
+  color: $inverted-value-color;
 }
 .ui.inverted.statistics .statistic > .label,
 .ui.inverted.statistic .label {
-  color: rgba(255, 255, 255, 0.9);
+  color: $inverted-label-color;
 }
+
 .ui.inverted.red.statistics .statistic > .value,
 .ui.statistics .inverted.red.statistic > .value,
 .ui.inverted.red.statistic > .value {
-  color: #FF695E;
+  color: $light-red;
 }
 .ui.inverted.orange.statistics .statistic > .value,
 .ui.statistics .inverted.orange.statistic > .value,
 .ui.inverted.orange.statistic > .value {
-  color: #FF851B;
+  color: $light-orange;
 }
 .ui.inverted.yellow.statistics .statistic > .value,
 .ui.statistics .inverted.yellow.statistic > .value,
 .ui.inverted.yellow.statistic > .value {
-  color: #FFE21F;
+  color: $light-yellow;
 }
 .ui.inverted.olive.statistics .statistic > .value,
 .ui.statistics .inverted.olive.statistic > .value,
 .ui.inverted.olive.statistic > .value {
-  color: #D9E778;
+  color: $light-olive;
 }
 .ui.inverted.green.statistics .statistic > .value,
 .ui.statistics .inverted.green.statistic > .value,
 .ui.inverted.green.statistic > .value {
-  color: #2ECC40;
+  color: $light-green;
 }
 .ui.inverted.teal.statistics .statistic > .value,
 .ui.statistics .inverted.teal.statistic > .value,
 .ui.inverted.teal.statistic > .value {
-  color: #6DFFFF;
+  color: $light-teal;
 }
 .ui.inverted.blue.statistics .statistic > .value,
 .ui.statistics .inverted.blue.statistic > .value,
 .ui.inverted.blue.statistic > .value {
-  color: #54C8FF;
+  color: $light-blue;
 }
 .ui.inverted.violet.statistics .statistic > .value,
 .ui.statistics .inverted.violet.statistic > .value,
 .ui.inverted.violet.statistic > .value {
-  color: #A291FB;
+  color: $light-violet;
 }
 .ui.inverted.purple.statistics .statistic > .value,
 .ui.statistics .inverted.purple.statistic > .value,
 .ui.inverted.purple.statistic > .value {
-  color: #DC73FF;
+  color: $light-purple;
 }
 .ui.inverted.pink.statistics .statistic > .value,
 .ui.statistics .inverted.pink.statistic > .value,
 .ui.inverted.pink.statistic > .value {
-  color: #FF8EDF;
+  color: $light-pink;
 }
 .ui.inverted.brown.statistics .statistic > .value,
 .ui.statistics .inverted.brown.statistic > .value,
 .ui.inverted.brown.statistic > .value {
-  color: #D67C1C;
+  color: $light-brown;
 }
 .ui.inverted.grey.statistics .statistic > .value,
 .ui.statistics .inverted.grey.statistic > .value,
 .ui.inverted.grey.statistic > .value {
-  color: #DCDDDE;
+  color: $light-grey;
 }
 
 /*--------------
@@ -471,15 +451,16 @@
 
 .ui[class*="left floated"].statistic {
   float: left;
-  margin: 0em 2em 1em 0em;
+  margin: $left-floated-margin;
 }
 .ui[class*="right floated"].statistic {
   float: right;
-  margin: 0em 0em 1em 2em;
+  margin: $right-floated-margin;
 }
 .ui.floated.statistic:last-child {
   margin-bottom: 0em;
 }
+
 
 /*--------------
      Sizes
@@ -489,95 +470,87 @@
 /* Mini */
 .ui.mini.statistics .statistic > .value,
 .ui.mini.statistic > .value {
-  font-size: 1.5rem !important;
+  font-size: $mini-value-size !important;
 }
 .ui.mini.horizontal.statistics .statistic > .value,
 .ui.mini.horizontal.statistic > .value {
-  font-size: 1.5rem !important;
+  font-size: $mini-horizontal-value-size !important;
 }
 .ui.mini.statistics .statistic > .text.value,
 .ui.mini.statistic > .text.value {
-  font-size: 1rem !important;
+  font-size: $mini-text-value-size !important;
 }
+
 
 /* Tiny */
 .ui.tiny.statistics .statistic > .value,
 .ui.tiny.statistic > .value {
-  font-size: 2rem !important;
+  font-size: $tiny-value-size !important;
 }
 .ui.tiny.horizontal.statistics .statistic > .value,
 .ui.tiny.horizontal.statistic > .value {
-  font-size: 2rem !important;
+  font-size: $tiny-horizontal-value-size !important;
 }
 .ui.tiny.statistics .statistic > .text.value,
 .ui.tiny.statistic > .text.value {
-  font-size: 1rem !important;
+  font-size: $tiny-text-value-size !important;
 }
 
 /* Small */
 .ui.small.statistics .statistic > .value,
 .ui.small.statistic > .value {
-  font-size: 3rem !important;
+  font-size: $small-value-size !important;
 }
 .ui.small.horizontal.statistics .statistic > .value,
 .ui.small.horizontal.statistic > .value {
-  font-size: 2rem !important;
+  font-size: $small-horizontal-value-size !important;
 }
 .ui.small.statistics .statistic > .text.value,
 .ui.small.statistic > .text.value {
-  font-size: 1rem !important;
+  font-size: $small-text-value-size !important;
 }
 
 /* Medium */
 .ui.statistics .statistic > .value,
 .ui.statistic > .value {
-  font-size: 4rem !important;
+  font-size: $value-size !important;
 }
 .ui.horizontal.statistics .statistic > .value,
 .ui.horizontal.statistic > .value {
-  font-size: 3rem !important;
+  font-size: $horizontal-value-size !important;
 }
 .ui.statistics .statistic > .text.value,
 .ui.statistic > .text.value {
-  font-size: 2rem !important;
+  font-size: $text-value-size !important;
 }
 
 /* Large */
 .ui.large.statistics .statistic > .value,
 .ui.large.statistic > .value {
-  font-size: 5rem !important;
+  font-size: $large-value-size !important;
 }
 .ui.large.horizontal.statistics .statistic > .value,
 .ui.large.horizontal.statistic > .value {
-  font-size: 4rem !important;
+  font-size: $large-horizontal-value-size !important;
 }
 .ui.large.statistics .statistic > .text.value,
 .ui.large.statistic > .text.value {
-  font-size: 2.5rem !important;
+  font-size: $large-text-value-size !important;
 }
 
 /* Huge */
 .ui.huge.statistics .statistic > .value,
 .ui.huge.statistic > .value {
-  font-size: 6rem !important;
+  font-size: $huge-value-size !important;
 }
 .ui.huge.horizontal.statistics .statistic > .value,
 .ui.huge.horizontal.statistic > .value {
-  font-size: 5rem !important;
+  font-size: $huge-horizontal-value-size !important;
 }
 .ui.huge.statistics .statistic > .text.value,
 .ui.huge.statistic > .text.value {
-  font-size: 2.5rem !important;
+  font-size: $huge-text-value-size !important;
 }
 
 
-/*******************************
-         Theme Overrides
-*******************************/
-
-
-
-/*******************************
-    User Variable Overrides
-*******************************/
-
+.loadUIOverrides();

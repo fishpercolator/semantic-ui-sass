@@ -1,5 +1,5 @@
 /*!
- * # Semantic UI 2.2.4 - Search
+ * # Semantic UI - Search
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -10,33 +10,46 @@
 
 
 /*******************************
+            Theme
+*******************************/
+
+$type    : 'module';
+$element : 'search';
+
+
+/*******************************
              Search
 *******************************/
 
 .ui.search {
   position: relative;
 }
+
 .ui.search > .prompt {
   margin: 0em;
   outline: none;
   -webkit-appearance: none;
-  -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+  -webkit-tap-highlight-color:  rgba(255, 255, 255, 0);
+
   text-shadow: none;
   font-style: normal;
   font-weight: normal;
-  line-height: 1.2142em;
-  padding: 0.67861429em 1em;
-  font-size: 1em;
-  background: #FFFFFF;
-  border: 1px solid rgba(34, 36, 38, 0.15);
-  color: rgba(0, 0, 0, 0.87);
-  box-shadow: 0em 0em 0em 0em transparent inset;
-  -webkit-transition: background-color 0.1s ease, color 0.1s ease, box-shadow 0.1s ease, border-color 0.1s ease;
-  transition: background-color 0.1s ease, color 0.1s ease, box-shadow 0.1s ease, border-color 0.1s ease;
+
+  line-height: $prompt-line-height;
+  padding: $prompt-padding;
+  font-size: $prompt-font-size;
+
+  background: $prompt-background;
+  border: $prompt-border;
+  color: $prompt-color;
+  box-shadow: $prompt-box-shadow;
+  transition: $prompt-transition;
 }
+
 .ui.search .prompt {
-  border-radius: 500rem;
+  border-radius: $prompt-border-radius;
 }
+
 
 /*--------------
      Icon
@@ -52,26 +65,28 @@
 
 .ui.search > .results {
   display: none;
+
   position: absolute;
   top: 100%;
   left: 0%;
-  -webkit-transform-origin: center top;
-      -ms-transform-origin: center top;
-          transform-origin: center top;
+  transform-origin: center top;
   white-space: normal;
-  background: #FFFFFF;
-  margin-top: 0.5em;
-  width: 18em;
-  border-radius: 0.28571429rem;
-  box-shadow: 0px 2px 4px 0px rgba(34, 36, 38, 0.12), 0px 2px 10px 0px rgba(34, 36, 38, 0.15);
-  border: 1px solid #D4D4D5;
-  z-index: 998;
+
+  background: $results-background;
+
+  margin-top: $results-distance;
+  width: $results-width;
+
+  border-radius: $results-border-radius;
+  box-shadow: $results-box-shadow;
+  border: $results-border;
+  z-index: $results-z-index;
 }
 .ui.search > .results > :first-child {
-  border-radius: 0.28571429rem 0.28571429rem 0em 0em;
+  border-radius: $results-border-radius $results-border-radius 0em 0em;
 }
 .ui.search > .results > :last-child {
-  border-radius: 0em 0em 0.28571429rem 0.28571429rem;
+  border-radius: 0em 0em $results-border-radius $results-border-radius;
 }
 
 /*--------------
@@ -82,24 +97,24 @@
   cursor: pointer;
   display: block;
   overflow: hidden;
-  font-size: 1em;
-  padding: 0.85714286em 1.14285714em;
-  color: rgba(0, 0, 0, 0.87);
-  line-height: 1.33;
-  border-bottom: 1px solid rgba(34, 36, 38, 0.1);
+  font-size: $result-font-size;
+  padding: $result-padding;
+  color: $result-text-color;
+  line-height: $result-line-height;
+  border-bottom: $result-divider;
 }
 .ui.search > .results .result:last-child {
-  border-bottom: none !important;
+  border-bottom: $result-last-divider !important;
 }
 
 /* Image */
 .ui.search > .results .result .image {
-  float: right;
+  float: $result-image-float;
   overflow: hidden;
-  background: none;
-  width: 5em;
-  height: 3em;
-  border-radius: 0.25em;
+  background: $result-image-background;
+  width: $result-image-width;
+  height: $result-image-height;
+  border-radius: $result-image-border-radius;
 }
 .ui.search > .results .result .image img {
   display: block;
@@ -112,23 +127,24 @@
 ---------------*/
 
 .ui.search > .results .result .image + .content {
-  margin: 0em 6em 0em 0em;
+  margin: $result-image-margin;
 }
+
 .ui.search > .results .result .title {
-  margin: -0.14285em 0em 0em;
-  font-family: $font-family;
-  font-weight: bold;
-  font-size: 1em;
-  color: rgba(0, 0, 0, 0.85);
+  margin: $result-title-margin;
+  font-family: $result-title-font;
+  font-weight: $result-title-font-weight;
+  font-size: $result-title-font-size;
+  color: $result-title-color;
 }
 .ui.search > .results .result .description {
-  margin-top: 0;
-  font-size: 0.92857143em;
-  color: rgba(0, 0, 0, 0.4);
+  margin-top: $result-description-distance;
+  font-size: $result-description-font-size;
+  color: $result-description-color;
 }
 .ui.search > .results .result .price {
-  float: right;
-  color: #21BA45;
+  float: $result-price-float;
+  color: $result-price-color;
 }
 
 /*--------------
@@ -136,29 +152,29 @@
 ---------------*/
 
 .ui.search > .results > .message {
-  padding: 1em 1em;
+  padding: $message-vertical-padding $message-horizontal-padding;
 }
 .ui.search > .results > .message .header {
-  font-family: $font-family;
-  font-size: 1rem;
-  font-weight: bold;
-  color: rgba(0, 0, 0, 0.87);
+  font-family: $header-font;
+  font-size: $message-header-font-size;
+  font-weight: $message-header-font-weight;
+  color: $message-header-color;
 }
 .ui.search > .results > .message .description {
-  margin-top: 0.25rem;
-  font-size: 1em;
-  color: rgba(0, 0, 0, 0.87);
+  margin-top: $message-description-distance;
+  font-size: $message-description-font-size;
+  color: $message-description-color;
 }
 
 /* View All Results */
 .ui.search > .results > .action {
   display: block;
-  border-top: none;
-  background: #F3F4F5;
-  padding: 0.92857143em 1em;
-  color: rgba(0, 0, 0, 0.87);
-  font-weight: bold;
-  text-align: center;
+  border-top: $action-border;
+  background: $action-background;
+  padding: $action-padding;
+  color: $action-color;
+  font-weight: $action-font-weight;
+  text-align: $action-align;
 }
 
 
@@ -166,15 +182,14 @@
             States
 *******************************/
 
-
 /*--------------------
        Focus
 ---------------------*/
 
 .ui.search > .prompt:focus {
-  border-color: rgba(34, 36, 38, 0.35);
-  background: #FFFFFF;
-  color: rgba(0, 0, 0, 0.95);
+  border-color: $prompt-focus-border-color;
+  background: $prompt-focus-background;
+  color: $prompt-focus-color;
 }
 
 /*--------------------
@@ -186,30 +201,36 @@
   content: '';
   top: 50%;
   left: 50%;
-  margin: -0.64285714em 0em 0em -0.64285714em;
-  width: 1.28571429em;
-  height: 1.28571429em;
-  border-radius: 500rem;
-  border: 0.2em solid rgba(0, 0, 0, 0.1);
+
+  margin: $loader-margin;
+  width: $loader-size;
+  height: $loader-size;
+
+  border-radius: $circular-radius;
+  border: $loader-line-width solid $loader-fill-color;
 }
 .ui.loading.search .input > i.icon:after {
   position: absolute;
   content: '';
   top: 50%;
   left: 50%;
-  margin: -0.64285714em 0em 0em -0.64285714em;
-  width: 1.28571429em;
-  height: 1.28571429em;
-  -webkit-animation: button-spin 0.6s linear;
-          animation: button-spin 0.6s linear;
-  -webkit-animation-iteration-count: infinite;
-          animation-iteration-count: infinite;
-  border-radius: 500rem;
-  border-color: #767676 transparent transparent;
+
+  margin: $loader-margin;
+  width: $loader-size;
+  height: $loader-size;
+
+  animation: button-spin $loader-speed linear;
+  animation-iteration-count: infinite;
+
+  border-radius: $circular-radius;
+
+  border-color: $loader-line-color transparent transparent;
   border-style: solid;
-  border-width: 0.2em;
+  border-width: $loader-line-width;
+
   box-shadow: 0px 0px 0px 1px transparent;
 }
+
 
 /*--------------
       Hover
@@ -217,10 +238,10 @@
 
 .ui.search > .results .result:hover,
 .ui.category.search > .results .category .result:hover {
-  background: #F9FAFB;
+  background: $result-hover-background;
 }
 .ui.search .action:hover {
-  background: #E0E0E0;
+  background: $action-hover-background;
 }
 
 /*--------------
@@ -228,37 +249,36 @@
 ---------------*/
 
 .ui.category.search > .results .category.active {
-  background: #F3F4F5;
+  background: $category-active-background;
 }
 .ui.category.search > .results .category.active > .name {
-  color: rgba(0, 0, 0, 0.87);
+  color: $category-name-active-color;
 }
+
 .ui.search > .results .result.active,
 .ui.category.search > .results .category .result.active {
   position: relative;
-  border-left-color: rgba(34, 36, 38, 0.1);
-  background: #F3F4F5;
-  box-shadow: none;
+  border-left-color: $result-active-border-left;
+  background: $result-active-background;
+  box-shadow: $result-active-box-shadow;
 }
 .ui.search > .results .result.active .title {
-  color: rgba(0, 0, 0, 0.85);
+  color: $result-active-title-color;
 }
 .ui.search > .results .result.active .description {
-  color: rgba(0, 0, 0, 0.85);
+  color: $result-active-description-color;
 }
-
 
 /*******************************
            Types
 *******************************/
-
 
 /*--------------
     Selection
 ---------------*/
 
 .ui.search.selection .prompt {
-  border-radius: 0.28571429rem;
+  border-radius: $selection-prompt-border-radius;
 }
 
 /* Remove input */
@@ -267,40 +287,39 @@
   position: absolute;
   left: auto;
   opacity: 0;
-  color: '';
-  top: 0em;
-  right: 0em;
-  -webkit-transition: color 0.1s ease, opacity 0.1s ease;
-  transition: color 0.1s ease, opacity 0.1s ease;
+  color: $selection-close-icon-color;
+  top: $selection-close-top;
+  right: $selection-close-right;
+  transition: $selection-close-transition;
 }
 .ui.search.selection > .icon.input > .active.remove.icon {
   cursor: pointer;
-  opacity: 0.8;
+  opacity: $selection-close-icon-opacity;
   pointer-events: auto;
 }
 .ui.search.selection > .icon.input:not([class*="left icon"]) > .icon ~ .remove.icon {
-  right: 1.85714em;
+  right: $selection-close-icon-input-right;
 }
 .ui.search.selection > .icon.input > .remove.icon:hover {
-  opacity: 1;
-  color: #DB2828;
+  opacity: $selection-close-icon-hover-opacity;
+  color: $selection-close-icon-hover-color;
 }
+
 
 /*--------------
     Category
 ---------------*/
 
 .ui.category.search .results {
-  width: 28em;
+  width: $category-results-width;
 }
 
 /* Category */
 .ui.category.search > .results .category {
-  background: #F3F4F5;
-  box-shadow: none;
-  border-bottom: 1px solid rgba(34, 36, 38, 0.1);
-  -webkit-transition: background 0.1s ease, border-color 0.1s ease;
-  transition: background 0.1s ease, border-color 0.1s ease;
+  background: $category-background;
+  box-shadow: $category-box-shadow;
+  border-bottom: $category-divider;
+  transition: $category-transition;
 }
 
 /* Last Category */
@@ -310,44 +329,41 @@
 
 /* First / Last */
 .ui.category.search > .results .category:first-child .name + .result {
-  border-radius: 0em 0.28571429rem 0em 0em;
+  border-radius: 0em $results-border-radius 0em 0em;
 }
 .ui.category.search > .results .category:last-child .result:last-child {
-  border-radius: 0em 0em 0.28571429rem 0em;
+  border-radius: 0em 0em $results-border-radius 0em;
 }
 
 /* Category Result */
 .ui.category.search > .results .category .result {
-  background: #FFFFFF;
-  margin-left: 100px;
-  border-left: 1px solid rgba(34, 36, 38, 0.15);
-  border-bottom: 1px solid rgba(34, 36, 38, 0.1);
-  -webkit-transition: background 0.1s ease, border-color 0.1s ease;
-  transition: background 0.1s ease, border-color 0.1s ease;
-  padding: 0.85714286em 1.14285714em;
+  background: $category-result-background;
+  margin-left: $category-name-width;
+  border-left: $category-result-left-border;
+  border-bottom: $category-result-divider;
+  transition: $category-result-transition;
+  padding: $category-result-padding;
 }
 .ui.category.search > .results .category:last-child .result:last-child {
-  border-bottom: none;
+  border-bottom: $category-result-last-divider;
 }
 
 /* Category Result Name */
 .ui.category.search > .results .category > .name {
-  width: 100px;
-  background: transparent;
-  font-family: $font-family;
-  font-size: 1em;
-  float: 1em;
-  float: left;
-  padding: 0.4em 1em;
-  font-weight: bold;
-  color: rgba(0, 0, 0, 0.4);
+  width: $category-name-width;
+  background: $category-name-background;
+  font-family: $category-name-font;
+  font-size: $category-name-font-size;
+  float: $category-name-font-size;
+  float: $category-name-float;
+  padding: $category-name-padding;
+  font-weight: $category-name-font-weight;
+  color: $category-name-color;
 }
-
 
 /*******************************
            Variations
 *******************************/
-
 
 /*-------------------
      Left / Right
@@ -370,40 +386,31 @@
   width: 100%;
 }
 
+
 /*--------------
       Sizes
 ---------------*/
 
 .ui.mini.search {
-  font-size: 0.78571429em;
+  font-size: $relative-mini;
 }
 .ui.small.search {
-  font-size: 0.92857143em;
+  font-size: $relative-small;
 }
 .ui.search {
-  font-size: 1em;
+  font-size: $relative-medium;
 }
 .ui.large.search {
-  font-size: 1.14285714em;
+  font-size: $relative-large;
 }
 .ui.big.search {
-  font-size: 1.28571429em;
+  font-size: $relative-big;
 }
 .ui.huge.search {
-  font-size: 1.42857143em;
+  font-size: $relative-huge;
 }
 .ui.massive.search {
-  font-size: 1.71428571em;
+  font-size: $relative-massive;
 }
 
-
-/*******************************
-         Theme Overrides
-*******************************/
-
-
-
-/*******************************
-         Site Overrides
-*******************************/
-
+.loadUIOverrides();
