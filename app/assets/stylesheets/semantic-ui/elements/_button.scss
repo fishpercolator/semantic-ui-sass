@@ -175,7 +175,8 @@ $element : 'button';
   background-color: transparent;
   box-shadow: none;
 }
-#{$keyframes} button-spin {
+
+@keyframes button-spin {
   from {
     transform: rotate(0deg);
   }

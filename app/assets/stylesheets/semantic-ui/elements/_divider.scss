@@ -129,7 +129,7 @@ $element : 'divider';
 }
 
 /* Inside grid */
-#{$media} only screen and (max-width : $largest-mobile-screen) {
+@media only screen and (max-width : $largest-mobile-screen) {
 
   .ui.stackable.grid .ui.vertical.divider,
   .ui.grid .stackable.row .ui.vertical.divider {

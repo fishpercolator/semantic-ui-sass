@@ -165,8 +165,6 @@ private
   
   # Replace LESS variables with Sass ones.
   def replace_variables(less, scope=nil)
-    # Handle variables at the start of a string (Sass requires them to be #{})
-    less.gsub!(/^\s*\@([-\w]+)(\s+[^\s:])/) { '#{' + get_sass_variable_name($1, scope) + '}' + $2 }
     # Handle most variable names
     less.gsub!(/\@([-\w]+)/) { get_sass_variable_name $1, scope }
     # And interpolated variables
@@ -195,6 +193,9 @@ private
   end
   
   def get_sass_variable_name(less_name, scope=nil, force=false)
+    # Special case - @media and @keyframes are to be passed directly to CSS
+    return "@#{less_name}" if %w{media keyframes}.include? less_name
+    
     name = less_name.underscore.tr('_', '-')
     if scope
       name = "#{scope.tr '/', '-'}-#{name}"

@@ -148,7 +148,7 @@ $element : 'table';
 
 
 /* Responsive */
-#{$media} only screen and (max-width : $largest-mobile-screen) {
+@media only screen and (max-width : $largest-mobile-screen) {
   .ui.table:not(.unstackable) {
     width: 100%;
   }
@@ -386,7 +386,8 @@ $element : 'table';
 /*--------------
     Stackable
 ---------------*/
-#{$media} only screen and (max-width : $largest-tablet-screen) {
+
+@media only screen and (max-width : $largest-tablet-screen) {
 
   .ui[class*="tablet stackable"].table,
   .ui[class*="tablet stackable"].table tbody,

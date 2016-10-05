@@ -646,7 +646,8 @@ $element : 'form';
   visibility: visible;
   z-index: $loader-line-z-index;
 }
-#{$keyframes} form-spin {
+
+@keyframes form-spin {
   from {
     transform: rotate(0deg);
   }
@@ -819,7 +820,7 @@ $element : 'form';
 }
 
 /* Swap to full width on mobile */
-#{$media} only screen and (max-width : $largest-mobile-screen) {
+@media only screen and (max-width : $largest-mobile-screen) {
   .ui.form .fields {
     flex-wrap: wrap;
   }
@@ -907,7 +908,7 @@ $element : 'form';
 }
 
 /* Swap to full width on mobile */
-#{$media} only screen and (max-width : $largest-mobile-screen) {
+@media only screen and (max-width : $largest-mobile-screen) {
   .ui.form .two.fields > .fields,
   .ui.form .two.fields > .field,
   .ui.form .three.fields > .fields,
